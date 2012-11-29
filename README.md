@@ -1,4 +1,4 @@
-mpi_tutorial_code
+MPI Tutorial Code
 =================
 
-Code for the programming examples on mpitutorial.com
+Code for the programming examples on www.mpitutorial.com
