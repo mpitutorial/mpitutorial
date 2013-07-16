@@ -1,4 +1,4 @@
-EXECS=avg all_avg
+EXECS=avg stddev
 MPICC?=mpicc
 
 all: ${EXECS}
@@ -6,8 +6,8 @@ all: ${EXECS}
 avg: avg.c
 	${MPICC} -o avg avg.c
 
-all_avg: all_avg.c
-	${MPICC} -o all_avg all_avg.c
+stddev: stddev.c
+	${MPICC} -o stddev stddev.c -lm
 
 clean:
 	rm ${EXECS}
