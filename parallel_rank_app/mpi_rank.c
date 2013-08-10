@@ -106,9 +106,9 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count, MPI_Datatype d
   return ranks;
 }
 
-// Gets the rank of the recv_buf, which is of type datatype. The rank is returned
-// in send_buf and is of type datatype.  
-int MPI_Rank(void *send_buf, void *recv_buf, MPI_Datatype datatype, MPI_Comm comm) {
+// Gets the rank of the recv_data, which is of type datatype. The rank is returned
+// in send_data and is of type datatype.  
+int MPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype, MPI_Comm comm) {
   // Check base cases first - Only support MPI_INT and MPI_FLOAT for this function.
   if (datatype != MPI_INT && datatype != MPI_FLOAT) {
     return MPI_ERR_TYPE;
@@ -120,7 +120,7 @@ int MPI_Rank(void *send_buf, void *recv_buf, MPI_Datatype datatype, MPI_Comm com
 
   // To calculate the rank, we must gather the numbers to one process, sort the numbers, and then
   // scatter the resulting rank values. Start by gathering the numbers on process 0 of comm.
-  void *gathered_numbers = gather_numbers_to_root(send_buf, datatype, comm);
+  void *gathered_numbers = gather_numbers_to_root(send_data, datatype, comm);
 
   // Get the ranks of each process
   int *ranks = NULL;
@@ -129,7 +129,7 @@ int MPI_Rank(void *send_buf, void *recv_buf, MPI_Datatype datatype, MPI_Comm com
   }
 
   // Scatter the rank results
-  MPI_Scatter(ranks, 1, MPI_INT, recv_buf, 1, MPI_INT, 0, comm);
+  MPI_Scatter(ranks, 1, MPI_INT, recv_data, 1, MPI_INT, 0, comm);
 
   // Do clean up
   if (comm_rank == 0) {
