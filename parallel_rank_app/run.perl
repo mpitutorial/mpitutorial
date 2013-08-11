@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 
-@program_names = ("mpi_rank");
-%program_nodes = ("mpi_rank", 4);
-%program_args = ("mpi_rank", "100");
+@program_names = ("random_rank");
+%program_nodes = ("random_rank", 4);
+%program_args = ("random_rank", "100");
 
 $program_to_run = $ARGV[0];
 if (!$program_to_run || !$program_nodes{$program_to_run}) {
