@@ -12,11 +12,6 @@
 #include "mpi_rank.h"
 
 int main(int argc, char** argv) {
-  if (argc != 2) {
-    fprintf(stderr, "Usage: parallel_rank\n");
-    exit(1);
-  }
-
   MPI_Init(NULL, NULL);
 
   int world_rank;
