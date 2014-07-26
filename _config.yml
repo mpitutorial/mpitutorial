@@ -21,4 +21,4 @@ version:          1.0.0
 github:
   repo:           https://github.com/wesleykendall/mpitutorial/
 pages_list:       
-  About: '{{ site.baseurl }}about'
+  About: '/about'
