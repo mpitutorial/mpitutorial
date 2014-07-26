@@ -13,7 +13,7 @@ paginate:         1
 baseurl:          http://wesleykendall.github.io/mpitutorial
 author:
   name:           Wes Kendall
-  url:            https://github.com/wesleykendall
+  url:            https://github.com/wesleykendall/
   email:          wesleykendall@gmail.com
 
 # Custom vars
@@ -21,4 +21,4 @@ version:          1.0.0
 github:
   repo:           https://github.com/wesleykendall/mpitutorial/
 pages_list:       
-  About: '/about'
+  About: '{{ site.baseurl }}about'
