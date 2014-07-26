@@ -6,17 +6,17 @@ pygments:         true
 permalink:        pretty
 
 # Setup
-title:            Poole
-tagline:          The Jekyll Butler
-url:              http://getpoole.com
+title:            MPI Tutorial
+tagline:          The Most Comprehensive MPI Tutorial Resource
+url:              http://mpitutorial.com
 paginate:         1
-baseurl:          /
+baseurl:          http://wesleykendall.github.io/mpitutorial/
 author:
-  name:           Mark Otto
-  url:            https://twitter.com/mdo
-  email:          markdotto@gmail.com
+  name:           Wes Kendall
+  url:            https://github.com/wesleykendall
+  email:          wesleykendall@gmail.com
 
 # Custom vars
 version:          1.0.0
 github:
-  repo:           https://github.com/poole/poole
+  repo:           https://github.com/wesleykendall/mpitutorial/
