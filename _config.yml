@@ -20,5 +20,6 @@ author:
 version:          1.0.0
 github:
   repo:           https://github.com/wesleykendall/mpitutorial/
-pages_list:       
+pages_list:      
+  Beginner Tutorial: 'beginner-tutorial'
   About: 'about'
