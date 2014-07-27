@@ -10,7 +10,6 @@ title:            MPI Tutorial
 tagline:
 url:              http://mpitutorial.com
 paginate:         1
-baseurl:          /
 author:
   name:           Wes Kendall
   url:            https://github.com/wesleykendall/
