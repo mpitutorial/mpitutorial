@@ -6,6 +6,9 @@ import subprocess
 # Enter runnable programs here, keyed on the program executable name and followed
 # by a tuple of the tutorial name and the default number of nodes
 programs = {
+    # From the mpi-hello-world tutorial
+    'mpi_hello_world': ('mpi-hello-world', 4),
+
     # From mpi-send-and-receive tutorial
     'send_recv': ('mpi-send-and-receive', 2),
     'ping_pong': ('mpi-send-and-receive', 2),
