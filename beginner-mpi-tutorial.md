@@ -7,13 +7,13 @@ Welcome to the MPI tutorial for beginners! In this tutorial, you will learn the 
 
 This beginner tutorial assumes that the reader has a basic knowledge of C, some C++, and Linux.
 
-## Introduction and MPI Installation
+## Introduction and MPI installation
 * [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/)
 * [Installing MPICH2 on a single machine]({{ site.baseurl }}/tutorials/installing-mpich2/)
 * [Launching an Amazon EC2 MPI Cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
 
-## Blocking Point-to-point Communication
+## Blocking point-to-point communication
 
-## Basic Collective Communication
+## Basic collective communication
 
-## Advanced Collective Communication
+## Advanced collective communication
