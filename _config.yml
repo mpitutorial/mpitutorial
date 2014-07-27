@@ -9,6 +9,7 @@ permalink:        pretty
 title:            MPI Tutorial
 tagline:
 url:              http://mpitutorial.com
+baseurl:          ''
 paginate:         1
 author:
   name:           Wes Kendall
