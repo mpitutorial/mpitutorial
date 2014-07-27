@@ -23,7 +23,8 @@ redcarpet:
 # Custom vars
 version:          1.0.0
 github:
-  repo:           https://github.com/wesleykendall/mpitutorial/
+  repo:           https://github.com/wesleykendall/mpitutorial
+  code:           https://github.com/wesleykendall/mpitutorial/tree/gh-pages
 pages_list:      
   Beginner Tutorial:    'beginner-mpi-tutorial'
   About:                'about'
