@@ -10,6 +10,7 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 ## Introduction and MPI Installation
 * [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/)
 * [Installing MPICH2 on a single machine]({{ site.baseurl }}/tutorials/installing-mpich2/)
+* [Launching an Amazon EC2 MPI Cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
 
 ## Blocking Point-to-point Communication
 
