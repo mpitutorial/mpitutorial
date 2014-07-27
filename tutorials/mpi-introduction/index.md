@@ -16,7 +16,6 @@ Learning MPI was difficult for me because of three main reasons. First of all, t
 Although I am by no means an MPI expert, I decided that it would be useful for me to expel all of the information I learned about MPI during graduate school in the form of easy tutorials with example code that can be executed on your *very own* cluster! I hope this resource will be a valuable tool for your career, studies, or life - because parallel programming is not only the present, it *is* the future.
 
 ## A brief history of MPI
-
 Before the 1990's, programmers weren't as lucky as us. Writing parallel applications for different computing architectures was a difficult and tedious task. At that time, many libraries could facilitate building parallel applications, but there was not a standard accepted way of doing it.
 
 During this time, most parallel applications were in the science and research domains. The model most commonly adopted by the libraries was the message passing model. What is the message passing model? All it means is that an application passes messages among processes in order to perform a task. This model works out quite well in practice for parallel applications. For example, a master process might assign work to slave processes by passing them a message that describes the work. Another example is a parallel merge sorting application that sorts data locally on processes and passes results to neighboring processes to merge sorted lists. Almost any parallel application can be expressed with the message passing model.
@@ -29,7 +28,6 @@ By 1994, a complete interface and standard was defined (MPI-1). Keep in mind tha
 *An accurate representation of the first MPI programmers.*
 
 ## MPI's design for the message passing model
-
 Before starting the tutorial, I will cover a couple of the classic concepts behind MPI's design of the message passing model of parallel programming. The first concept is the notion of a *communicator*. A communicator defines a group of processes that have the ability to communicate with one another. In this group of processes, each is assigned a unique *rank*, and they explicitly communicate with one another by their ranks.
 
 The foundation of communication is built upon send and receive operations among processes. A process may send a message to another process by providing the rank of the process and a unique *tag* to identify the message. The receiver can then post a receive for a message with a given tag (or it may not even care about the tag), and then handle the data accordingly. Communications such as this which involve one sender and receiver are known as *point-to-point* communications.

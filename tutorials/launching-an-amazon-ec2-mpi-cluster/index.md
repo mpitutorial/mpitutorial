@@ -111,9 +111,7 @@ A brief overview of the fields are as follows: If you want to start a cluster wi
 
 To determine the cost of running your cluster, multiply the number of nodes by the hourly rate for your instance type. At the time of this writing, the m1.small instance was priced at 6.5 American cents per hour. There is no pro rata for usage. If you run your cluster for thirty minutes, you will be charged for the entire hour.
 
-
 > **Note** - Although t1.micro instances are the cheapest, they hang indefinitely for me when starting a cluster with StarCluster.
-
 
 ## Starting, accessing, and stopping your cluster
 After your StarCluster is configured, type the following to start a cluster called "mpicluster." The default config uses "smallcluster" as the default cluster type:

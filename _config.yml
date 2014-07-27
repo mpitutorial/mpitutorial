@@ -22,5 +22,5 @@ version:          1.0.0
 github:
   repo:           https://github.com/wesleykendall/mpitutorial/
 pages_list:      
-  Beginner Tutorial: 'beginner-mpi-tutorial'
-  About: 'about'
+  Beginner Tutorial:    'beginner-mpi-tutorial'
+  About:                'about'
