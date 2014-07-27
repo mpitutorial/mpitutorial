@@ -9,7 +9,7 @@ redirect_from: '/mpi-hello-world/'
 
 In this lesson, I will show you a basic MPI hello world application and also discuss how to run an MPI program. The lesson will cover the basics of initializing MPI and running an MPI job across several processes. This lesson is intended to work with installations of MPICH2 (specifically 1.4). If you have not installed MPICH2, please refer back to the [installing MPICH2 lesson]({{ site.baseurl }}/tutorials/installing-mpich2/).
 
-> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial is under [tutorials/mpi-hello-world/code]({{ site.github.code }}/tutorials/mpi-hello-world/code).
+> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-hello-world/code]({{ site.github.code }}/tutorials/mpi-hello-world/code).
 
 ## Hello world code examples
 Let's dive right into the code from this lesson located in [mpi_hello_world.c]({{ site.github.code }}/tutorials/mpi-hello-world/code/mpi_hello_world.c). Below are some excerpts from the code.
