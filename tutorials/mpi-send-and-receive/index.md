@@ -9,16 +9,9 @@ redirect_from: '/mpi-send-and-receive/'
 
 Sending and receiving are the two foundational concepts of MPI. Almost every single function in MPI can be implemented with basic send and receive calls. In this lesson, I will discuss how to use MPI's blocking sending and receiving functions, and I will also overview other basic concepts associated with transmitting data using MPI. 
 
-> **Before starting** - Check out all of the code for this tutorial
->
-> ```
-> >>> git clone https://github.com/wesleykendall/mpitutorial/
-> >>> cd mpitutorial/tutorials/mpi-send-and-receive/code
-> ```
+> **Before starting** - Check out all of the code for this tutorial with `git clone {{ site.github.repo }}`. This tutorial is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
 
-The code for this tutorial is available <a href="http://www.mpitutorial.com/lessons/mpi_send_recv.tgz">here</a> or can be <a href="https://github.com/wesleykendall/mpitutorial/tree/master/mpi_send_recv" target="_blank">viewed/cloned on GitHub</a>.
-
-## Overview of Sending and Receiving with MPI
+## Overview of sending and receiving with MPI
 MPI's send and receive calls operate in the following manner. First, process *A* decides a message needs to be sent to process *B*. Process A then packs up all of its necessary data into a buffer for process B. These buffers are often referred to as *envelopes* since the data is being packed into a single message before transmission (similar to how letters are packed into envelopes before transmission to the post office). After the data is packed into a buffer, the communication device (which is often a network) is responsible for routing the message to the proper location. The location of the message is defined by the process's rank.
 
 Even though the message is routed to B, process B still has to acknowledge that it wants to receive A's data. Once it does this, the data has been transmitted. Process A is acknowledged that the data has been transmitted and may go back to work. 
@@ -50,7 +43,7 @@ MPI_Recv(
 
 Although this might seem like a mouthful when reading all of the arguments, they become easier to remember since almost every MPI call uses similar syntax. The first argument is the data buffer. The second and third arguments describe the count and type of elements that reside in the buffer. `MPI_Send` sends the exact count of elements, and `MPI_Recv` will receive <b>at most</b> the count of elements (more on this in the next lesson). The fourth and fifth arguments specify the rank of the sending/receiving process and the tag of the message. The sixth argument specifies the communicator and the last argument (for `MPI_Recv` only) provides information about the received message.
 
-## Elementary MPI Datatypes
+## Elementary MPI datatypes
 The `MPI_Send` and `MPI_Recv` functions utilize MPI Datatypes as a means to specify the structure of a message at a higher level. For example, if the process wishes to send one integer to another, it would use a count of one and a datatype of `MPI_INT`. The other elementary MPI datatypes are listed below with their equivalent C datatypes. 
 
 | MPI datatype | C equivalent |
@@ -71,9 +64,10 @@ The `MPI_Send` and `MPI_Recv` functions utilize MPI Datatypes as a means to spec
 
 For now, we will only make use of these datatypes in the beginner MPI tutorial. Once we have covered enough basics, you will learn how to create your own MPI datatypes for characterizing more complex types of messages.
 
-## MPI Send / Recv Program
-The code for this tutorial is available <a href="http://www.mpitutorial.com/lessons/mpi_send_recv.tgz">here</a> as a tgz file or can be <a href="https://github.com/wesleykendall/mpitutorial/tree/master/mpi_send_recv" target="_blank">viewed/cloned on GitHub</a>. Go ahead and download and extract the code. I refer the reader back to the <a href="http://www.mpitutorial.com/mpi-hello-world/">MPI Hello World Lesson</a> for instructions on how to use my code packages.
-The first example is in send_recv.c. Some of the major parts of the program are shown below.
+## MPI send / recv program
+As stated in the beginning, the code for this is available [on Github]({{ site.github.repo }}), and this tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
+
+The first example in the tutorial code is in send_recv.c. Some of the major parts of the program are shown below.
 
 ```cpp
 // Find out rank, size
@@ -112,7 +106,7 @@ Process 1 received number -1 from process 0
 
 As expected, process one receives negative one from process zero.
 
-## MPI Ping Pong Program
+## MPI ping pong program
 The next example is a ping pong program. In this example, processes use `MPI_Send` and `MPI_Recv` to continually bounce messages off of each other until they decide to stop. Take a look at ping_pong.c in the <a href="http://www.mpitutorial.com/lessons/mpi_send_recv.tgz">example code download</a>. The major portions of the code look like this.
 
 ```cpp
@@ -204,7 +198,7 @@ Process 0 received token -1 from process 4
 
 As we can see, process zero first sends a value of negative one to process one. This value is passed around the ring until it gets back to process zero.
 
-## Up Next
+## Up next
 
 Now that you have a basic understanding of `MPI_Send` and `MPI_Recv`, it is now time to go a little bit deeper into these functions. In the next lesson, I cover <a href="http://www.mpitutorial.com/dynamic-receiving-with-mpi-probe-and-mpi-status/">how to probe and dynamically receive messages</a>. Feel free to also examine the <a href="http://www.mpitutorial.com/beginner-mpi-tutorial">beginner MPI tutorial</a> for a complete reference of all of the beginning MPI lessons.
 
