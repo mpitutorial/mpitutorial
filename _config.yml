@@ -1,6 +1,6 @@
 # Dependencies
 markdown:         redcarpet
-pygments:         true
+highlighter:         pygments
 
 # Permalinks
 permalink:        pretty
@@ -17,6 +17,8 @@ author:
   email:          wesleykendall@gmail.com
 gems:
   - jekyll-redirect-from
+redcarpet:
+  extensions: ['tables', 'fenced_code_blocks', 'no_intra_emphasis', 'with_toc_data', 'prettify']
 
 # Custom vars
 version:          1.0.0

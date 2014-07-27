@@ -13,6 +13,7 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 * [Launching an Amazon EC2 MPI Cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
 
 ## Blocking point-to-point communication
+* [Sending and receiving with MPI_Send and MPI_Recv]({{ site.baseurl }}/tutorials/mpi-send-and-receive/)
 
 ## Basic collective communication
 
