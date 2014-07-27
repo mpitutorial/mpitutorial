@@ -303,7 +303,7 @@ tbody tr:nth-child(odd) th {
 .masthead {
   padding-top:    1rem;
   padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 .masthead-title {
   margin-top: 0;
@@ -330,7 +330,7 @@ tbody tr:nth-child(odd) th {
 
 .page,
 .post {
-  margin-bottom: 4em;
+  margin-bottom: 1em;
 }
 
 /* Blog post or page title */
@@ -354,8 +354,8 @@ tbody tr:nth-child(odd) th {
 
 /* Related posts */
 .related {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 0rem;
+  padding-bottom: 1rem;
   border-top: 1px solid #eee;
 }
 .related-posts {

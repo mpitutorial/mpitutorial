@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-
   {% include head.html %}
-
   <body>
 
     <div class="container content">
@@ -10,9 +8,9 @@
         <h3 class="masthead-title">
           <a href="{{ site.baseurl }}" title="MPI Tutorial Home">{{ site.title }}</a>
 
-            {% for page in site.pages_list %}
-              &nbsp;&nbsp;&nbsp;
-              <small><a href="{% post_url beginner-mpi-tutorial %}">{{ page[0] }}</a></small>
+          {% for page in site.pages_list %}
+            &nbsp;&nbsp;&nbsp;
+            <small><a href="{{ site.baseurl }}{{ page[1] }}">{{ page[0] }}</a></small>
           {% endfor %}
         </h3>
       </div>

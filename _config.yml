@@ -10,11 +10,13 @@ title:            MPI Tutorial
 tagline:
 url:              http://mpitutorial.com
 paginate:         1
-baseurl:          http://wesleykendall.github.io/mpitutorial/
+baseurl:          /
 author:
   name:           Wes Kendall
   url:            https://github.com/wesleykendall/
   email:          wesleykendall@gmail.com
+gems:
+  - jekyll-redirect-from
 
 # Custom vars
 version:          1.0.0

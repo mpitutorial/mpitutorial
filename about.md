@@ -3,28 +3,11 @@ layout: page
 title: About
 ---
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+This site is a collaborative space for providing tutorials about MPI (the Message Passing Interface) and parallel programming. Below are more details about the primary writers on this site and how one can contribute to mpitutorial.com.
 
-In the novel, *The Strange Case of Dr. Jekyll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+## About the Authors
 
-There are currently two themes built on Poole:
+### Wes Kendall (Ambition)
+Wes Kendall is the original author of mpitutorial.com. As a graduate student at the University of Tennessee, Knoxville, Wes earned his PhD under Jian Huang. His research revolved around large-scale data analysis and visualization, and he worked with the biggest supercomputers in the world. As a graduate student, he interned at Google, Oak Ridge National Labs, and Argonne National Labs. His research also earned him the Supercomputing 2011 Best Student Paper Award. He is currently co-founder and CTO of Ambition, a data-analytics startup funded by YCombinator, Google Ventures, and several other top investment firms.
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
-
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+Disappointed with the amount of freely-available content on parallel programming and MPI, Wes started releasing tutorials on the subject after graduate school. Once his startup consumed most of his time, he opened up mpitutorial.com to the public on github.com so that others could start contributing high-quality content.
