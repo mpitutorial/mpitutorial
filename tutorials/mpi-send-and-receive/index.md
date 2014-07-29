@@ -41,7 +41,7 @@ MPI_Recv(
     MPI_Status* status)
 ```
 
-Although this might seem like a mouthful when reading all of the arguments, they become easier to remember since almost every MPI call uses similar syntax. The first argument is the data buffer. The second and third arguments describe the count and type of elements that reside in the buffer. `MPI_Send` sends the exact count of elements, and `MPI_Recv` will receive <b>at most</b> the count of elements (more on this in the next lesson). The fourth and fifth arguments specify the rank of the sending/receiving process and the tag of the message. The sixth argument specifies the communicator and the last argument (for `MPI_Recv` only) provides information about the received message.
+Although this might seem like a mouthful when reading all of the arguments, they become easier to remember since almost every MPI call uses similar syntax. The first argument is the data buffer. The second and third arguments describe the count and type of elements that reside in the buffer. `MPI_Send` sends the exact count of elements, and `MPI_Recv` will receive **at most** the count of elements (more on this in the next lesson). The fourth and fifth arguments specify the rank of the sending/receiving process and the tag of the message. The sixth argument specifies the communicator and the last argument (for `MPI_Recv` only) provides information about the received message.
 
 ## Elementary MPI datatypes
 The `MPI_Send` and `MPI_Recv` functions utilize MPI Datatypes as a means to specify the structure of a message at a higher level. For example, if the process wishes to send one integer to another, it would use a count of one and a datatype of `MPI_INT`. The other elementary MPI datatypes are listed below with their equivalent C datatypes. 
@@ -197,6 +197,6 @@ As we can see, process zero first sends a value of negative one to process one. 
 
 ## Up next
 
-Now that you have a basic understanding of `MPI_Send` and `MPI_Recv`, it is now time to go a little bit deeper into these functions. In the next lesson, I cover <a href="http://www.mpitutorial.com/dynamic-receiving-with-mpi-probe-and-mpi-status/">how to probe and dynamically receive messages</a>. Feel free to also examine the <a href="http://www.mpitutorial.com/beginner-mpi-tutorial">beginner MPI tutorial</a> for a complete reference of all of the beginning MPI lessons.
+Now that you have a basic understanding of `MPI_Send` and `MPI_Recv`, it is now time to go a little bit deeper into these functions. In the next lesson, I cover [how to probe and dynamically receive messages]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/). Feel free to also examine the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) for a complete reference of all of the beginning MPI lessons.
 
 Having trouble? Confused? Feel free to leave a comment below and perhaps I or another reader can be of help.
