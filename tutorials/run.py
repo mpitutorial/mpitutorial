@@ -13,6 +13,10 @@ programs = {
     'send_recv': ('mpi-send-and-receive', 2),
     'ping_pong': ('mpi-send-and-receive', 2),
     'ring': ('mpi-send-and-receive', 5)
+
+    # From the dynamic-receiving-with-mpi-probe-and-mpi-status tutorial
+    'check_status': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),
+    'probe': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None

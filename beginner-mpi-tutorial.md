@@ -15,6 +15,7 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 
 ## Blocking point-to-point communication
 * [Sending and receiving with MPI_Send and MPI_Recv]({{ site.baseurl }}/tutorials/mpi-send-and-receive/)
+* [Dynamic receiving with MPI_Probe and MPI_Status]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/)
 
 ## Basic collective communication
 
