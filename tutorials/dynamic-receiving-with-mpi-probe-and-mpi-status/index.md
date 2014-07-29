@@ -110,15 +110,15 @@ if (world_rank == 0) {
     MPI_Probe(0, 0, MPI_COMM_WORLD, &status);
 
     // When probe returns, the status object has the size and other
-    // attributes of the incoming message. Get the size of the message
+    // attributes of the incoming message. Get the message size
     MPI_Get_count(&status, MPI_INT, &number_amount);
 
-    // Allocate a buffer just big enough to hold the incoming numbers
+    // Allocate a buffer to hold the incoming numbers
     int* number_buf = (int*)malloc(sizeof(int) * number_amount);
 
     // Now receive the message with the allocated buffer
-    MPI_Recv(number_buf, number_amount, MPI_INT, 0, 0, MPI_COMM_WORLD,
-             MPI_STATUS_IGNORE);
+    MPI_Recv(number_buf, number_amount, MPI_INT, 0, 0,
+             MPI_COMM_WORLD, MPI_STATUS_IGNORE);
     printf("1 dynamically received %d numbers from 0.\n",
            number_amount);
     free(number_buf);
@@ -137,6 +137,6 @@ mpirun -n 2 ./probe
 Although this example is trivial, `MPI_Probe` forms the basis of many dynamic MPI applications. For example, master/slave programs will often make heavy use of `MPI_Probe` when exchanging variable-sized worker messages. As an exercise, make a wrapper around `MPI_Recv` that uses `MPI_Probe` for any dynamic applications you might write. It makes the code look much nicer :-)
 
 ## Next up
-Do you feel comfortable using the standard blocking point-to-point communication routines? If so, then you already have the ability to write endless amounts of parallel applications! Let's look at a more advanced example of using the routines you have learned. Check out <a href="http://www.mpitutorial.com/point-to-point-communication-application-random-walk/">the application example using `MPI_Send`, `MPI_Recv`, and `MPI_Probe`</a>.
+Do you feel comfortable using the standard blocking point-to-point communication routines? If so, then you already have the ability to write endless amounts of parallel applications! Let's look at a more advanced example of using the routines you have learned. Check out <a href="http://www.mpitutorial.com/point-to-point-communication-application-random-walk/">the application example using MPI_Send, MPI_Recv, and MPI_Probe</a>.
 
 Having trouble? Confused? Feel free to leave a comment below and perhaps I or another reader can be of help.
