@@ -295,7 +295,7 @@ Performing efficient parallel particle tracing can be very difficult. The main r
 
 ![Parallel particle tracing illustration](parallel_particle_tracing.png)
 
-In this illustration, we see that the domain is split among six process. Particles (sometimes referred to as "*seeds*") are then placed in the subdomains (similar to how we placed walkers in subdomains), and then they begin tracing. When particles go out of bounds, they have to be exchanged with processes which have the proper subdomain. This process is repeated until the particles have either left the entire domain or have reached a maximum trace length.
+In this illustration, we see that the domain is split among six process. Particles (sometimes referred to as *seeds*) are then placed in the subdomains (similar to how we placed walkers in subdomains), and then they begin tracing. When particles go out of bounds, they have to be exchanged with processes which have the proper subdomain. This process is repeated until the particles have either left the entire domain or have reached a maximum trace length.
 
 The parallel particle tracing problem can be solved with `MPI_Send`, `MPI_Recv`, and `MPI_Probe` in a similar manner to our application that we just coded. There are, however, much more sophisticated MPI routines that can get the job done more efficiently. We will talk about these in the coming lessons :-) 
 
