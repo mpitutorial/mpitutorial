@@ -30,7 +30,7 @@ In `MPI_Get_count`, the user passes the `MPI_Status` structure, the `datatype` o
 Why would any of this information be necessary? It turns out that `MPI_Recv` can take `MPI_ANY_SOURCE` for the rank of the sender and `MPI_ANY_TAG` for the tag of the message. For this case, the `MPI_Status` structure is the only way to find out the actual sender and tag of the message. Furthermore, `MPI_Recv` is not guaranteed to receive the entire amount of elements passed as the argument to the function call. Instead, it receives the amount of elements that were sent to it (and returns an error if more elements were sent than the desired receive amount). The MPI_Get_count function is used to determine the actual receive amount.
 
 ## An example of querying the MPI_Status structure
-The program that queries the `MPI_Status` structure, check_status.c, is provided in the <a href="http://www.mpitutorial.com/lessons/mpi_probe_status.tgz">example code</a>. The program sends a random amount of numbers to a receiver, and the receiver then finds out how many numbers were sent. The main part of the code looks like this.
+The program that queries the `MPI_Status` structure is in [check_status.c]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code/check_status.c). The program sends a random amount of numbers to a receiver, and the receiver then finds out how many numbers were sent. The main part of the code looks like this.
 
 ```cpp
 const int MAX_NUMBERS = 100;
