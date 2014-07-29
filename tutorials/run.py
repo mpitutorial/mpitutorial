@@ -12,7 +12,7 @@ programs = {
     # From mpi-send-and-receive tutorial
     'send_recv': ('mpi-send-and-receive', 2),
     'ping_pong': ('mpi-send-and-receive', 2),
-    'ring': ('mpi-send-and-receive', 5)
+    'ring': ('mpi-send-and-receive', 5),
 
     # From the dynamic-receiving-with-mpi-probe-and-mpi-status tutorial
     'check_status': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),

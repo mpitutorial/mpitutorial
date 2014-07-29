@@ -65,13 +65,11 @@ if (world_rank == 0) {
 As we can see, process zero randomly sends up to `MAX_NUMBERS` integers to process one. Process one then calls `MPI_Recv` for a total of `MAX_NUMBERS` integers. Although process one is passing `MAX_NUMBERS` as the argument to `MPI_Recv`, process one will receive **at most** this amount of numbers. In the code, process one calls `MPI_Get_count` with `MPI_INT` as the datatype to find out how many integers were actually received. Along with printing off the size of the received message, process one also prints off the source and tag of the message by accessing the `MPI_SOURCE` and `MPI_TAG` elements of the status structure.
 
 As a clarification, the return value from `MPI_Get_count` is relative to the datatype which is passed. If the user were to use `MPI_CHAR` as the datatype, the returned amount would be four times as large (assuming an integer is four bytes and a char is one byte). 
- If you run the check_status program, the output should look similar to this.
+ If you run the check_status program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
 
 ```
->>> make
-mpicc -o check_status check_status.c
-mpicc -o probe probe.c
->>> ./run.perl check_status
+>>> cd tutorials
+>>> ./run.py check_status
 mpirun -n 2 ./check_status
 0 sent 92 numbers to 1
 1 received 92 numbers from 0. Message source = 0, tag = 0
@@ -92,7 +90,7 @@ MPI_Probe(
 
 `MPI_Probe` looks quite similar to `MPI_Recv`. In fact, you can think of `MPI_Probe` as an `MPI_Recv` that does everything but receive the message. Similar to `MPI_Recv`, `MPI_Probe` will block for a message with a matching tag and sender. When the message is available, it will fill the status structure with information. The user can then use `MPI_Recv` to receive the actual message.
 
-The <a href="http://www.mpitutorial.com/lessons/mpi_probe_status.tgz">provided code</a> has an example of this in probe.c. Here's what the main source code looks like.
+The [lesson code]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code) has an example of this in [probe.c]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code/probe.c). Here's what the main source code looks like.
 
 ```cpp
 int number_amount;
@@ -130,7 +128,7 @@ if (world_rank == 0) {
 Similar to the last example, process zero picks a random amount of numbers to send to process one. What is different in this example is that process one now calls `MPI_Probe` to find out how many elements process zero is trying to send (using `MPI_Get_count`). Process one then allocates a buffer of the proper size and receives the numbers. Running the code will look similar to this.
 
 ```
->>> ./run.perl probe
+>>> ./run.py probe
 mpirun -n 2 ./probe
 0 sent 93 numbers to 1
 1 dynamically received 93 numbers from 0
