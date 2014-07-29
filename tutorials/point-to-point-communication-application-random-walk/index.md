@@ -9,14 +9,14 @@ redirect_from: '/point-to-point-communication-application-random-walk/'
 
 It's time to go through an application example using some of the concepts introduced in the <a href="http://www.mpitutorial.com/mpi-send-and-receive/" target="_blank">sending and receiving tutorial</a> and the <a href="http://www.mpitutorial.com/dynamic-receiving-with-mpi-probe-and-mpi-status/" target="_blank">MPI_Probe and MPI_Status lesson</a>. The code for the application can be downloaded <a href="http://www.mpitutorial.com/lessons/random_walk_app.tgz">here</a> or can be <a href="https://github.com/wesleykendall/mpitutorial/tree/master/random_walk_app" target="_blank">viewed/cloned on GitHub</a>. The application simulates a process which I refer to as "random walking." The basic problem definition of a random walk is as follows. Given a *Min*, *Max*, and random walker *W*, make walker *W* take *S* random walks of arbitrary length to the right. If the process goes out of bounds, it wraps back around. *S* can only move one unit to the right or left at a time.
 
-<center><img src="http://images.mpitutorial.com/random_walk.png" alt="Random walk illustration" width="238" height="44" class="padded shadow"></center>
+![Random walk illustration](random_walk.png)
 
 Although the application in itself is very basic, the parallelization of random walking can simulate the behavior of a wide variety of parallel applications. More on that later. For now, let's overview how to parallelize the random walk problem.
 
 ## Parallelization of the Random Walking Problem
 Our first task, which is pertinent to many parallel programs, is splitting the domain across processes. The random walk problem has a one-dimensional domain of size *Max - Min + 1* (since *Max* and *Min* are inclusive to the walker). Assuming that walkers can only take integer-sized steps, we can easily partition the domain into near-equal-sized chunks across processes. For example, if *Min* is 0 and *Max* is 20 and we have four processes, the domain would be split like this.
 
-<center><img src="http://images.mpitutorial.com/domain_decomp.png" alt="Domain decomposition example" width="238" height="88" class="padded shadow"></center>
+![Domain decomposition example](domain_decomp.png)
 
 The first three processes own five units of the domain while the last process takes the last five units plus the one remaining unit.
 Once the domain has been partitioned, the application will initialize walkers. As explained earlier, a walker will take *S* walks with a random total walk size. For example, if the walker takes a walk of size six on process zero (using the previous domain decomposition), the execution of the walker will go like this:
@@ -25,7 +25,7 @@ Once the domain has been partitioned, the application will initialize walkers. A
 
 2. Process one receives the walker and continues walking until it has reached its total walk size of six. The walker can then proceed on a new random walk.
 
-<center><img class="padded shadow" width="238" height="123" src="http://images.mpitutorial.com/walk_step_one.png" alt="Random walk, step one"></center>
+![Random walk, step one](walk_step_one.png)
 
 In this example, *W* only had to be communicated one time from process zero to process one. If *W* had to take a longer walk, however, it may have needed to be passed through more processes along its path through the domain. 
 
@@ -191,19 +191,19 @@ Everything looks normal, but the order of function calls has introduced a very l
 ## Deadlock and prevention
 According to Wikipedia, deadlock "*refers to a specific condition when two or more processes are each waiting for the other to release a resource, or more than two processes are waiting for resources in a circular chain.*" In our case, the above code will result in a circular chain of `MPI_Send` calls. 
 
-<center><img class="padded shadow" width="308" height="68" src="http://images.mpitutorial.com/deadlock-1.png" alt="Deadlock"></center>
+![Deadlock](deadlock-1.png)
 
-It is worth noting that the above code will actually **not** deadlock most of the time. Although `MPI_Send` is a blocking call, the <a rel="nofollow" target="_blank" href="http://www.amazon.com/gp/product/0262692163/ref=as_li_tf_tl?ie=UTF8&tag=softengiintet-20&linkCode=as2&camp=217145&creative=399377&creativeASIN=0262692163">MPI specification</a> says that MPI_Send blocks until **the send buffer can be reclaimed.** This means that `MPI_Send` will return when the network can buffer the message. If the sends eventually can't be buffered by the network, they will block until a matching receive is posted. In our case, there are enough small sends and frequent matching receives to not worry about deadlock, however, a big enough network buffer should never be assumed.
+It is worth noting that the above code will actually **not** deadlock most of the time. Although `MPI_Send` is a blocking call, the [MPI specification](http://www.amazon.com/gp/product/0262692163/ref=as_li_tf_tl?ie=UTF8&tag=softengiintet-20&linkCode=as2&camp=217145&creative=399377&creativeASIN=0262692163) says that MPI_Send blocks until **the send buffer can be reclaimed.** This means that `MPI_Send` will return when the network can buffer the message. If the sends eventually can't be buffered by the network, they will block until a matching receive is posted. In our case, there are enough small sends and frequent matching receives to not worry about deadlock, however, a big enough network buffer should never be assumed.
 
 Since we are only focusing on `MPI_Send` and `MPI_Recv` in this lesson, the best way to avoid the possible sending and receiving deadlock is to order the messaging such that sends will have matching receives and vice versa. One easy way to do this is to change our loop around such that even-numbered processes send outgoing walkers before receiving walkers and odd-numbered processes do the opposite. Given two stages of execution, the sending and receiving will now look like this:
 
-<center><img class="padded shadow" width="308" height="148" src="http://images.mpitutorial.com/deadlock-2.png" alt="Deadlock prevention"></center>
+![Deadlock prevention](deadlock-2.png)
 
 > **Note** - Executing this with one process can still deadlock. To avoid this, simply don't perform sends and receives when using one process.
 
 You may be asking, does this still work with an odd number of processes? We can go through a similar diagram again with three processes:
 
-<center><img class="padded shadow" width="260" height="218" src="http://images.mpitutorial.com/deadlock-3.png" alt="Deadlock solution"></center>
+![Deadlock solution](deadlock-3.png)
 
 As you can see, at all three stages, there is at least one posted `MPI_Send` that matches a posted `MPI_Recv`, so we don't have to worry about the occurrence of deadlock.
 
@@ -278,19 +278,25 @@ Process 0 received 20 incoming walkers
 The output continues until processes finish all sending and receiving of all walkers.
 
 ## So what's next?
-If you have made it through this entire application and feel comfortable, then good! This application is quite advanced for a first real application. If you still don't feel comfortable with `MPI_Send`, `MPI_Recv`, and `MPI_Probe`, I'd recommend going through some of the examples in <a href="http://mpitutorial.com/recommended-books/">my recommended books</a> for more practice.
+If you have made it through this entire application and feel comfortable, then good! This application is quite advanced for a first real application.
 
-Next, we will start learning about *collective* communication in MPI. We will start off by going over <a href="http://mpitutorial.com/mpi-broadcast-and-collective-communication/">MPI Broadcast</a>. For all beginner lessons, go to the <a href="http://mpitutorial.com/beginner-mpi-tutorial/">beginner MPI tutorial</a>.
+Next, we will start learning about *collective* communication in MPI. We will start off by going over [MPI Broadcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/). For all beginner lessons, go to the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
+
 Also, at the beginning, I told you that the concepts of this program are applicable to many parallel programs. I don't want to leave you hanging, so I have included some additional reading material below for anyone that wishes to learn more. Enjoy :-)
 
 ## Additional reading - Random walking and its similarity to parallel particle tracing
-<img width="150" height="198" class="nonpadded shadow" align="left" src="http://images.mpitutorial.com/tornado.png" alt="Flow visualization of tornado">The random walk problem that we just coded, although seemingly trivial, can actually form the basis of simulating many types of parallel applications. Some parallel applications in the scientific domain require many types of randomized sends and receives. One example application is parallel particle tracing.
+The random walk problem that we just coded, although seemingly trivial, can actually form the basis of simulating many types of parallel applications. Some parallel applications in the scientific domain require many types of randomized sends and receives. One example application is parallel particle tracing.
+
+![Flow visualization of tornado](tornado.png)
+
 Parallel particle tracing is one of the primary methods that are used to visualize flow fields. Particles are inserted into the flow field and then traced along the flow using numerical integration techniques (such as Runge-Kutta). The traced paths can then be rendered for visualization purposes. One example rendering is of the tornado image at the top left.
 
 Performing efficient parallel particle tracing can be very difficult. The main reason for this is because the direction in which particles travel can only be determined after each incremental step of the integration. Therefore, it is hard for processes to coordinate and balance all communication and computation. To understand this better, lets look at a typical parallelization of particle tracing.
 
-<center><img width="417" height="919" class="nonpadded shadow" src="http://images.mpitutorial.com/parallel_particle_tracing.png" alt="Parallel particle tracing illustration"></center>
+![Parallel particle tracing illustration](parallel_particle_tracing.png)
+
 In this illustration, we see that the domain is split among six process. Particles (sometimes referred to as "*seeds*") are then placed in the subdomains (similar to how we placed walkers in subdomains), and then they begin tracing. When particles go out of bounds, they have to be exchanged with processes which have the proper subdomain. This process is repeated until the particles have either left the entire domain or have reached a maximum trace length.
+
 The parallel particle tracing problem can be solved with `MPI_Send`, `MPI_Recv`, and `MPI_Probe` in a similar manner to our application that we just coded. There are, however, much more sophisticated MPI routines that can get the job done more efficiently. We will talk about these in the coming lessons :-) 
 
 I hope you can now see at least one example of how the random walk problem is similar to other parallel applications!
