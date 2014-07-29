@@ -17,6 +17,9 @@ programs = {
     # From the dynamic-receiving-with-mpi-probe-and-mpi-status tutorial
     'check_status': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),
     'probe': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),
+
+    # From the point-to-point-communication-application-random-walk tutorial
+    'random_walk': ('point-to-point-communication-application-random-walk', 2),
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
