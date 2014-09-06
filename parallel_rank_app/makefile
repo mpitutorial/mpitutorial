@@ -10,4 +10,4 @@ random_rank: mpi_rank.o random_rank.c
 	${MPICC} -o random_rank random_rank.c mpi_rank.o
 
 clean:
-	rm ${EXECS} *.o
+	rm -f ${EXECS} *.o

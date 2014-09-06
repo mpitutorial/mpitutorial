@@ -13,4 +13,4 @@ ring: ring.c
 	${MPICC} -o ring ring.c
 
 clean:
-	rm ${EXECS}
+	rm -f ${EXECS}
