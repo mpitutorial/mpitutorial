@@ -10,4 +10,4 @@ stddev: stddev.c
 	${MPICC} -o stddev stddev.c -lm
 
 clean:
-	rm ${EXECS}
+	rm -f ${EXECS}

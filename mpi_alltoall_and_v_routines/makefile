@@ -7,4 +7,4 @@ bin: bin.c
 	${MPICC} -o bin bin.c
 
 clean:
-	rm ${EXECS} *.o
+	rm -f ${EXECS} *.o

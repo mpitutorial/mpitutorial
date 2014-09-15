@@ -7,4 +7,4 @@ random_walk: random_walk.cc
 	${MPICXX} -o random_walk random_walk.cc
 
 clean:
-	rm ${EXECS}
+	rm -f ${EXECS}

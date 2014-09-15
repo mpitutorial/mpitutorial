@@ -10,4 +10,4 @@ all_avg: all_avg.c
 	${MPICC} -o all_avg all_avg.c
 
 clean:
-	rm ${EXECS}
+	rm -f ${EXECS}
