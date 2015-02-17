@@ -7,7 +7,7 @@ tags: MPI_Allreduce, MPI_Reduce
 redirect_from: '/mpi-reduce-and-allreduce/'
 ---
 
-In the <a href="/performing-parallel-rank-with-mpi">previous lesson</a>, we went over an application example of using `MPI_Scatter` and `MPI_Gather` to perform parallel rank computation with MPI. We are going to expand on collective communication routines even more in this lesson by going over `MPI_Reduce` and `MPI_Allreduce`.
+In the [previous lesson]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi), we went over an application example of using `MPI_Scatter` and `MPI_Gather` to perform parallel rank computation with MPI. We are going to expand on collective communication routines even more in this lesson by going over `MPI_Reduce` and `MPI_Allreduce`.
 
 > **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-reduce-and-allreduce/code]({{ site.github.code }}/tutorials/mpi-reduce-and-allreduce/code).
 
@@ -53,12 +53,12 @@ It is also useful to see what happens when processes contain multiple elements. 
 
 ![MPI_Reduce](mpi_reduce_2.png)
 
-The processes from the above illustration each have two elements. The resulting summation happens on a per-element basis. In other words, instead of summing all of the elements from all the arrays into one element, the i^th^ element from each array are summed into the i^th^ element in result array of process 0.
+The processes from the above illustration each have two elements. The resulting summation happens on a per-element basis. In other words, instead of summing all of the elements from all the arrays into one element, the i<sup>th</sup> element from each array are summed into the i<sup>th</sup> element in result array of process 0.
 
 Now that you understand how `MPI_Reduce` looks, we can jump into some code examples.
 
 ## Computing average of numbers with MPI_Reduce
-In the [previous lesson]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather), I showed you how to compute average using `MPI_Scatter` and `MPI_Gather`. Using `MPI_Reduce` simplifies the code from the last lesson quite a bit. Below is an excerpt from [avg.c]({{ site.github.code }}/tutorials/mpi-reduce-and-allreduce/code/avg.c) in the example code from this lesson.
+In the [previous lesson]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather), I showed you how to compute average using `MPI_Scatter` and `MPI_Gather`. Using `MPI_Reduce` simplifies the code from the last lesson quite a bit. Below is an excerpt from [reduce_avg.c]({{ site.github.code }}/tutorials/mpi-reduce-and-allreduce/code/reduce_avg.c) in the example code from this lesson.
 
 ```cpp
 float *rand_nums = NULL;
@@ -67,7 +67,7 @@ rand_nums = create_rand_nums(num_elements_per_proc);
 // Sum the numbers locally
 float local_sum = 0;
 int i;
-for (i = 0; i &lt; num_elements_per_proc; i++) {
+for (i = 0; i < num_elements_per_proc; i++) {
   local_sum += rand_nums[i];
 }
 
@@ -77,7 +77,7 @@ printf("Local sum for process %d - %f, avg = %f\n",
 
 // Reduce all of the local sums into the global sum
 float global_sum;
-MPI_Reduce(&amp;local_sum, &amp;global_sum, 1, MPI_FLOAT, MPI_SUM, 0,
+MPI_Reduce(&local_sum, &global_sum, 1, MPI_FLOAT, MPI_SUM, 0,
            MPI_COMM_WORLD);
 
 // Print the result
@@ -87,87 +87,94 @@ if (world_rank == 0) {
 }
 ```
 
-In the code above, each process creates random numbers and makes a `local_sum` calculation. The `local_sum` is then reduced to the root process using `MPI_SUM`. The global average is then `global_sum / (world_size * num_elements_per_proc)`. If you run the avg program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
+In the code above, each process creates random numbers and makes a `local_sum` calculation. The `local_sum` is then reduced to the root process using `MPI_SUM`. The global average is then `global_sum / (world_size * num_elements_per_proc)`. If you run the reduce_avg program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
 
 ```
 >>> cd tutorials
->>> ./run.py avg
-mpirun -n 4  ./avg 100
+>>> ./run.py reduce_avg
+mpirun -n 4  ./reduce_avg 100
 Local sum for process 0 - 51.385098, avg = 0.513851
 Local sum for process 1 - 51.842468, avg = 0.518425
 Local sum for process 2 - 49.684948, avg = 0.496849
 Local sum for process 3 - 47.527420, avg = 0.475274
 Total sum = 200.439941, avg = 0.501100
-</pre>
+```
 
-<p>Now it is time to move on to the sibling of `MPI_Reduce` - `MPI_Allreduce`.</p>
+Now it is time to move on to the sibling of `MPI_Reduce` - `MPI_Allreduce`.
 
 ## MPI_Allreduce
-<p>Many parallel applications will require accessing the reduced results across all processes rather than the root process. In a similar complementary style of `MPI_Allgather` to `MPI_Gather`, `MPI_Allreduce` will reduce the values and distribute the results to all processes. The function prototype is the following:</p>
-<pre>
-MPI_Allreduce(void* send_data, void* recv_data, int count,
-              MPI_Datatype datatype, MPI_Op op, MPI_Comm communicator)
-</pre>
-<p>As you might have noticed, `MPI_Allreduce` is identical to `MPI_Reduce` with the exception that it does not need a root process id (since the results are distributed to all processes). The following illustrates the communication pattern of `MPI_Allreduce`:</p>
+Many parallel applications will require accessing the reduced results across all processes rather than the root process. In a similar complementary style of `MPI_Allgather` to `MPI_Gather`, `MPI_Allreduce` will reduce the values and distribute the results to all processes. The function prototype is the following:
 
-<center><img alt="MPI_Allreduce" src="http://images.mpitutorial.com/mpi_allreduce_1.png" width="429" height="190" /></center>
+```cpp
+MPI_Allreduce(
+    void* send_data,
+    void* recv_data,
+    int count,
+    MPI_Datatype datatype,
+    MPI_Op op,
+    MPI_Comm communicator)
+```
 
-<p>`MPI_Allreduce` is the equivalent of doing `MPI_Reduce` followed by an `MPI_Bcast`. Pretty simple, right?</p>
+As you might have noticed, `MPI_Allreduce` is identical to `MPI_Reduce` with the exception that it does not need a root process id (since the results are distributed to all processes). The following illustrates the communication pattern of `MPI_Allreduce`:
+
+![MPI_Allreduce](mpi_allreduce_1.png)
+
+`MPI_Allreduce` is the equivalent of doing `MPI_Reduce` followed by an `MPI_Bcast`. Pretty simple, right?
 
 ## Computing standard deviation with MPI_Allreduce`
-<p>
 Many computational problems require doing multiple reductions to solve problems. One such problem is finding the standard deviation of a distributed set of numbers. For those that may have forgotten, standard deviation is a measure of the dispersion of numbers from their mean. A lower standard deviation means that the numbers are closer together and vice versa for higher standard deviations.
-</p>
-<p>To find the standard deviation, one must first compute the average of all numbers. After the average is computed, the sums of the squared difference from the mean are computed. The square root of the average of the sums is the final result. Given the problem description, we know there will be at least two sums of all the numbers, translating into two reductions. An excerpt from <a href="https://github.com/wesleykendall/mpitutorial/blob/master/mpi_reduce_allreduce/stddev.c" target="_blank">stddev.c</a> in the example code shows what this looks like in MPI.</p>
 
-<pre lang="cpp">
-  rand_nums = create_rand_nums(num_elements_per_proc);
+To find the standard deviation, one must first compute the average of all numbers. After the average is computed, the sums of the squared difference from the mean are computed. The square root of the average of the sums is the final result. Given the problem description, we know there will be at least two sums of all the numbers, translating into two reductions. An excerpt from [reduce_stddev.c]({{ site.github.code }}/tutorials/mpi-reduce-and-allreduce/code/reduce_stddev.c) in the lesson code shows what this looks like in MPI.
 
-  // Sum the numbers locally
-  float local_sum = 0;
-  int i;
-  for (i = 0; i < num_elements_per_proc; i++) {
-    local_sum += rand_nums[i];
-  }
+```cpp
+rand_nums = create_rand_nums(num_elements_per_proc);
 
-  // Reduce all of the local sums into the global sum in order to
-  // calculate the mean
-  float global_sum;
-  MPI_Allreduce(&local_sum, &global_sum, 1, MPI_FLOAT, MPI_SUM,
-                MPI_COMM_WORLD);
-  float mean = global_sum / (num_elements_per_proc * world_size);
+// Sum the numbers locally
+float local_sum = 0;
+int i;
+for (i = 0; i < num_elements_per_proc; i++) {
+  local_sum += rand_nums[i];
+}
 
-  // Compute the local sum of the squared differences from the mean
-  float local_sq_diff = 0;
-  for (i = 0; i < num_elements_per_proc; i++) {
-    local_sq_diff += (rand_nums[i] - mean) * (rand_nums[i] - mean);
-  }
+// Reduce all of the local sums into the global sum in order to
+// calculate the mean
+float global_sum;
+MPI_Allreduce(&local_sum, &global_sum, 1, MPI_FLOAT, MPI_SUM,
+              MPI_COMM_WORLD);
+float mean = global_sum / (num_elements_per_proc * world_size);
 
-  // Reduce the global sum of the squared differences to the root process
-  // and print off the answer
-  float global_sq_diff;
-  MPI_Reduce(&local_sq_diff, &global_sq_diff, 1, MPI_FLOAT, MPI_SUM, 0,
-             MPI_COMM_WORLD);
+// Compute the local sum of the squared differences from the mean
+float local_sq_diff = 0;
+for (i = 0; i < num_elements_per_proc; i++) {
+  local_sq_diff += (rand_nums[i] - mean) * (rand_nums[i] - mean);
+}
 
-  // The standard deviation is the square root of the mean of the squared
-  // differences.
-  if (world_rank == 0) {
-    float stddev = sqrt(global_sq_diff /
-                        (num_elements_per_proc * world_size));
-    printf("Mean - %f, Standard deviation = %f\n", mean, stddev);
-  }
-</pre>
+// Reduce the global sum of the squared differences to the root process
+// and print off the answer
+float global_sq_diff;
+MPI_Reduce(&local_sq_diff, &global_sq_diff, 1, MPI_FLOAT, MPI_SUM, 0,
+           MPI_COMM_WORLD);
 
-<p>In the above code, each process computes the `local_sum` of elements and sums them using `MPI_Allreduce`. After the global sum is available on all processes, the `mean` is computed so that `local_sq_diff` can be computed. Once all of the local squared differences are computed, `global_sq_diff` is found by using `MPI_Reduce`. The root process can then compute the standard deviation by taking the square root of the mean of the global squared differences.</p>
+// The standard deviation is the square root of the mean of the squared
+// differences.
+if (world_rank == 0) {
+  float stddev = sqrt(global_sq_diff /
+                      (num_elements_per_proc * world_size));
+  printf("Mean - %f, Standard deviation = %f\n", mean, stddev);
+}
+```
 
-<p>Running the example code produces output that looks like the following:</p>
-<pre>
-./run.perl stddev
+In the above code, each process computes the `local_sum` of elements and sums them using `MPI_Allreduce`. After the global sum is available on all processes, the `mean` is computed so that `local_sq_diff` can be computed. Once all of the local squared differences are computed, `global_sq_diff` is found by using `MPI_Reduce`. The root process can then compute the standard deviation by taking the square root of the mean of the global squared differences.
+
+Running the example code with the run script produces output that looks like the following:
+
+```
+>>> ./run.py stddev
 mpirun -n 4  ./stddev 100
 Mean - 0.501100, Standard deviation = 0.301126
-</pre>
+```
 
 ## Up next
-<p>Now that you are comfortable using all of the common collectives - `MPI_Bcast`, `MPI_Scatter`, `MPI_Gather`, and `MPI_Reduce`, we can utilize them to build a sophisticated parallel application. In the next lesson, we will utilize most of our collective routines to create a parallel sorting application. Stay tuned!
-</p>
-<p>For all beginner lessons, go the the <a href="/beginner-mpi-tutorial/">beginner MPI tutorial</a>.</p>
+Now that you are comfortable using all of the common collectives - `MPI_Bcast`, `MPI_Scatter`, `MPI_Gather`, and `MPI_Reduce`, we can utilize them to build a sophisticated parallel application. In the next lesson, we will utilize most of our collective routines to create a parallel sorting application. Stay tuned!
+
+For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
