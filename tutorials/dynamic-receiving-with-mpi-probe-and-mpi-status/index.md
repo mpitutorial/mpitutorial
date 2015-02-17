@@ -64,8 +64,7 @@ if (world_rank == 0) {
 
 As we can see, process zero randomly sends up to `MAX_NUMBERS` integers to process one. Process one then calls `MPI_Recv` for a total of `MAX_NUMBERS` integers. Although process one is passing `MAX_NUMBERS` as the argument to `MPI_Recv`, process one will receive **at most** this amount of numbers. In the code, process one calls `MPI_Get_count` with `MPI_INT` as the datatype to find out how many integers were actually received. Along with printing off the size of the received message, process one also prints off the source and tag of the message by accessing the `MPI_SOURCE` and `MPI_TAG` elements of the status structure.
 
-As a clarification, the return value from `MPI_Get_count` is relative to the datatype which is passed. If the user were to use `MPI_CHAR` as the datatype, the returned amount would be four times as large (assuming an integer is four bytes and a char is one byte). 
- If you run the check_status program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
+As a clarification, the return value from `MPI_Get_count` is relative to the datatype which is passed. If the user were to use `MPI_CHAR` as the datatype, the returned amount would be four times as large (assuming an integer is four bytes and a char is one byte). If you run the check_status program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
 
 ```
 >>> cd tutorials

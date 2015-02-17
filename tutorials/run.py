@@ -28,6 +28,9 @@ programs = {
     # From the mpi-scatter-gather-and-allgather tutorial
     'avg': ('mpi-scatter-gather-and-allgather', 4, ['100']),
     'all_avg': ('mpi-scatter-gather-and-allgather', 4, ['100']),
+
+    # From the performing-parallel-rank-with-mpi tutorial
+    'random_rank': ('performing-parallel-rank-with-mpi', 4, ['100']),
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
