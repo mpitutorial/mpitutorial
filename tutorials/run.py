@@ -19,7 +19,7 @@ programs = {
     'probe': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),
 
     # From the point-to-point-communication-application-random-walk tutorial
-    'random_walk': ('point-to-point-communication-application-random-walk', 2),
+    'random_walk': ('point-to-point-communication-application-random-walk', 2, ['100', '500', '20']),
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
@@ -37,5 +37,9 @@ else:
 
     sys_call = '{0} -n {1} {2} ./{3}/code/{4}'.format(
         mpirun, programs[program_to_run][1], hosts, programs[program_to_run][0], program_to_run)
+
+    if len(programs[program_to_run]) > 2:
+        sys_call = '{0} {1}'.format(sys_call, ' '.join(programs[program_to_run][2]))
+
     print sys_call
     subprocess.call([sys_call], shell=True)

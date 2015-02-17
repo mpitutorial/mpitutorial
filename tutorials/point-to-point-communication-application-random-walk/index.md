@@ -7,13 +7,17 @@ tags:
 redirect_from: '/point-to-point-communication-application-random-walk/'
 ---
 
-It's time to go through an application example using some of the concepts introduced in the <a href="http://www.mpitutorial.com/mpi-send-and-receive/" target="_blank">sending and receiving tutorial</a> and the <a href="http://www.mpitutorial.com/dynamic-receiving-with-mpi-probe-and-mpi-status/" target="_blank">MPI_Probe and MPI_Status lesson</a>. The code for the application can be downloaded <a href="http://www.mpitutorial.com/lessons/random_walk_app.tgz">here</a> or can be <a href="https://github.com/wesleykendall/mpitutorial/tree/master/random_walk_app" target="_blank">viewed/cloned on GitHub</a>. The application simulates a process which I refer to as "random walking." The basic problem definition of a random walk is as follows. Given a *Min*, *Max*, and random walker *W*, make walker *W* take *S* random walks of arbitrary length to the right. If the process goes out of bounds, it wraps back around. *S* can only move one unit to the right or left at a time.
+It's time to go through an application example using some of the concepts introduced in the [sending and receiving tutorial]({{ site.baseurl }}/tutorials/mpi-send-and-receive/) and the [MPI_Probe and MPI_Status lesson]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/). The application simulates a process which I refer to as "random walking."
+
+> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/point-to-point-communication-application-random-walking/code]({{ site.github.code }}/tutorials/point-to-point-communication-application-random-walking/code).
+ 
+The basic problem definition of a random walk is as follows. Given a *Min*, *Max*, and random walker *W*, make walker *W* take *S* random walks of arbitrary length to the right. If the process goes out of bounds, it wraps back around. *S* can only move one unit to the right or left at a time.
 
 ![Random walk illustration](random_walk.png)
 
 Although the application in itself is very basic, the parallelization of random walking can simulate the behavior of a wide variety of parallel applications. More on that later. For now, let's overview how to parallelize the random walk problem.
 
-## Parallelization of the Random Walking Problem
+## Parallelization of the random walking problem
 Our first task, which is pertinent to many parallel programs, is splitting the domain across processes. The random walk problem has a one-dimensional domain of size *Max - Min + 1* (since *Max* and *Min* are inclusive to the walker). Assuming that walkers can only take integer-sized steps, we can easily partition the domain into near-equal-sized chunks across processes. For example, if *Min* is 0 and *Max* is 20 and we have four processes, the domain would be split like this.
 
 ![Domain decomposition example](domain_decomp.png)
