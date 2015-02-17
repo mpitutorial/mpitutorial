@@ -9,7 +9,7 @@ redirect_from: '/point-to-point-communication-application-random-walk/'
 
 It's time to go through an application example using some of the concepts introduced in the [sending and receiving tutorial]({{ site.baseurl }}/tutorials/mpi-send-and-receive/) and the [MPI_Probe and MPI_Status lesson]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/). The application simulates a process which I refer to as "random walking."
 
-> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/point-to-point-communication-application-random-walking/code]({{ site.github.code }}/tutorials/point-to-point-communication-application-random-walking/code).
+> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/point-to-point-communication-application-random-walk/code]({{ site.github.code }}/tutorials/point-to-point-communication-application-random-walk/code).
  
 The basic problem definition of a random walk is as follows. Given a *Min*, *Max*, and random walker *W*, make walker *W* take *S* random walks of arbitrary length to the right. If the process goes out of bounds, it wraps back around. *S* can only move one unit to the right or left at a time.
 
@@ -223,8 +223,8 @@ decompose_domain(domain_size, world_rank, world_size,
 
 // Initialize walkers in your subdomain
 initialize_walkers(num_walkers_per_proc, max_walk_size,
-                 subdomain_start, subdomain_size,
-                 &incoming_walkers);
+                  subdomain_start, subdomain_size,
+                  &incoming_walkers);
 
 // Determine the maximum amount of sends and receives needed to 
 // complete all walkers
@@ -253,16 +253,13 @@ for (int m = 0; m < maximum_sends_recvs; m++) {
 ```
 
 ## Running the application
-The code for the application can be downloaded <a href="http://www.mpitutorial.com/lessons/random_walk_app.tgz">here</a> or can be <a href="https://github.com/wesleykendall/mpitutorial/tree/master/random_walk_app" target="_blank">viewed/cloned on GitHub</a>. In contrast to the other lessons, this code uses C++. When <a href="http://www.mpitutorial.com/installing-mpich2/">installing MPICH2</a>, you also installed the C++ MPI compiler (unless you explicitly configured it otherwise). If you installed MPICH2 in a local directory, make sure that you have set your MPICXX environment variable to point to the correct mpicxx compiler in order to use my makefile.
+The [lesson code is viewable here]({{ site.github.code }}/tutorials/point-to-point-communication-application-random-walk/code). In contrast to the other lessons, this code uses C++. When [installing MPICH2]({{ site.baseurl }}/tutorials/installing-mpich2/), you also installed the C++ MPI compiler (unless you explicitly configured it otherwise). If you installed MPICH2 in a local directory, make sure that you have set your MPICXX environment variable to point to the correct mpicxx compiler in order to use my makefile.
 
-In my code, I have set up the run script to provide default values for the program: 100 for the domain size, 500 for the maximum walk size, and 20 for the number of walkers per process. The run script should spawn five MPI processes, and the output should look similar to this:
+In my code, I have set up the application run script to provide default values for the program: 100 for the domain size, 500 for the maximum walk size, and 20 for the number of walkers per process. If you run the random_walk program from the *tutorials* directory of the [repo]({{ site.github.code }}), it should spawn 5 processes and produce output similar to this.
 
 ```
->>> tar -xzf random_walk_app.tgz
->>> cd random_walk_app
->>> make
-mpicxx -o random_walk random_walk.cc
->>> ./run.perl random_walk
+>>> cd tutorials
+>>> ./run.py random_walk
 mpirun -n 5 ./random_walk 100 500 20
 Process 2 initiated 20 walkers in subdomain 40 - 59
 Process 2 sending 18 outgoing walkers to process 3

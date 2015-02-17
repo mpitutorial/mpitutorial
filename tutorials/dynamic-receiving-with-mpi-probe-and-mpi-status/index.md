@@ -137,6 +137,6 @@ mpirun -n 2 ./probe
 Although this example is trivial, `MPI_Probe` forms the basis of many dynamic MPI applications. For example, master/slave programs will often make heavy use of `MPI_Probe` when exchanging variable-sized worker messages. As an exercise, make a wrapper around `MPI_Recv` that uses `MPI_Probe` for any dynamic applications you might write. It makes the code look much nicer :-)
 
 ## Next up
-Do you feel comfortable using the standard blocking point-to-point communication routines? If so, then you already have the ability to write endless amounts of parallel applications! Let's look at a more advanced example of using the routines you have learned. Check out <a href="http://www.mpitutorial.com/point-to-point-communication-application-random-walk/">the application example using MPI_Send, MPI_Recv, and MPI_Probe</a>.
+Do you feel comfortable using the standard blocking point-to-point communication routines? If so, then you already have the ability to write endless amounts of parallel applications! Let's look at a more advanced example of using the routines you have learned. Check out [the application example using MPI_Send, MPI_Recv, and MPI_Probe]({{ site.baseurl }}/tutorials/point-to-point-communication-application-random-walk/).
 
 Having trouble? Confused? Feel free to leave a comment below and perhaps I or another reader can be of help.
