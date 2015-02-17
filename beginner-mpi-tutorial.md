@@ -21,7 +21,7 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 ## Basic collective communication
 * [Collective communication introduction with MPI_Bcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/)
 * [Common collectives - MPI_Scatter, MPI_Gather, and MPI_Allgather]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/)
-* [Application example - Performing parallel rank computation with basic collectives]()
+* [Application example - Performing parallel rank computation with basic collectives]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/)
 
 ## Advanced collective communication
 * [Using MPI_Reduce and MPI_Allreduce for parallel number reduction]()
