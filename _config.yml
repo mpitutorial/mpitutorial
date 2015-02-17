@@ -1,0 +1,31 @@
+# Dependencies
+markdown:         redcarpet
+highlighter:         pygments
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            MPI Tutorial
+tagline:
+url:              http://mpitutorial.com
+baseurl:          ''
+paginate:         1
+author:
+  name:           Wes Kendall
+  url:            https://github.com/wesleykendall/
+  email:          wesleykendall@gmail.com
+gems:
+  - jekyll-redirect-from
+redcarpet:
+  extensions: ['tables', 'fenced_code_blocks', 'no_intra_emphasis', 'with_toc_data', 'prettify']
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/wesleykendall/mpitutorial
+  code:           https://github.com/wesleykendall/mpitutorial/tree/gh-pages
+pages_list:      
+  Beginner Tutorial:    'beginner-mpi-tutorial'
+  Recommended Books:    'recommended-books'
+  About:                'about'
