@@ -17,7 +17,7 @@ For those that have never used Github or may feel overwhelmed about contributing
 
 > **Note** - The tutorials on this site need to remain as informative as possible and encompass useful topics related to MPI. Before writing a tutorial, collaborate with me through email (wesleykendall AT gmail DOT com) if you want to propose a lesson to the beginning MPI tutorial. Similarly, we can also start an advanced MPI tutorial page for more advanced topics.
 
-## About the Authors
+## Authors
 
 ### Wes Kendall
 Wes Kendall is the original author of mpitutorial.com. As a graduate student at the University of Tennessee, Knoxville, Wes earned his PhD under Jian Huang. His research revolved around large-scale data analysis and visualization, and he worked with the biggest supercomputers in the world. As a graduate student, he interned at Google, Oak Ridge National Labs, and Argonne National Labs. His research also earned him the Supercomputing 2011 Best Student Paper Award. He is currently co-founder and CTO of Ambition, a data-analytics startup funded by YCombinator, Google Ventures, and several other top investment firms.
