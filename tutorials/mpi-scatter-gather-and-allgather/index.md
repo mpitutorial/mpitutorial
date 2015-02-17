@@ -7,12 +7,12 @@ tags: MPI_Gather, MPI_Allgather, MPI_Scatter
 redirect_from: '/mpi-scatter-gather-and-allgather/'
 ---
 
-In the [previous lesson]({{ site.baseurl }}/mpi-broadcast-and-collective-communication/), we went over the essentials of collective communication. We covered the most basic collective communication routine - `MPI_Bcast`. In this lesson, we are going to expand on collective communication routines by going over two very important routines - `MPI_Scatter` and `MPI_Gather`. We will also cover a variant of `MPI_Gather`, known as `MPI_Allgather`.
+In the [previous lesson]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/), we went over the essentials of collective communication. We covered the most basic collective communication routine - `MPI_Bcast`. In this lesson, we are going to expand on collective communication routines by going over two very important routines - `MPI_Scatter` and `MPI_Gather`. We will also cover a variant of `MPI_Gather`, known as `MPI_Allgather`.
 
 > **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-scatter-gather-and-allgather/code]({{ site.github.code }}/tutorials/mpi-scatter-gather-and-allgather/code).
 
 ## An Introduction to MPI_Scatter
-`MPI_Scatter` is a collective routine that is very similar to `MPI_Bcast` (If you are unfamiliar with these terms, please read the [previous lesson]({{ site.baseurl }}/mpi-broadcast-and-collective-communication/)). `MPI_Scatter` involves a designated root process sending data to all processes in a communicator. The primary difference between `MPI_Bcast` and `MPI_Scatter` is small but important. `MPI_Bcast` sends the *same* piece of data to all processes while `MPI_Scatter` sends *chunks of an array* to different processes. Check out the illustration below for further clarification.
+`MPI_Scatter` is a collective routine that is very similar to `MPI_Bcast` (If you are unfamiliar with these terms, please read the [previous lesson]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/)). `MPI_Scatter` involves a designated root process sending data to all processes in a communicator. The primary difference between `MPI_Bcast` and `MPI_Scatter` is small but important. `MPI_Bcast` sends the *same* piece of data to all processes while `MPI_Scatter` sends *chunks of an array* to different processes. Check out the illustration below for further clarification.
 
 ![MPI_Bcast vs MPI_Scatter](broadcastvsscatter.png)
 
@@ -151,6 +151,6 @@ Avg of all elements from proc 2 is 0.479736
 As you may have noticed, the only difference between all_avg.c and avg.c is that all_avg.c prints the average across all processes with `MPI_Allgather`.
 
 ## Up Next
-In the next lesson, I cover an application example of using `MPI_Gather` and `MPI_Scatter` to [perform parallel rank computation]({{ site.baseurl }}/performing-parallel-rank-with-mpi/).
+In the next lesson, I cover an application example of using `MPI_Gather` and `MPI_Scatter` to [perform parallel rank computation]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/).
 
 For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).

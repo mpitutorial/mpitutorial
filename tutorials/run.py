@@ -24,6 +24,10 @@ programs = {
     # From the mpi-broadcast-and-collective-communication tutorial
     'my_bcast': ('mpi-broadcast-and-collective-communication', 4),
     'compare_bcast': ('mpi-broadcast-and-collective-communication', 16, ['100000', '10']),
+
+    # From the mpi-scatter-gather-and-allgather tutorial
+    'avg': ('mpi-scatter-gather-and-allgather', 4, ['100']),
+    'all_avg': ('mpi-scatter-gather-and-allgather', 4, ['100']),
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
