@@ -10,7 +10,7 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 ## Introduction and MPI installation
 * [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/)
 * [Installing MPICH2 on a single machine]({{ site.baseurl }}/tutorials/installing-mpich2/)
-* [Launching an Amazon EC2 MPI Cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
+* [Launching an Amazon EC2 MPI cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
 * [Running an MPI hello world application]({{ site.baseurl }}/tutorials/mpi-hello-world/)
 
 ## Blocking point-to-point communication
@@ -20,5 +20,8 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 
 ## Basic collective communication
 * [Collective communication introduction with MPI_Bcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/)
+* Common collectives - MPI_Scatter, MPI_Gather, and MPI_Allgather
+* Application example - Performing parallel rank computation with basic collectives
 
 ## Advanced collective communication
+Using MPI_Reduce and MPI_Allreduce for parallel number reduction
