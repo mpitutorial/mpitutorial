@@ -121,7 +121,7 @@ As you might have noticed, `MPI_Allreduce` is identical to `MPI_Reduce` with the
 
 `MPI_Allreduce` is the equivalent of doing `MPI_Reduce` followed by an `MPI_Bcast`. Pretty simple, right?
 
-## Computing standard deviation with MPI_Allreduce`
+## Computing standard deviation with MPI_Allreduce
 Many computational problems require doing multiple reductions to solve problems. One such problem is finding the standard deviation of a distributed set of numbers. For those that may have forgotten, standard deviation is a measure of the dispersion of numbers from their mean. A lower standard deviation means that the numbers are closer together and vice versa for higher standard deviations.
 
 To find the standard deviation, one must first compute the average of all numbers. After the average is computed, the sums of the squared difference from the mean are computed. The square root of the average of the sums is the final result. Given the problem description, we know there will be at least two sums of all the numbers, translating into two reductions. An excerpt from [reduce_stddev.c]({{ site.github.code }}/tutorials/mpi-reduce-and-allreduce/code/reduce_stddev.c) in the lesson code shows what this looks like in MPI.
@@ -169,8 +169,8 @@ In the above code, each process computes the `local_sum` of elements and sums th
 Running the example code with the run script produces output that looks like the following:
 
 ```
->>> ./run.py stddev
-mpirun -n 4  ./stddev 100
+>>> ./run.py reduce_stddev
+mpirun -n 4  ./reduce_stddev 100
 Mean - 0.501100, Standard deviation = 0.301126
 ```
 
