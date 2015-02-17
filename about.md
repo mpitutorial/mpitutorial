@@ -5,6 +5,18 @@ title: About
 
 This site is a collaborative space for providing tutorials about MPI (the Message Passing Interface) and parallel programming. Below are more details about the primary writers on this site and how one can contribute to mpitutorial.com.
 
+## Contributing
+
+This site is hosted as a static page on [Github]({{ site.github.code }}). It is no longer actively contributed to by the original author, and any potential authors are encouraged to fork the repository [here]({{ site.github.code }}) and start writing a lesson!
+
+Github uses Jekyll, a markdown-based blogging framework for producing static HTML pages. For an introduction on using Jekyll with Github, checkout [this article](https://help.github.com/articles/using-jekyll-with-pages/).
+
+All lessons are self-contained in their own directories in the *tutorials* directory of the main repository. New tutorials should go under this directory, and any code for the tutorials should go in the *code* directory of the tutorial and provide a Makefile with executable examples. Similarly, the structure of the posts should match other tutorials.
+
+For those that have never used Github or may feel overwhelmed about contributing a tutorial, contact Wes Kendall first at wesleykendall AT gmail DOT com. If you wish to write a tutorial with images as a Microsoft Word document or PDF, I'm happy to translate the lesson into the proper format for the site.
+
+> **Note** - The tutorials on this site need to remain as informative as possible and encompass useful topics related to MPI. Before writing a tutorial, collaborate with me through email (wesleykendall AT gmail DOT com) if you want to propose a lesson to the beginning MPI tutorial. Similarly, we can also start an advanced MPI tutorial page for more advanced topics.
+
 ## About the Authors
 
 ### Wes Kendall
