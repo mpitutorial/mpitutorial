@@ -9,6 +9,7 @@
 //
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 #include <time.h>
 #include <mpi.h>
 

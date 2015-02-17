@@ -10,4 +10,4 @@ reduce_stddev: reduce_stddev.c
 	${MPICC} -o reduce_stddev reduce_stddev.c -lm
 
 clean:
-	rm ${EXECS}
+	rm -f ${EXECS}

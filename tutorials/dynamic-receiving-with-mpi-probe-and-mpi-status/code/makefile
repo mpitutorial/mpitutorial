@@ -10,4 +10,4 @@ probe: probe.c
 	${MPICC} -o probe probe.c
 
 clean:
-	rm ${EXECS}
+	rm -f ${EXECS}

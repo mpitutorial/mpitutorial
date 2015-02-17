@@ -10,4 +10,4 @@ compare_bcast: compare_bcast.c
 	${MPICC} -o compare_bcast compare_bcast.c
 
 clean:
-	rm ${EXECS}
+	rm -f ${EXECS}
