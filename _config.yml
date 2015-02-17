@@ -27,4 +27,5 @@ github:
   code:           https://github.com/wesleykendall/mpitutorial/tree/gh-pages
 pages_list:      
   Beginner Tutorial:    'beginner-mpi-tutorial'
+  Recommended Books:    'recommended-books'
   About:                'about'

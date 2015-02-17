@@ -19,5 +19,6 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 * [Point-to-point communication application - Random walking]({{ site.baseurl }}/tutorials/point-to-point-communication-application-random-walk/)
 
 ## Basic collective communication
+* [Collective communication introduction with MPI_Bcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/)
 
 ## Advanced collective communication

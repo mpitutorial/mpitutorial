@@ -105,7 +105,7 @@ if (world_rank == 0) {
     MPI_Send(numbers, number_amount, MPI_INT, 1, 0, MPI_COMM_WORLD);
     printf("0 sent %d numbers to 1\n", number_amount);
 } else if (world_rank == 1) {
-    MPI_Status status;    
+    MPI_Status status;
     // Probe for an incoming message from process zero
     MPI_Probe(0, 0, MPI_COMM_WORLD, &status);
 
