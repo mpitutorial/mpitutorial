@@ -12,4 +12,4 @@ Wanting to get started learning MPI? Head over to the [beginner MPI tutorial]({{
 Recommended books for learning MPI are located [here]({{ site.baseurl }}/recommended-books/).
 
 ## About
-Learn more about the authors and how you can contribute to this site [here]({{ site.baseurl }}/about/).
+This site is no longer being actively contributed to by its original author (Wes Kendall). However, mpitutorial.com has been placed on [Github]({{ site.github.code}}) so that others can contribute high-quality content. Click [here]({{ site.baseurl }}/about/) for more details on how to contribute.

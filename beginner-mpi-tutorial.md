@@ -24,4 +24,4 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 * [Application example - Performing parallel rank computation with basic collectives]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/)
 
 ## Advanced collective communication
-* [Using MPI_Reduce and MPI_Allreduce for parallel number reduction]()
+* [Using MPI_Reduce and MPI_Allreduce for parallel number reduction]({{ site.baseurl }}/tutorials/mpi-reduce-and-allreduce/)
