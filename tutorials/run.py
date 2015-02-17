@@ -31,6 +31,10 @@ programs = {
 
     # From the performing-parallel-rank-with-mpi tutorial
     'random_rank': ('performing-parallel-rank-with-mpi', 4, ['100']),
+
+    # From the mpi-reduce-and-allreduce tutorial
+    'reduce_avg': ('mpi-reduce-and-allreduce', 4, ['100']),
+    'reduce_stddev': ('mpi-reduce-and-allreduce', 4, ['100']),
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
