@@ -11,7 +11,7 @@ So far in the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/)
 
 > **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-broadcast-and-collective-communication/code]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code).
 
-## Collective Communication and Synchronization Points
+## Collective communication and synchronization points
 One of the things to remember about collective communication is that it implies a *synchronization point* among processes. This means that all processes must reach a point in their code before they can all begin executing again.
 
 Before going into detail about collective communication routines, let's examine synchronization in more detail. As it turns out, MPI has a special function that is dedicated to synchronizing processes:
@@ -153,7 +153,7 @@ As you can see, there is no difference between the two implementations at two pr
 
 Try running the code yourself and experiment at larger scales!
 
-## Conclusions / Up Next
+## Conclusions / up next
 Feel a little better about collective routines? In the [next MPI tutorial]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/), I go over other essential collective communication routines - [gathering and scattering]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/).
 
 For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).

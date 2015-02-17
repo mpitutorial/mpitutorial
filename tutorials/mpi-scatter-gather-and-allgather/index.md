@@ -11,7 +11,7 @@ In the [previous lesson]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collecti
 
 > **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-scatter-gather-and-allgather/code]({{ site.github.code }}/tutorials/mpi-scatter-gather-and-allgather/code).
 
-## An Introduction to MPI_Scatter
+## An introduction to MPI_Scatter
 `MPI_Scatter` is a collective routine that is very similar to `MPI_Bcast` (If you are unfamiliar with these terms, please read the [previous lesson]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/)). `MPI_Scatter` involves a designated root process sending data to all processes in a communicator. The primary difference between `MPI_Bcast` and `MPI_Scatter` is small but important. `MPI_Bcast` sends the *same* piece of data to all processes while `MPI_Scatter` sends *chunks of an array* to different processes. Check out the illustration below for further clarification.
 
 ![MPI_Bcast vs MPI_Scatter](broadcastvsscatter.png)
@@ -34,7 +34,7 @@ Yes, the function looks big and scary, but let's examine it in more detail. The 
 
 The receiving parameters of the function prototype are nearly identical in respect to the sending parameters. The `recv_data` parameter is a buffer of data that can hold `recv_count` elements that have a datatype of `recv_datatype`. The last parameters, `root` and `communicator`, indicate the root process that is scattering the array of data and the communicator in which the processes reside.
 
-## An Introduction to MPI_Gather
+## An introduction to MPI_Gather
 `MPI_Gather` is the inverse of `MPI_Scatter`. Instead of spreading elements from one process to many processes, `MPI_Gather` takes elements from many processes and gathers them to one single process. This routine is highly useful to many parallel algorithms, such as parallel sorting and searching. Below is a simple illustration of this algorithm.
 
 ![MPI_Gather](gather.png)
@@ -150,7 +150,7 @@ Avg of all elements from proc 2 is 0.479736
 
 As you may have noticed, the only difference between all_avg.c and avg.c is that all_avg.c prints the average across all processes with `MPI_Allgather`.
 
-## Up Next
+## Up next
 In the next lesson, I cover an application example of using `MPI_Gather` and `MPI_Scatter` to [perform parallel rank computation]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/).
 
 For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
