@@ -36,10 +36,10 @@ The `send_data` parameter is an array of elements of type `datatype` that each p
 * `MPI_MIN` - Returns the minimum element.
 * `MPI_SUM` - Sums the elements.
 * `MPI_PROD` - Multiplies all elements.
-* `MPI_LAND` - Performs a logical "and" across the elements.
-* `MPI_LOR` - Performs a logical "or" across the elements.
-* `MPI_BAND` - Performs a bitwise "and" across the bits of the elements.
-* `MPI_BOR` - Performs a bitwise "or" across the bits of the elements.
+* `MPI_LAND` - Performs a logical *and* across the elements.
+* `MPI_LOR` - Performs a logical *or* across the elements.
+* `MPI_BAND` - Performs a bitwise *and* across the bits of the elements.
+* `MPI_BOR` - Performs a bitwise *or* across the bits of the elements.
 * `MPI_MAXLOC` - Returns the maximum value and the rank of the process that owns it.
 * `MPI_MINLOC` - Returns the minimum value and the rank of the process that owns it.
 
