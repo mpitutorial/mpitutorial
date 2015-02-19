@@ -5,6 +5,8 @@ title: Recommended Books
 
 Here are the books that helped me out the most when learning MPI. Most of these are written by the primary designers of the Message Passing Interface. Some also include tutorials on how to use OpenMP with MPI. The very first book is a compilation of the beginner tutorials of this site as well and helps support mpitutorial.com.
 
+> **Disclaimer** - The links on this page are Amazon affiliate links. If you click on the links and purchase books, the primary author (Wes Kendall) receives commission.
+
 ## Beginning MPI (An Introduction in C)
 This book is a compilation of all of the beginner tutorials on this site. It goes over everything from installing MPI on an Amazon EC2 cluster to the basics of sending and receiving with MPI to performing collective operations and reductions. If you have enjoyed the tutorials on this site and wish to have a copy of it in book format (while also supporting mpitutorial.com), then [click here for more info](http://www.amazon.com/gp/product/B00HM7O0M8/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00HM7O0M8&linkCode=as2&tag=softengiintet-20).
 
