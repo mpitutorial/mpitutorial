@@ -9,7 +9,7 @@ redirect_from: '/mpi-send-and-receive/'
 
 Sending and receiving are the two foundational concepts of MPI. Almost every single function in MPI can be implemented with basic send and receive calls. In this lesson, I will discuss how to use MPI's blocking sending and receiving functions, and I will also overview other basic concepts associated with transmitting data using MPI. 
 
-> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
+> **Note** - All of the code for this site is on [Github]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
 
 ## Overview of sending and receiving with MPI
 MPI's send and receive calls operate in the following manner. First, process *A* decides a message needs to be sent to process *B*. Process A then packs up all of its necessary data into a buffer for process B. These buffers are often referred to as *envelopes* since the data is being packed into a single message before transmission (similar to how letters are packed into envelopes before transmission to the post office). After the data is packed into a buffer, the communication device (which is often a network) is responsible for routing the message to the proper location. The location of the message is defined by the process's rank.
