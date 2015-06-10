@@ -31,8 +31,6 @@ int main(int argc, char** argv) {
   }
 
   int num_elements_per_proc = atoi(argv[1]);
-  // Seed the random number generator to get different results each time
-  srand(time(NULL));
 
   MPI_Init(NULL, NULL);
 
@@ -42,7 +40,7 @@ int main(int argc, char** argv) {
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
   // Create a random array of elements on all processes.
-  srand(world_rank);
+  srand(time(NULL)*world_rank); // Seed the random number generator of processes uniquely
   float *rand_nums = NULL;
   rand_nums = create_rand_nums(num_elements_per_proc);
 
