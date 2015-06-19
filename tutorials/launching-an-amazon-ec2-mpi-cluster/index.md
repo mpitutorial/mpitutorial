@@ -113,6 +113,9 @@ To determine the cost of running your cluster, multiply the number of nodes by t
 
 > **Note** - Although t1.micro instances are the cheapest, they hang indefinitely for me when starting a cluster with StarCluster.
 
+### Enable mpich2 plugin for Starcluster
+Lastly, before launching Starcluster, enable the `mpich2` plugin for Starcluster by following [these steps](http://star.mit.edu/cluster/docs/0.93.3/plugins/mpich2.html).
+
 ## Starting, accessing, and stopping your cluster
 After your StarCluster is configured, type the following to start a cluster called "mpicluster." The default config uses "smallcluster" as the default cluster type:
 
