@@ -4,12 +4,13 @@
 // free to modify it for your own use. Any distribution of the code must
 // either provide a link to www.mpitutorial.com or keep this header in tact.
 //
-// Runs the MPI_Rank function with random input.
+// Runs the TMPI_Rank function with random input.
 //
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
-#include "mpi_rank.h"
+#include "tmpi_rank.h"
+#include <time.h>
 
 int main(int argc, char** argv) {
   MPI_Init(NULL, NULL);
@@ -24,7 +25,7 @@ int main(int argc, char** argv) {
 
   float rand_num = rand() / (float)RAND_MAX;
   int rank;
-  MPI_Rank(&rand_num, &rank, MPI_FLOAT, MPI_COMM_WORLD);
+  TMPI_Rank(&rand_num, &rank, MPI_FLOAT, MPI_COMM_WORLD);
   printf("Rank for %f on process %d - %d\n", rand_num, world_rank, rank);
 
   MPI_Barrier(MPI_COMM_WORLD);

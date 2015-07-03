@@ -24,24 +24,24 @@ The processes in the illustration (labeled 0 through 3) start with four numbers 
 Before we dive into solving the parallel rank problem, let's first decide on how our function is going to behave. Our function needs to take a number on each process and return its associated rank with respect to all of the other numbers across all processes. Along with this, we will need other miscellaneous information, such as the communicator that is being used, and the datatype of the number being ranked. Given this function definition, our prototype for the rank function looks like this:
 
 ```cpp
-MPI_Rank(
+TMPI_Rank(
     void *send_data,
     void *recv_data,
     MPI_Datatype datatype,
     MPI_Comm comm)
 ```
 
-`MPI_Rank` takes a `send_data` buffer that contains one number of `datatype` type. The `recv_data` receives exactly one integer on each process that contains the rank value for `send_data`. The `comm` variable is the communicator in which ranking is taking place.
+`TMPI_Rank` takes a `send_data` buffer that contains one number of `datatype` type. The `recv_data` receives exactly one integer on each process that contains the rank value for `send_data`. The `comm` variable is the communicator in which ranking is taking place.
 
 
-> **Note** - `MPI_Rank` is not part of the MPI standard. We are just making it look like all of the other MPI functions for consistency.
+> **Note** - The MPI standard explicitly says that users should not name their own functions `MPI_<something>` to avoid confusing user functions with functions in the MPI standard itself. Thus, we will prefix functions in these tutorials with `T`.
 
 ## Solving the parallel rank problem
-Now that we have our API definition, we can dive into how the parallel rank problem is solved. The first step in solving the parallel rank problem is ordering all of the numbers across all of the processes. This has to be accomplished so that we can find the rank of each number in the entire set of numbers. There are quite a few ways how we could accomplish this. The easiest way is gathering all of the numbers to one process and sorting the numbers. In the example code ([mpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code/mpi_rank.c)), the `gather_numbers_to_root` function is responsible for gathering all of the numbers to the root process.
+Now that we have our API definition, we can dive into how the parallel rank problem is solved. The first step in solving the parallel rank problem is ordering all of the numbers across all of the processes. This has to be accomplished so that we can find the rank of each number in the entire set of numbers. There are quite a few ways how we could accomplish this. The easiest way is gathering all of the numbers to one process and sorting the numbers. In the example code ([tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code/tmpi_rank.c)), the `gather_numbers_to_root` function is responsible for gathering all of the numbers to the root process.
 
 ```cpp
-// Gathers numbers for MPI_Rank to process zero. Allocates space for
-// the MPI datatype and returns a void * buffer to process 0. 
+// Gathers numbers for TMPI_Rank to process zero. Allocates space for
+// the MPI datatype and returns a void * buffer to process 0.
 // It returns NULL to all other processes.
 void *gather_numbers_to_root(void *number, MPI_Datatype datatype,
                              MPI_Comm comm) {
@@ -74,7 +74,7 @@ Sorting numbers is not necessarily a difficult problem in our ranking function. 
 In order to facilitate attaching the owning process to the numbers, we create a struct in the code that holds this information. Our struct definition is as follows:
 
 ```cpp
-// Holds the communicator rank of a process along with the 
+// Holds the communicator rank of a process along with the
 // corresponding number. This struct is used for sorting
 // the values and keeping the owning process information
 // in tact.
@@ -108,7 +108,7 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count,
   int i;
   for (i = 0; i < gathered_number_count; i++) {
     comm_rank_numbers[i].comm_rank = i;
-    memcpy(&(comm_rank_numbers[i].number), 
+    memcpy(&(comm_rank_numbers[i].number),
            gathered_numbers + (i * datatype_size),
            datatype_size);
   }
@@ -136,19 +136,19 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count,
 }
 ```
 
-The `get_ranks` function first creates an array of `CommRankNumber` structs and attaches the communicator rank of the process that owns the number. If the datatype is `MPI_FLOAT`, `qsort` is called with a special sorting function for our array of structs (see [mpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code) for the code). Likewise, we use a different sorting function if the datatype is `MPI_INT`.
+The `get_ranks` function first creates an array of `CommRankNumber` structs and attaches the communicator rank of the process that owns the number. If the datatype is `MPI_FLOAT`, `qsort` is called with a special sorting function for our array of structs (see [tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code) for the code). Likewise, we use a different sorting function if the datatype is `MPI_INT`.
 
 After the numbers are sorted, we must create an array of ranks in the proper order so that they can be scattered back to the requesting processes. This is accomplished by making the `ranks` array and filling in the proper rank values for each of the sorted `CommRankNumber` structs.
 
 ## Putting it all together
-Now that we have our two primary functions, we can put them all together into our `MPI_Rank` function. This function gathers the numbers to the root process, sorts the numbers to determine their ranks, and then scatters the ranks back to the requesting processes. The code is shown below:
+Now that we have our two primary functions, we can put them all together into our `TMPI_Rank` function. This function gathers the numbers to the root process, sorts the numbers to determine their ranks, and then scatters the ranks back to the requesting processes. The code is shown below:
 
 ```cpp
 // Gets the rank of the recv_data, which is of type datatype. The rank
 // is returned in send_data and is of type datatype.  
-int MPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype,
+int TMPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype,
              MPI_Comm comm) {
-  // Check base cases first - Only support MPI_INT and MPI_FLOAT for 
+  // Check base cases first - Only support MPI_INT and MPI_FLOAT for
   // this function.
   if (datatype != MPI_INT && datatype != MPI_FLOAT) {
     return MPI_ERR_TYPE;
@@ -158,7 +158,7 @@ int MPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype,
   MPI_Comm_size(comm, &comm_size);
   MPI_Comm_rank(comm, &comm_rank);
 
-  // To calculate the rank, we must gather the numbers to one 
+  // To calculate the rank, we must gather the numbers to one
   // process, sort the numbers, and then scatter the resulting rank
   // values. Start by gathering the numbers on process 0 of comm.
   void *gathered_numbers = gather_numbers_to_root(send_data, datatype,
@@ -181,7 +181,7 @@ int MPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype,
 }
 ```
 
-The `MPI_Rank` function uses the two functions we just created, `gather_numbers_to_root` and `get_ranks`, to get the ranks of the numbers. The function then performs the final `MPI_Scatter` to scatter the resulting ranks back to the processes.
+The `TMPI_Rank` function uses the two functions we just created, `gather_numbers_to_root` and `get_ranks`, to get the ranks of the numbers. The function then performs the final `MPI_Scatter` to scatter the resulting ranks back to the processes.
 
 If you have had trouble following the solution to the parallel rank problem, I have included an illustration of the entire data flow of our problem using an example set of data:
 
@@ -192,7 +192,7 @@ Have any questions about how the parallel rank algorithm works? Leave them below
 ## Running our parallel rank algorithm
 I have included a small program in the example code to help test out our parallel rank algorithm. The code can be viewed in the [random_rank.c file]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code/random_rank.c) file in the [lesson code]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code).
 
-The example application simply creates a random number on each process and calls `MPI_Rank` to get the rank of each number. If you run the random_rank program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
+The example application simply creates a random number on each process and calls `TMPI_Rank` to get the rank of each number. If you run the random_rank program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
 
 ```
 >>> cd tutorials
