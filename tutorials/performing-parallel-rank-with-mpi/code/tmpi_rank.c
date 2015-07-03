@@ -21,7 +21,7 @@ typedef struct {
   } number;
 } CommRankNumber;
 
-// Gathers numbers for MPI_Rank to process zero. Allocates enough space given the MPI datatype and
+// Gathers numbers for TMPI_Rank to process zero. Allocates enough space given the MPI datatype and
 // returns a void * buffer to process 0. It returns NULL to all other processes.
 void *gather_numbers_to_root(void *number, MPI_Datatype datatype, MPI_Comm comm) {
   int comm_rank, comm_size;
@@ -105,8 +105,8 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count, MPI_Datatype d
 }
 
 // Gets the rank of the recv_data, which is of type datatype. The rank is returned
-// in send_data and is of type datatype.  
-int MPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype, MPI_Comm comm) {
+// in send_data and is of type datatype.
+int TMPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype, MPI_Comm comm) {
   // Check base cases first - Only support MPI_INT and MPI_FLOAT for this function.
   if (datatype != MPI_INT && datatype != MPI_FLOAT) {
     return MPI_ERR_TYPE;
