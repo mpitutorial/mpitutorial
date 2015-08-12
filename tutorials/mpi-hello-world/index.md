@@ -9,13 +9,14 @@ redirect_from: '/mpi-hello-world/'
 
 In this lesson, I will show you a basic MPI hello world application and also discuss how to run an MPI program. The lesson will cover the basics of initializing MPI and running an MPI job across several processes. This lesson is intended to work with installations of MPICH2 (specifically 1.4). If you have not installed MPICH2, please refer back to the [installing MPICH2 lesson]({{ site.baseurl }}/tutorials/installing-mpich2/).
 
-> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-hello-world/code]({{ site.github.code }}/tutorials/mpi-hello-world/code).
+> **Note** - All of the code for this site is on [Github]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-hello-world/code]({{ site.github.code }}/tutorials/mpi-hello-world/code).
 
 ## Hello world code examples
 Let's dive right into the code from this lesson located in [mpi_hello_world.c]({{ site.github.code }}/tutorials/mpi-hello-world/code/mpi_hello_world.c). Below are some excerpts from the code.
 
 ```cpp
-#include <mpi.h>;
+#include <mpi.h>
+#include <stdio.h>
 
 int main(int argc, char** argv) {
     // Initialize the MPI environment
@@ -44,7 +45,7 @@ int main(int argc, char** argv) {
 }
 ```
 
-You will notice that the first step to building an MPI program is including the MPI header files with `#include <mpi.h>;`. After this, the MPI environment must be initialized with:
+You will notice that the first step to building an MPI program is including the MPI header files with `#include <mpi.h>`. After this, the MPI environment must be initialized with:
 
 ```cpp
 MPI_Init(
@@ -68,7 +69,7 @@ MPI_Comm_size(
 MPI_Comm_rank(
     MPI_Comm communicator,
     int* rank)
-``` 
+```
 
 `MPI_Comm_rank` returns the rank of a process in a communicator. Each process inside of a communicator is assigned an incremental rank starting from zero. The ranks of the processes are primarily used for identification purposes when sending and receiving messages.
 
@@ -107,7 +108,7 @@ clean:
     rm ${EXECS}
 ```
 
-My makefile looks for the MPICC environment variable. If you installed MPICH2 to a local directory, set your MPICC environment variable to point to your mpicc binary. The mpicc program in your installation is really just a wrapper around gcc, and it makes compiling and linking all of the necessary MPI routines much easier. 
+My makefile looks for the MPICC environment variable. If you installed MPICH2 to a local directory, set your MPICC environment variable to point to your mpicc binary. The mpicc program in your installation is really just a wrapper around gcc, and it makes compiling and linking all of the necessary MPI routines much easier.
 
 ```
 >>> export MPICC=/home/kendall/bin/mpicc

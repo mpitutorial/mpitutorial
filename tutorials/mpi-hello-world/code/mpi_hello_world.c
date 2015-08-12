@@ -9,7 +9,6 @@
 //
 #include <mpi.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(int argc, char** argv) {
   // Initialize the MPI environment. The two arguments to MPI Init are not
