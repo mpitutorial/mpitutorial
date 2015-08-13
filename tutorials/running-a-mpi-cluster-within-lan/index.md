@@ -26,7 +26,7 @@ $ cat /etc/hosts
 127.0.0.1       localhost
 172.50.88.34    client
 ```
-The ```client``` here is the machine you'd like to do your computation with.
+The ```client``` here is the machine you'd like to do your computation with. Likewise, do the same about ```master``` in the client.
 
 ## Step 2: Create a new user
 
@@ -115,11 +115,17 @@ Here, instead of ```*``` you can specifically give out the IP address to which y
 
 After you have made the entry, run the following.
 
-``bash
+```bash
 $ exportfs -a
 ```
 
 Run the above command, every time you make a change to ```/etc/exports```.
+
+If required, restart the ```nfs``` server
+
+```bash
+$ sudo service nfs-kernel-server restart
+```
 
 ### NFS-Client
 
@@ -145,4 +151,46 @@ To check the mounted directories,
 
 ```bash
 $ df -h
+Filesystem      		    Size  Used Avail Use% Mounted on
+master:/home/mpiuser/cloud  49G   15G   32G  32% /home/mpiuser/cloud
 ```
+
+## Step 5: Running MPI Programs
+
+For consideration sake, let's just take a sample program, that comes along with MPICH2 installation package ```mpich2/examples/cpi```.
+
+If you want to compile your own code,
+
+```bash
+$ mpicc -o mpi_sample mpi_sample.c
+```
+
+First copy your executable into the shared directory ```cloud``` or better yet, compile your code within the NFS shared directory.
+
+```bash
+$ cd cloud/
+$ pwd
+/home/mpiuser/cloud
+```
+
+To run it only in your machine, you do
+
+```bash
+$ mpirun -np 2 ./cpi # No. of processes = 2
+```
+
+Now, to run it within a cluster, 
+
+```bash
+$ mpirun -np 5 -hosts client,localhost ./cpi 
+#hostnames can also be substituted with ip addresses.
+```
+
+Or specify the same in a hostfile and 
+
+```bash
+$ mpirun -np 5 --hostfile mpi_file ./cpi
+```
+
+This should spin up your program in all of the machines that your **master** is connected to. 
+
