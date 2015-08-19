@@ -4,7 +4,7 @@ title: Running an MPI Cluster within a LAN
 author: Dwaraka Nath
 categories: Beginner MPI
 tags: MPI, Cluster, LAN
-redirect_from: '/running-a-mpi-cluster-within-lan'
+redirect_from: '/running-an-mpi-cluster-within-a-lan'
 ---
 
 Earlier, we looked at running MPI programs in a [single machine]({{ site.baseurl }}/tutorials/mpi-hello-world/) to parallel process the code, taking advantage of having more than a single core in CPU. Now, let's widen our scope a bit, taking the same from more than just one computer to a network of nodes connected together in a Local Area Network. To keep things simple, let's just consider two computers for now. It is fairly straight to implement the same with many more nodes.
