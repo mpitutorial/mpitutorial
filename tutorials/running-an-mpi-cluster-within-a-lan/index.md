@@ -155,7 +155,7 @@ Filesystem      		    Size  Used Avail Use% Mounted on
 master:/home/mpiuser/cloud  49G   15G   32G  32% /home/mpiuser/cloud
 ```
 
-## Step 5: Running MPI Programs
+## Step 5: Running MPI programs
 
 For consideration sake, let's just take a sample program, that comes along with MPICH2 installation package ```mpich2/examples/cpi```. We shall take this executable and try to run it parallely.
 
@@ -194,7 +194,7 @@ $ mpirun -np 5 --hostfile mpi_file ./cpi
 
 This should spin up your program in all of the machines that your **master** is connected to. 
 
-##So, what's next?
+## So, what's next?
 
 Exciting isn't it, for having built a cluster to run your code? You now need to know the specifics of writing a program that can run parallely. Best place to start off would be the lesson [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/). Or if you want to replicate the same using Amazon EC2 instances, I suggest you have a look at [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). For all the other beginner lessons, you may go to [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) page. 
 
