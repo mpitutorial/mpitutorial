@@ -11,8 +11,8 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 * [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/)
 * [Installing MPICH2 on a single machine]({{ site.baseurl }}/tutorials/installing-mpich2/)
 * [Launching an Amazon EC2 MPI cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
-* [Running an MPI hello world application]({{ site.baseurl }}/tutorials/mpi-hello-world/)
 * [Running a MPI cluster within a LAN]({{ site.baseurl }}/tutorials/running-a-mpi-cluster-within-lan)
+* [Running an MPI hello world application]({{ site.baseurl }}/tutorials/mpi-hello-world/)
 
 ## Blocking point-to-point communication
 * [Sending and receiving with MPI_Send and MPI_Recv]({{ site.baseurl }}/tutorials/mpi-send-and-receive/)

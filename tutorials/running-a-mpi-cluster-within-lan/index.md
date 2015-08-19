@@ -7,7 +7,7 @@ tags: MPI, Cluster, LAN
 redirect_from: '/running-a-mpi-cluster-within-lan'
 ---
 
-Earlier, we looked at running MPI programs in a [single machine]({{ site.baseurl }}/tutorials/mpi-hello-world/) to parallel process the code, taking advantage of having more than a single core in CPU. Now, let's widen our scope a bit, taking the same to more than just one computer to a network of nodes connected together in a Local Area Network. To keep things simple, let's just consider two computers for now. It is fairly straight to implement the same with many more nodes.
+Earlier, we looked at running MPI programs in a [single machine]({{ site.baseurl }}/tutorials/mpi-hello-world/) to parallel process the code, taking advantage of having more than a single core in CPU. Now, let's widen our scope a bit, taking the same from more than just one computer to a network of nodes connected together in a Local Area Network. To keep things simple, let's just consider two computers for now. It is fairly straight to implement the same with many more nodes.
 
 As with other tutorials, I am assuming you run Linux machines. The following tutorial was tested with Ubuntu, but it should be the same with any other distribution. And also, let's consider your machine to be **master** and the other one as **client**
 
@@ -157,9 +157,9 @@ master:/home/mpiuser/cloud  49G   15G   32G  32% /home/mpiuser/cloud
 
 ## Step 5: Running MPI Programs
 
-For consideration sake, let's just take a sample program, that comes along with MPICH2 installation package ```mpich2/examples/cpi```.
+For consideration sake, let's just take a sample program, that comes along with MPICH2 installation package ```mpich2/examples/cpi```. We shall take this executable and try to run it parallely.
 
-If you want to compile your own code,
+Or if you want to compile your own code, the name of which let's say is ```mpi_sample.c```, you will compile it the way given below, to generate an executable ```mpi_sample```.
 
 ```bash
 $ mpicc -o mpi_sample mpi_sample.c
@@ -194,3 +194,8 @@ $ mpirun -np 5 --hostfile mpi_file ./cpi
 
 This should spin up your program in all of the machines that your **master** is connected to. 
 
+##So, what's next?
+
+Exciting isn't it, for having built a cluster to run your code? You now need to know the specifics of writing a program that can run parallely. Best place to start off would be the lesson [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/). Or if you want to replicate the same using Amazon EC2 instances, I suggest you have a look at [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). For all the other beginner lessons, you may go to [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) page. 
+
+Should you have any issues in setting up your local cluster, please don't hesitate to comment below so we can try to sort it out. 
