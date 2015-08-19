@@ -22,10 +22,10 @@ The latest version of MPICH2 is available [here](http://www.mcs.anl.gov/research
 Once doing this, you should be able to configure your installation by performing `./configure`. I added a couple of parameters to my configuration to avoid building the MPI Fortran library. If you need to install MPICH2 to a local directory (for example, if you don't have root access to your machine), type `./configure --prefix=/installation/directory/path` For more information about possible configuration parameters, type `./configure --help`
 
 ```
->>> ./configure --disable-f77 --disable-fc
+>>> ./configure --disable-fortran
 Configuring MPICH2 version 1.4 with '--disable-f77' '--disable-fc'
 Running on system: Darwin Wes-Kendalls-Macbook-Pro.local 10.7.0 Darwin Kernel Version 10.7.0: Sat Jan 29 15:17:16 PST 2011; root:xnu1504.9.37~1/RELEASE_I386 i386
-checking for gcc... gcc 
+checking for gcc... gcc
 ```
 
 When configuration is done, it should say *"Configuration completed."* Once this is through, it is time to build and install MPICH2 with `make; sudo make install`.
@@ -39,9 +39,9 @@ Using variables CC='gcc' CFLAGS='   -O2' LDFLAGS=' ' F77='' FFLAGS=' ' FC='' FCF
 If your build was successful, you should be able to type `mpich2version` and see something similar to this.
 
 ```
->>> mpich2version
-MPICH2 Version:        1.4
-MPICH2 Release date:  Thu Jun 16 16:41:08 CDT 2011
+>>> mpiexec --version
+MPICH2 Version:        3.1.4
+MPICH2 Release date:  Fri Feb 20 15:02:56 CST 2015
 MPICH2 Device:        ch3:nemesis
 MPICH2 configure:     --disable-f77 --disable-fc
 MPICH2 CC:         gcc   -O2
@@ -50,7 +50,7 @@ MPICH2 F77:
 MPICH2 FC:
 ```
 
-Hopefully your build finished successfully. If not, you may have issues with missing dependencies. For any issue, I highly recommend copying and pasting the error message directly into Google. 
+Hopefully your build finished successfully. If not, you may have issues with missing dependencies. For any issue, I highly recommend copying and pasting the error message directly into Google.
 
 ## Up next
-Now that you have built MPICH2 locally, you have a couple options of where you can proceed on this site. If you don't have access to a cluster or want to learn more about building a virtual MPI cluster, check out the lesson about [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). If you already have your own cluster or simply want to run the rest of the lessons from your machine, proceed to the [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/), which provides an overview of the basics of programming and running your first MPI program.
+Now that you have built MPICH2 locally, you have some options of where you can proceed on this site. If you already have the hardware and resources to setup a local cluster, I suggest you proceed to the tutorial about [running a MPI cluster in LAN]({{ site.baseurl }}/tutorials/running-a-mpi-cluster-within-lan/). If you don't have access to a cluster or want to learn more about building a virtual MPI cluster, check out the lesson about [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). If you have built a cluster in either way or simply want to run the rest of the lessons from your machine, proceed to the [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/), which provides an overview of the basics of programming and running your first MPI program.

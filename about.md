@@ -23,3 +23,9 @@ For those that have never used Github or may feel overwhelmed about contributing
 Wes Kendall is the original author of mpitutorial.com. As a graduate student at the University of Tennessee, Knoxville, Wes earned his PhD under Jian Huang. His research revolved around large-scale data analysis and visualization, and he worked with the biggest supercomputers in the world. As a graduate student, he interned at Google, Oak Ridge National Labs, and Argonne National Labs. His research also earned him the Supercomputing 2011 Best Student Paper Award. He is currently co-founder and CTO of [Ambition](http://ambition.com), a data-analytics startup funded by YCombinator, Google Ventures, and several other top investment firms.
 
 Disappointed with the amount of freely-available content on parallel programming and MPI, Wes started releasing tutorials on the subject after graduate school. Once his startup consumed most of his time, he opened up mpitutorial.com to the public on github.com so that others could start contributing high-quality content.
+
+### Dwaraka Nath
+
+Dwaraka Nath is a masters graduate from Birla Institute of Technology and Science, Pilani, India. He loves blogging and occasionally does some code contributions as well. 
+
+You can find more about him on his [personal website](https://www.dwarak.in) and follow him on Github at [@dtsdwarak](https://github.com/dtsdwarak).
