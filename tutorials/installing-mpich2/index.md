@@ -36,21 +36,20 @@ Beginning make
 Using variables CC='gcc' CFLAGS='   -O2' LDFLAGS=' ' F77='' FFLAGS=' ' FC='' FCFLAGS=' ' CXX='c++' CXXFLAGS='  -O2' AR='ar' CPP='gcc-E' CPP
 ```
 
-If your build was successful, you should be able to type `mpich2version` and see something similar to this.
+If your build was successful, you should be able to type `mpiexec --version` and see something similar to this.
 
 ```
 >>> mpiexec --version
-MPICH2 Version:        3.1.4
-MPICH2 Release date:  Fri Feb 20 15:02:56 CST 2015
-MPICH2 Device:        ch3:nemesis
-MPICH2 configure:     --disable-f77 --disable-fc
-MPICH2 CC:         gcc   -O2
-MPICH2 CXX:        c++   -O2
-MPICH2 F77:
-MPICH2 FC:
+HYDRA build details:
+    Version:                         3.1.4
+    Release Date:                    Fri Feb 20 15:02:56 CST 2015
+    CC:                              gcc
+    CXX:                             g++
+    F77:
+    F90:
 ```
 
 Hopefully your build finished successfully. If not, you may have issues with missing dependencies. For any issue, I highly recommend copying and pasting the error message directly into Google.
 
 ## Up next
-Now that you have built MPICH2 locally, you have some options of where you can proceed on this site. If you already have the hardware and resources to setup a local cluster, I suggest you proceed to the tutorial about [running a MPI cluster in LAN]({{ site.baseurl }}/tutorials/running-a-mpi-cluster-within-lan/). If you don't have access to a cluster or want to learn more about building a virtual MPI cluster, check out the lesson about [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). If you have built a cluster in either way or simply want to run the rest of the lessons from your machine, proceed to the [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/), which provides an overview of the basics of programming and running your first MPI program.
+Now that you have built MPICH2 locally, you have some options of where you can proceed on this site. If you already have the hardware and resources to setup a local cluster, I suggest you proceed to the tutorial about [running an MPI cluster in LAN]({{ site.baseurl }}/tutorials/running-an-mpi-cluster-within-a-lan). If you don't have access to a cluster or want to learn more about building a virtual MPI cluster, check out the lesson about [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). If you have built a cluster in either way or simply want to run the rest of the lessons from your machine, proceed to the [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/), which provides an overview of the basics of programming and running your first MPI program.

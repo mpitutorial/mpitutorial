@@ -179,23 +179,23 @@ To run it only in your machine, you do
 $ mpirun -np 2 ./cpi # No. of processes = 2
 ```
 
-Now, to run it within a cluster, 
+Now, to run it within a cluster,
 
 ```bash
-$ mpirun -np 5 -hosts client,localhost ./cpi 
+$ mpirun -np 5 -hosts client,localhost ./cpi
 #hostnames can also be substituted with ip addresses.
 ```
 
-Or specify the same in a hostfile and 
+Or specify the same in a hostfile and
 
 ```bash
 $ mpirun -np 5 --hostfile mpi_file ./cpi
 ```
 
-This should spin up your program in all of the machines that your **master** is connected to. 
+This should spin up your program in all of the machines that your **master** is connected to.
 
 ## So, what's next?
 
 Exciting isn't it, for having built a cluster to run your code? You now need to know the specifics of writing a program that can run parallely. Best place to start off would be the lesson [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/). Or if you want to replicate the same using Amazon EC2 instances, I suggest you have a look at [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). For all the other beginner lessons, you may go to [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) page. 
 
-Should you have any issues in setting up your local cluster, please don't hesitate to comment below so we can try to sort it out. 
+Should you have any issues in setting up your local cluster, please don't hesitate to comment below so we can try to sort it out.
