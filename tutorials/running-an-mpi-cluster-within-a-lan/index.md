@@ -33,9 +33,9 @@ The ```client``` here is the machine you'd like to do your computation with. Lik
 Though you can operate your cluster with your existing user account, I'd recommend you to create a new one to keep our configurations simple. Let us create a new user ```mpiuser```. Create new user accounts with the same username in all the machines to keep things simple.
 
 ```bash
-$ sudo useradd mpiuser
+$ sudo adduser mpiuser
 ```
-Follow prompts and you will be good. Please don't use ```adduser``` command to create a new user as that doesn't create a separate home for new users.
+Follow prompts and you will be good. Please don't use ```useradd``` command to create a new user as that doesn't create a separate home for new users.
 
 ## Step 3: Setting up SSH
 
@@ -155,7 +155,15 @@ Filesystem      		    Size  Used Avail Use% Mounted on
 master:/home/mpiuser/cloud  49G   15G   32G  32% /home/mpiuser/cloud
 ```
 
-## Step 5: Running MPI programs
+To make the mount permanent so you don't have to manually mount the shared directory everytime you do a system reboot, you can create an entry in your file systems table - i.e., ```/etc/fstab``` file like this:
+
+```bash
+$ cat /etc/fstab
+#MPI CLUSTER SETUP
+master:/home/mpiuser/cloud /home/mpiuser/cloud nfs
+```
+
+## Step 5: Running MPI Programs
 
 For consideration sake, let's just take a sample program, that comes along with MPICH2 installation package ```mpich2/examples/cpi```. We shall take this executable and try to run it parallely.
 
@@ -194,8 +202,63 @@ $ mpirun -np 5 --hostfile mpi_file ./cpi
 
 This should spin up your program in all of the machines that your **master** is connected to.
 
+##Common errors and tips
+
+* Make sure all the machines you are trying to run the executable on, has the same version of MPI. Recommended is [MPICH2](http://www.mpich.org/downloads/).
+* The ```hosts``` file of ```master``` should contain the local network IP address entries of ```master``` and all of the slave nodes. For each of the slave, you need to have the IP address entry of ```master``` and the corresponding slave node.
+
+For e.g. a sample hostfile entry of a ```master``` node can be,
+
+```bash
+$ cat /etc/hosts
+127.0.0.1	localhost
+#127.0.1.1	1944
+
+#MPI CLUSTER SETUP
+172.50.88.22	master
+172.50.88.56 	slave1
+172.50.88.34 	slave2
+172.50.88.54	slave3
+172.50.88.60 	slave4
+172.50.88.46	slave5
+```
+A sample hostfile entry of ```slave3``` node can be,
+
+```bash
+$ cat /etc/hosts
+127.0.0.1	localhost
+#127.0.1.1	1947
+
+#MPI CLUSTER SETUP
+172.50.88.22	master
+172.50.88.54	slave3
+```
+* Whenever you try to run a process parallely using MPI, you can either run the process locally or run it as a combination of local and remote nodes. You **cannot** invoke a process **only on other nodes**.
+
+To make this more clear, from ```master``` node, this script can be invoked.
+
+```bash
+$ mpirun -np 10 --hosts master ./cpi
+# To run the program only on the same master node
+```
+
+So can this be. The following will also run perfectly.
+
+```bash
+$ mpirun - np 10 --hosts master,slave1,slave2 ./cpi
+# To run the program on master and slave nodes.
+```
+
+But, the following is **not correct** and will result in an error if invoked from ```master```.
+
+```bash
+$ mpirun -np 10 --hosts slave1 ./cpi
+# Trying to run the program only on remote slave
+```
+
 ## So, what's next?
 
-Exciting isn't it, for having built a cluster to run your code? You now need to know the specifics of writing a program that can run parallely. Best place to start off would be the lesson [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/). Or if you want to replicate the same using Amazon EC2 instances, I suggest you have a look at [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). For all the other beginner lessons, you may go to [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) page. 
+Exciting isn't it, for having built a cluster to run your code? You now need to know the specifics of writing a program that can run parallely. Best place to start off would be the lesson [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/). Or if you want to replicate the same using Amazon EC2 instances, I suggest you have a look at [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). For all the other beginner lessons, you may go to [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) page.
 
 Should you have any issues in setting up your local cluster, please don't hesitate to comment below so we can try to sort it out.
+
