@@ -26,3 +26,6 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 
 ## Advanced collective communication
 * [Using MPI_Reduce and MPI_Allreduce for parallel number reduction]({{ site.baseurl }}/tutorials/mpi-reduce-and-allreduce/)
+
+## Groups and Communicators
+* [Introduction to Groups and Communicators]({{ site.baseurl }}/tutorials/introduction-to-groups-and-communicators/)
