@@ -26,6 +26,9 @@ Disappointed with the amount of freely-available content on parallel programming
 
 ### Dwaraka Nath
 
-Dwaraka Nath is a masters graduate from Birla Institute of Technology and Science, Pilani, India. He loves blogging and occasionally does some code contributions as well. 
+Dwaraka Nath is a masters graduate from Birla Institute of Technology and Science, Pilani, India. He loves blogging and occasionally does some code contributions as well.
 
 You can find more about him on his [personal website](https://www.dwarak.in) and follow him on Github at [@dtsdwarak](https://github.com/dtsdwarak).
+
+### Wesley Bland
+Wesley Bland is a researcher in High Performance Computing and a contributor to both MPICH and Open MPI. He graduated from the University of Tennessee, Knoxville with his PhD under Dr. Jack Dongarra. His research involved fault tolerance at scale using MPI. After leaving the university, he went to Argonne National Laboratory where he worked under Dr. Pavan Balaji as a postdoctoral appointee and continued his fault tolerance research while working on MPICH directly. He currently works at Intel Corporation on high performance runtimes, including MPI.
