@@ -153,4 +153,4 @@ As you may have noticed, the only difference between all_avg.c and avg.c is that
 ## Up next
 In the next lesson, I cover an application example of using `MPI_Gather` and `MPI_Scatter` to [perform parallel rank computation]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/).
 
-For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
+For all lessons, go the the [MPI tutorials]({{ site.baseurl }}/tutorials/).

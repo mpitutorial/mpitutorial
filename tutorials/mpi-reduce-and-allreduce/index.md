@@ -175,6 +175,6 @@ Mean - 0.501100, Standard deviation = 0.301126
 ```
 
 ## Up next
-Now that you are comfortable using all of the common collectives - `MPI_Bcast`, `MPI_Scatter`, `MPI_Gather`, and `MPI_Reduce`, we can utilize them to build a sophisticated parallel application. In the next lesson, we will utilize most of our collective routines to create a parallel sorting application. Stay tuned!
+Now that you are comfortable using all of the common collectives - `MPI_Bcast`, `MPI_Scatter`, `MPI_Gather`, and `MPI_Reduce`, we can utilize them to build a sophisticated parallel application. In the next lesson, we will start diving into [MPI groups and communicators]({{ site.baseurl }}/tutorials/introduction-to-groups-and-communicators/).
 
-For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
+For all lessons, go the the [MPI tutorials section]({{ site.baseurl }}/tutorials/).

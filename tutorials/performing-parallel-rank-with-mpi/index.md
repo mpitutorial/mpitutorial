@@ -207,4 +207,4 @@ Rank for 0.684195 on process 3 - 1
 ## Up next
 In our next lesson, we start covering advanced collective communication. The next lesson is about [using MPI_Reduce and MPI_Allreduce to perform number reduction]({{ site.baseurl }}/tutorials/mpi-reduce-and-allreduce/).
 
-For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
+For all lessons, go the the [MPI tutorials]({{ site.baseurl }}/tutorials/).
