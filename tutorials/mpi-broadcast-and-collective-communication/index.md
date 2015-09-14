@@ -7,7 +7,7 @@ tags: MPI_Barrier, MPI_Bcast, MPI_Wtime
 redirect_from: '/mpi-broadcast-and-collective-communication/'
 ---
 
-So far in the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/), we have examined point-to-point communication, which is communication between two processes. This lesson is the start of the *collective communication* section. Collective communication is a method of communication which involves participation of **all** processes in a communicator. In this lesson, we will discuss the implications of collective communication and go over a standard collective routine - broadcasting.
+So far in the [MPI tutorials]({{ site.baseurl }}/tutorials/), we have examined point-to-point communication, which is communication between two processes. This lesson is the start of the *collective communication* section. Collective communication is a method of communication which involves participation of **all** processes in a communicator. In this lesson, we will discuss the implications of collective communication and go over a standard collective routine - broadcasting.
 
 > **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-broadcast-and-collective-communication/code]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code).
 
@@ -156,4 +156,4 @@ Try running the code yourself and experiment at larger scales!
 ## Conclusions / up next
 Feel a little better about collective routines? In the [next MPI tutorial]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/), I go over other essential collective communication routines - [gathering and scattering]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/).
 
-For all beginner lessons, go the the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
+For all lessons, go the the [MPI tutorials]({{ site.baseurl }}/tutorial/) page.

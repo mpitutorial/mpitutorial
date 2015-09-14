@@ -11,7 +11,7 @@ In all previous tutorials, we have used the communicator `MPI_COMM_WORLD`. For s
 
 > **Note** - All of the code for this site is on [Github]({{ site.github.repo }}). This tutorial's code is under [tutorials/introduction-to-groups-and-communicators/code]({{ site.github.code }}/tutorials/introduction-to-groups-and-communicators/code).
 
-## Overview of Communicators
+## Overview of communicators
 As we have seen when learning about collective routines, MPI allows you to talk to all processes in a communicator at once to do things like distribute data from one process to many processes using `MPI_Scatter` or perform a data reduction using `MPI_Reduce`. However, up to now, we have only used the default communicator, `MPI_COMM_WORLD`.
 
 For simple applications, it's not unusual to do everything using `MPI_COMM_WORLD`, but for more complex use cases, it might be helpful to have more communicators. An example might be if you wanted to perform calculations on a subset of the processes in a grid. For instance, all processes in each row might want to sum a value. This brings us to the first and most common function used to create new communicators:
@@ -26,7 +26,7 @@ MPI_Comm_split(
 
 As the name implies, `MPI_Comm_split` creates new communicators by "splitting" a communicator into a group of sub-communicators based on the input values `color` and `key`. It's important to note here that the original communicator doesn't go away, but a new communicator is created on each process. The first argument, `comm`, is the communicator that will be used as the basis for the new communicators. This could be `MPI_COMM_WORLD`, but it could be any other communicator as well. The second argument, `color`, determines to which new communicator each processes will belong. All processes which pass in the same value for `color` are assigned to the same communicator. If the `color` is `MPI_UNDEFINED`, that process won't be included in any of the new communicators. The third argument, `key`, determines the ordering (rank) within each new communicator. The process which passes in the smallest value for `color` will be rank 0, the next smallest will be rank 1, and so on. If there is a tie, the process that had the lower rank in the original communicator will be first. The final argument, `newcomm` is how MPI returns the new communicator back to the user.
 
-## Example of Using Multiple Communicators
+## Example of using multiple communicators
 
 Now let's look at a simple example where we attempt to split a single global communicator into a set of smaller communicators. In this example, we'll imagine that we've logically laid out our original communicator into a 4x4 grid of 16 processes and we want to divide the grid by row. To do this, each row will get its own color. In the image below, you can see how each group of processes with the same color on the left ends up in its own communicator on the right.
 
@@ -42,7 +42,8 @@ MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
 int color = world_rank / 4; // Determine color based on row
 
-// Split the communicator based on the color and use the original rank for ordering
+// Split the communicator based on the color and use the
+// original rank for ordering
 MPI_Comm row_comm;
 MPI_Comm_split(MPI_COMM_WORLD, color, world_rank, &row_comm);
 
@@ -81,7 +82,7 @@ Don't be alarmed if your's isn't in the right order. When you print things out i
 
 Finally, we free the communicator with `MPI_Comm_free`. This seems like it's not an important step, but it's just as important as freeing your memory when you're done with it in any other program. When an MPI object will no longer be used, it should be freed so it can be reused later. MPI has a limited number of objects that it can create at a time and not freeing your objects could result in a runtime error if MPI runs out of allocatable objects.
 
-## Other Communicator Creation Functions
+## Other communicator creation functions
 
 While `MPI_Comm_split` is the most common communicator creation function, there are many others. `MPI_Comm_dup` is the most basic and creates a duplicate of a communicator. It may seem odd that there would exist a function that only creates a copy, but this is very useful for applications which use libraries to perform specialized functions, such as mathematical libraries. In these kinds of applications, it's important that user codes and library codes do not interfere with each other. To avoid this, the first thing every application should do is to create a duplicate of `MPI_COMM_WORLD`, which will avoid the problem of other libraries also using `MPI_COMM_WORLD`. The libraries themselves should also make duplicates  of `MPI_COMM_WORLD` to avoid the same problem.
 
@@ -97,7 +98,7 @@ The key difference however (besides the lack of the `tag` argument), is that `MP
 
 There are other more advanced features of communicators that we do not cover here, such as the differences between inter-communicators and intra-communicators and other advanced communicator creation functions. These are only used in very specific kinds of applications which may be covered in a future tutorial.
 
-## Overview of Groups
+## Overview of groups
 
 While `MPI_Comm_split` is the simplest way to create a new communicator, it isn't the only way to do so. There are more flexible ways to create communicators, but they use a new kind of MPI object, `MPI_Group`. Before going into lots of detail about groups, let's look a little more at what a communicator actually is. Internally, MPI has to keep up with (among other things) two major parts of a communicator, the context (or ID) that differentiates one communicator from another and the group of processes contained by the communicator. The context is what prevents an operation on one communicator from matching with a similar operation on another communicator. MPI keeps an ID for each communicator internally to prevent the mixups. The group is a little simpler to understand since it is just the set of all processes in the communicator. For `MPI_COMM_WORLD`, this is all of the processes that were started by `mpiexec`. For other communicators, the group will be different. In the example code above, the group is all of the processes which passed in the same `color` to `MPI_Comm_split`.
 
@@ -107,7 +108,7 @@ MPI uses these groups in the same way that set theory generally works. You don't
 
 In the first example, the union of the two groups `{0, 1, 2, 3}` and `{2, 3, 4, 5}` is `{0, 1, 2, 3, 4, 5}` because each of those items appears in each group. In the second example, the intersection of the two groups `{0, 1, 2, 3}`, and `{2, 3, 4, 5}` is `{2, 3}` because only those items appear in each group.
 
-## Using MPI Groups
+## Using MPI groups
 
 Now that we understand the fundamentals of how groups work, let's see how they can be applied to MPI operations. In MPI, it's easy to get the group of processes in a communicator with the API call, `MPI_Comm_group`.
 
@@ -148,8 +149,9 @@ MPI_Comm_create_group(
 	int tag,
 	MPI_Comm* newcomm)
 )
+```
 
-## Example of Using Groups
+## Example of using groups
 
 Let's look at a quick example of what using groups looks like. Here, we'll use another new function which allows you to pick specific ranks in a group and construct a new group containing only those ranks, `MPI_Group_incl`.
 
@@ -185,8 +187,9 @@ MPI_Comm prime_comm;
 MPI_Comm_create_group(MPI_COMM_WORLD, prime_group, 0, &prime_comm);
 
 int prime_rank = -1, prime_size = -1;
-// If this rank isn't in the new communicator, it will be MPI_COMM_NULL
-// Using MPI_COMM_NULL for MPI_Comm_rank or MPI_Comm_size is erroneous
+// If this rank isn't in the new communicator, it will be
+// MPI_COMM_NULL. Using MPI_COMM_NULL for MPI_Comm_rank or
+// MPI_Comm_size is erroneous
 if (MPI_COMM_NULL != prime_comm) {
 	MPI_Comm_rank(prime_comm, &prime_rank);
 	MPI_Comm_size(prime_comm, &prime_size);

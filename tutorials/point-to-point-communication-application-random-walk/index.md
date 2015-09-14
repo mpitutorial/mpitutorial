@@ -281,7 +281,7 @@ The output continues until processes finish all sending and receiving of all wal
 ## So what's next?
 If you have made it through this entire application and feel comfortable, then good! This application is quite advanced for a first real application.
 
-Next, we will start learning about *collective* communication in MPI. We will start off by going over [MPI Broadcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/). For all beginner lessons, go to the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/).
+Next, we will start learning about *collective* communication in MPI. We will start off by going over [MPI Broadcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/). For all lessons, go to the [MPI tutorials]({{ site.baseurl }}/tutorials/).
 
 Also, at the beginning, I told you that the concepts of this program are applicable to many parallel programs. I don't want to leave you hanging, so I have included some additional reading material below for anyone that wishes to learn more. Enjoy :-)
 

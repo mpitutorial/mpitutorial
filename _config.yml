@@ -26,6 +26,6 @@ github:
   repo:           https://github.com/wesleykendall/mpitutorial
   code:           https://github.com/wesleykendall/mpitutorial/tree/gh-pages
 pages_list:      
-  Beginner Tutorial:    'beginner-mpi-tutorial'
+  Tutorials:    'tutorials'
   Recommended Books:    'recommended-books'
   About:                'about'

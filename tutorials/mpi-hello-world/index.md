@@ -170,6 +170,6 @@ Hello world from processor cetus1, rank 1 out of 4 processors
 ```
 
 ## Up next
-Now that you have a basic understanding of how an MPI program is executed, it is now time to learn fundamental point-to-point communication routines. In the next lesson, I cover [basic sending and receiving routines in MPI]({{ site.baseurl }}/tutorials/mpi-send-and-receive/). Feel free to also examine the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) for a complete reference of all of the beginning MPI lessons.
+Now that you have a basic understanding of how an MPI program is executed, it is now time to learn fundamental point-to-point communication routines. In the next lesson, I cover [basic sending and receiving routines in MPI]({{ site.baseurl }}/tutorials/mpi-send-and-receive/). Feel free to also examine the [MPI tutorials]({{ site.baseurl }}/tutorials/) for a complete reference of all of the MPI lessons.
 
 Having trouble? Confused? Feel free to leave a comment below and perhaps I or another reader can be of help.

@@ -62,7 +62,7 @@ The `MPI_Send` and `MPI_Recv` functions utilize MPI Datatypes as a means to spec
 | MPI_LONG_DOUBLE | long double | 
 | MPI_BYTE | char | 
 
-For now, we will only make use of these datatypes in the beginner MPI tutorial. Once we have covered enough basics, you will learn how to create your own MPI datatypes for characterizing more complex types of messages.
+For now, we will only make use of these datatypes in the following MPI tutorials in the beginner category. Once we have covered enough basics, you will learn how to create your own MPI datatypes for characterizing more complex types of messages.
 
 ## MPI send / recv program
 As stated in the beginning, the code for this is available on [Github]({{ site.github.repo }}), and this tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
@@ -197,6 +197,6 @@ As we can see, process zero first sends a value of negative one to process one. 
 
 ## Up next
 
-Now that you have a basic understanding of `MPI_Send` and `MPI_Recv`, it is now time to go a little bit deeper into these functions. In the next lesson, I cover [how to probe and dynamically receive messages]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/). Feel free to also examine the [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) for a complete reference of all of the beginning MPI lessons.
+Now that you have a basic understanding of `MPI_Send` and `MPI_Recv`, it is now time to go a little bit deeper into these functions. In the next lesson, I cover [how to probe and dynamically receive messages]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/). Feel free to also examine the [MPI tutorials]({{ site.baseurl }}/tutorials/) for a complete reference of all of the MPI lessons.
 
 Having trouble? Confused? Feel free to leave a comment below and perhaps I or another reader can be of help.

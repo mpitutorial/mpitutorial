@@ -1,11 +1,12 @@
 ---
 layout: page
-title: Beginner MPI Tutorial
+title: Tutorials
+redirect_from: '/beginner-mpi-tutorial/'
 ---
 
-Welcome to the MPI tutorial for beginners! In this tutorial, you will learn the basic concepts of MPI. Below are the available lessons, each of which contain example code.
+Welcome to the MPI tutorials! In these tutorials, you will learn a wide array of concepts about MPI. Below are the available lessons, each of which contain example code.
 
-This beginner tutorial assumes that the reader has a basic knowledge of C, some C++, and Linux.
+The tutorials assume that the reader has a basic knowledge of C, some C++, and Linux.
 
 ## Introduction and MPI installation
 * [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/)
@@ -27,5 +28,5 @@ This beginner tutorial assumes that the reader has a basic knowledge of C, some 
 ## Advanced collective communication
 * [Using MPI_Reduce and MPI_Allreduce for parallel number reduction]({{ site.baseurl }}/tutorials/mpi-reduce-and-allreduce/)
 
-## Groups and Communicators
-* [Introduction to Groups and Communicators]({{ site.baseurl }}/tutorials/introduction-to-groups-and-communicators/)
+## Groups and communicators
+* [Introduction to groups and communicators]({{ site.baseurl }}/tutorials/introduction-to-groups-and-communicators/)

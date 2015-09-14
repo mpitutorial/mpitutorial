@@ -163,7 +163,7 @@ $ cat /etc/fstab
 master:/home/mpiuser/cloud /home/mpiuser/cloud nfs
 ```
 
-## Step 5: Running MPI Programs
+## Step 5: Running MPI programs
 
 For consideration sake, let's just take a sample program, that comes along with MPICH2 installation package ```mpich2/examples/cpi```. We shall take this executable and try to run it parallely.
 
@@ -202,7 +202,7 @@ $ mpirun -np 5 --hostfile mpi_file ./cpi
 
 This should spin up your program in all of the machines that your **master** is connected to.
 
-##Common errors and tips
+## Common errors and tips
 
 * Make sure all the machines you are trying to run the executable on, has the same version of MPI. Recommended is [MPICH2](http://www.mpich.org/downloads/).
 * The ```hosts``` file of ```master``` should contain the local network IP address entries of ```master``` and all of the slave nodes. For each of the slave, you need to have the IP address entry of ```master``` and the corresponding slave node.
@@ -258,7 +258,7 @@ $ mpirun -np 10 --hosts slave1 ./cpi
 
 ## So, what's next?
 
-Exciting isn't it, for having built a cluster to run your code? You now need to know the specifics of writing a program that can run parallely. Best place to start off would be the lesson [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/). Or if you want to replicate the same using Amazon EC2 instances, I suggest you have a look at [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). For all the other beginner lessons, you may go to [beginner MPI tutorial]({{ site.baseurl }}/beginner-mpi-tutorial/) page.
+Exciting isn't it, for having built a cluster to run your code? You now need to know the specifics of writing a program that can run parallely. Best place to start off would be the lesson [MPI hello world lesson]({{ site.baseurl }}/tutorials/mpi-hello-world/). Or if you want to replicate the same using Amazon EC2 instances, I suggest you have a look at [building and running your own cluster on Amazon EC2]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/). For all the other lessons, you may go to the [MPI tutorials]({{ site.baseurl }}/tutorials/) page.
 
 Should you have any issues in setting up your local cluster, please don't hesitate to comment below so we can try to sort it out.
 
