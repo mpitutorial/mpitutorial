@@ -9,7 +9,7 @@ redirect_from: '/dynamic-receiving-with-mpi-probe-and-mpi-status/'
 
 In the [previous lesson]({{ site.baseurl }}/tutorials/mpi-send-and-receive/), I discussed how to use MPI_Send and MPI_Recv to perform standard point-to-point communication. I only covered how to send messages in which the length of the message was known beforehand. Although it is possible to send the length of the message as a separate send / recv operation, MPI natively supports dynamic messages with just a few additional function calls. I will be going over how to use these functions in this lesson.
 
-> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code).
+> **Note** - All of the code for this site is on [GitHub]({{ site.github.repo }}). This tutorial's code is under [tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code).
 
 ## The MPI_Status structure
 As covered in the [previous lesson]({{ site.baseurl }}/tutorials/mpi-send-and-receive/), the `MPI_Recv` operation takes the address of an `MPI_Status` structure as an argument (which can be ignored with `MPI_STATUS_IGNORE`). If we pass an `MPI_Status` structure to the `MPI_Recv` function, it will be populated with additional information about the receive operation after it completes. The three primary pieces of information include:
