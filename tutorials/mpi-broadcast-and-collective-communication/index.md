@@ -9,7 +9,7 @@ redirect_from: '/mpi-broadcast-and-collective-communication/'
 
 So far in the [MPI tutorials]({{ site.baseurl }}/tutorials/), we have examined point-to-point communication, which is communication between two processes. This lesson is the start of the *collective communication* section. Collective communication is a method of communication which involves participation of **all** processes in a communicator. In this lesson, we will discuss the implications of collective communication and go over a standard collective routine - broadcasting.
 
-> **Note** - All of the code for this site is on [Gitub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-broadcast-and-collective-communication/code]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code).
+> **Note** - All of the code for this site is on [GitHub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-broadcast-and-collective-communication/code]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code).
 
 ## Collective communication and synchronization points
 One of the things to remember about collective communication is that it implies a *synchronization point* among processes. This means that all processes must reach a point in their code before they can all begin executing again.
