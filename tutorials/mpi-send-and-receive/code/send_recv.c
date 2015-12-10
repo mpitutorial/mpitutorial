@@ -5,7 +5,7 @@
 // either provide a link to www.mpitutorial.com or keep this header intact.
 //
 // MPI_Send, MPI_Recv example. Communicates the number -1 from process 0
-// to processe 1.
+// to process 1.
 //
 #include <mpi.h>
 #include <stdio.h>

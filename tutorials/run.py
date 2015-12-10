@@ -37,8 +37,8 @@ programs = {
     'reduce_stddev': ('mpi-reduce-and-allreduce', 4, ['100']),
 
     # From the groups-and-communicators tutorial
-    'split': ('introduction-to-groups-and-communciators', 16),
-    'groups': ('introduction-to-groups-and-communciators', 16)
+    'split': ('introduction-to-groups-and-communicators', 16),
+    'groups': ('introduction-to-groups-and-communicators', 16)
 }
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
