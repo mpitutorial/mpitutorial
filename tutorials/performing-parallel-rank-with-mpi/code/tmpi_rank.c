@@ -2,7 +2,7 @@
 // Copyright 2013 www.mpitutorial.com
 // This code is provided freely with the tutorials on mpitutorial.com. Feel
 // free to modify it for your own use. Any distribution of the code must
-// either provide a link to www.mpitutorial.com or keep this header in tact.
+// either provide a link to www.mpitutorial.com or keep this header intact.
 //
 // Code that performs a parallel rank
 //
@@ -12,7 +12,7 @@
 
 // Holds the communicator rank of a process along with the corresponding number.
 // This struct is used for sorting the values and keeping the owning process information
-// in tact.
+// intact.
 typedef struct {
   int comm_rank;
   union {
@@ -77,7 +77,7 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count, MPI_Datatype d
 
   // Convert the gathered number array to an array of CommRankNumbers. This allows us to
   // sort the numbers and also keep the information of the processes that own the numbers
-  // in tact.
+  // intact.
   CommRankNumber *comm_rank_numbers = malloc(gathered_number_count * sizeof(CommRankNumber));
   int i;
   for (i = 0; i < gathered_number_count; i++) {

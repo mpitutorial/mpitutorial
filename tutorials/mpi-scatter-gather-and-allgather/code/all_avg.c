@@ -2,7 +2,7 @@
 // Copyright 2012 www.mpitutorial.com
 // This code is provided freely with the tutorials on mpitutorial.com. Feel
 // free to modify it for your own use. Any distribution of the code must
-// either provide a link to www.mpitutorial.com or keep this header in tact.
+// either provide a link to www.mpitutorial.com or keep this header intact.
 //
 // Program that computes the average of an array of elements in parallel using
 // MPI_Scatter and MPI_Allgather
@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <mpi.h>
 #include <assert.h>
-  
+
 // Creates an array of random numbers. Each number has a value from 0 - 1
 float *create_rand_nums(int num_elements) {
   float *rand_nums = (float *)malloc(sizeof(float) * num_elements);
@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
 
   // Compute the average of your subset
   float sub_avg = compute_avg(sub_rand_nums, num_elements_per_proc);
- 
+
   // Gather all partial averages down to all the processes
   float *sub_avgs = (float *)malloc(sizeof(float) * world_size);
   assert(sub_avgs != NULL);
@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
   }
   free(sub_avgs);
   free(sub_rand_nums);
- 
+
   MPI_Barrier(MPI_COMM_WORLD);
   MPI_Finalize();
 }

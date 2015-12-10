@@ -77,7 +77,7 @@ In order to facilitate attaching the owning process to the numbers, we create a 
 // Holds the communicator rank of a process along with the
 // corresponding number. This struct is used for sorting
 // the values and keeping the owning process information
-// in tact.
+// intact.
 typedef struct {
   int comm_rank;
   union {
@@ -102,7 +102,7 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count,
 
   // Convert the gathered number array to an array of CommRankNumbers.
   // This allows us to sort the numbers and also keep the information
-  // of the processes that own the numbers in tact.
+  // of the processes that own the numbers intact.
   CommRankNumber *comm_rank_numbers = malloc(
     gathered_number_count * sizeof(CommRankNumber));
   int i;
@@ -145,7 +145,7 @@ Now that we have our two primary functions, we can put them all together into ou
 
 ```cpp
 // Gets the rank of the recv_data, which is of type datatype. The rank
-// is returned in send_data and is of type datatype.  
+// is returned in send_data and is of type datatype.
 int TMPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype,
              MPI_Comm comm) {
   // Check base cases first - Only support MPI_INT and MPI_FLOAT for

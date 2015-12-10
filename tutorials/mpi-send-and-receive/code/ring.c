@@ -2,7 +2,7 @@
 // Copyright 2011 www.mpitutorial.com
 // This code is provided freely with the tutorials on mpitutorial.com. Feel
 // free to modify it for your own use. Any distribution of the code must
-// either provide a link to www.mpitutorial.com or keep this header in tact.
+// either provide a link to www.mpitutorial.com or keep this header intact.
 //
 // Example using MPI_Send and MPI_Recv to pass a message around in a ring.
 //
