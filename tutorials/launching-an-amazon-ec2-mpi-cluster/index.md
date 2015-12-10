@@ -133,7 +133,7 @@ starcluster sshmaster mpicluster
 
 Once you are logged into the cluster, your current working directory will be `/root`. Change into the `/home/ubuntu` or `/home/sgeadmin` areas to compile code. These directories are mounted on a network file system and are viewable by all nodes in your cluster.
 
-While you are in one of the mounted home directories, go ahead and check out the MPI tutorial code from its Github repository. The code is used by every lesson on this site:
+While you are in one of the mounted home directories, go ahead and check out the MPI tutorial code from its GitHub repository. The code is used by every lesson on this site:
 
 ```
 git clone git://github.com/wesleykendall/mpitutorial.git

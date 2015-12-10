@@ -9,7 +9,7 @@ redirect_from: '/introduction-to-groups-and-communicators/'
 
 In all previous tutorials, we have used the communicator `MPI_COMM_WORLD`. For simple applications, this is sufficient as we have a relatively small number of processes and we usually either want to talk to one of them at a time or all of them at a time. When applications start to get bigger, this becomes less practical and we may only want to talk to a few processes at once. In this lesson, we show how to create new communicators to communicate with a subset of the original group of processes at once.
 
-> **Note** - All of the code for this site is on [Github]({{ site.github.repo }}). This tutorial's code is under [tutorials/introduction-to-groups-and-communicators/code]({{ site.github.code }}/tutorials/introduction-to-groups-and-communicators/code).
+> **Note** - All of the code for this site is on [GitHub]({{ site.github.repo }}). This tutorial's code is under [tutorials/introduction-to-groups-and-communicators/code]({{ site.github.code }}/tutorials/introduction-to-groups-and-communicators/code).
 
 ## Overview of communicators
 As we have seen when learning about collective routines, MPI allows you to talk to all processes in a communicator at once to do things like distribute data from one process to many processes using `MPI_Scatter` or perform a data reduction using `MPI_Reduce`. However, up to now, we have only used the default communicator, `MPI_COMM_WORLD`.
