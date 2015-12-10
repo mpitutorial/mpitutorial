@@ -9,6 +9,7 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <mpi.h>
 #include <assert.h>
 
