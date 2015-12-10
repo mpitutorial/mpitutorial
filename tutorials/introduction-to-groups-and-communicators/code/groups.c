@@ -47,7 +47,10 @@ int main(int argc, char **argv) {
 
 	MPI_Group_free(&world_group);
 	MPI_Group_free(&prime_group);
-	MPI_Comm_free(&prime_comm);
+
+	if (MPI_COMM_NULL != prime_comm) {
+		MPI_Comm_free(&prime_comm);
+	}
 
 	MPI_Finalize();
 }
