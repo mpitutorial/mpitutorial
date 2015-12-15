@@ -7,14 +7,14 @@ tags: MPI_Recv, MPI_Send
 redirect_from: '/mpi-send-and-receive/'
 ---
 
-Sending and receiving are the two foundational concepts of MPI. Almost every single function in MPI can be implemented with basic send and receive calls. In this lesson, I will discuss how to use MPI's blocking sending and receiving functions, and I will also overview other basic concepts associated with transmitting data using MPI. 
+Sending and receiving are the two foundational concepts of MPI. Almost every single function in MPI can be implemented with basic send and receive calls. In this lesson, I will discuss how to use MPI's blocking sending and receiving functions, and I will also overview other basic concepts associated with transmitting data using MPI.
 
-> **Note** - All of the code for this site is on [Github]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
+> **Note** - All of the code for this site is on [GitHub]({{ site.github.repo }}). This tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
 
 ## Overview of sending and receiving with MPI
 MPI's send and receive calls operate in the following manner. First, process *A* decides a message needs to be sent to process *B*. Process A then packs up all of its necessary data into a buffer for process B. These buffers are often referred to as *envelopes* since the data is being packed into a single message before transmission (similar to how letters are packed into envelopes before transmission to the post office). After the data is packed into a buffer, the communication device (which is often a network) is responsible for routing the message to the proper location. The location of the message is defined by the process's rank.
 
-Even though the message is routed to B, process B still has to acknowledge that it wants to receive A's data. Once it does this, the data has been transmitted. Process A is acknowledged that the data has been transmitted and may go back to work. 
+Even though the message is routed to B, process B still has to acknowledge that it wants to receive A's data. Once it does this, the data has been transmitted. Process A is acknowledged that the data has been transmitted and may go back to work.
 
 Sometimes there are cases when A might have to send many different types of messages to B. Instead of B having to go through extra measures to differentiate all these messages, MPI allows senders and receivers to also specify message IDs with the message (known as *tags*). When process B only requests a message with a certain tag number, messages with different tags will be buffered by the network until B is ready for them.
 
@@ -44,28 +44,28 @@ MPI_Recv(
 Although this might seem like a mouthful when reading all of the arguments, they become easier to remember since almost every MPI call uses similar syntax. The first argument is the data buffer. The second and third arguments describe the count and type of elements that reside in the buffer. `MPI_Send` sends the exact count of elements, and `MPI_Recv` will receive **at most** the count of elements (more on this in the next lesson). The fourth and fifth arguments specify the rank of the sending/receiving process and the tag of the message. The sixth argument specifies the communicator and the last argument (for `MPI_Recv` only) provides information about the received message.
 
 ## Elementary MPI datatypes
-The `MPI_Send` and `MPI_Recv` functions utilize MPI Datatypes as a means to specify the structure of a message at a higher level. For example, if the process wishes to send one integer to another, it would use a count of one and a datatype of `MPI_INT`. The other elementary MPI datatypes are listed below with their equivalent C datatypes. 
+The `MPI_Send` and `MPI_Recv` functions utilize MPI Datatypes as a means to specify the structure of a message at a higher level. For example, if the process wishes to send one integer to another, it would use a count of one and a datatype of `MPI_INT`. The other elementary MPI datatypes are listed below with their equivalent C datatypes.
 
 | MPI datatype | C equivalent |
 | --- | --- |
 | MPI_SHORT | short int |
-| MPI_INT | int | 
-| MPI_LONG | long int | 
-| MPI_LONG_LONG | long long int | 
-| MPI_UNSIGNED_CHAR | unsigned char | 
-| MPI_UNSIGNED_SHORT | unsigned short int | 
-| MPI_UNSIGNED | unsigned int | 
-| MPI_UNSIGNED_LONG | unsigned long int | 
-| MPI_UNSIGNED_LONG_LONG | unsigned long long int | 
-| MPI_FLOAT | float | 
-| MPI_DOUBLE | double | 
-| MPI_LONG_DOUBLE | long double | 
-| MPI_BYTE | char | 
+| MPI_INT | int |
+| MPI_LONG | long int |
+| MPI_LONG_LONG | long long int |
+| MPI_UNSIGNED_CHAR | unsigned char |
+| MPI_UNSIGNED_SHORT | unsigned short int |
+| MPI_UNSIGNED | unsigned int |
+| MPI_UNSIGNED_LONG | unsigned long int |
+| MPI_UNSIGNED_LONG_LONG | unsigned long long int |
+| MPI_FLOAT | float |
+| MPI_DOUBLE | double |
+| MPI_LONG_DOUBLE | long double |
+| MPI_BYTE | char |
 
 For now, we will only make use of these datatypes in the following MPI tutorials in the beginner category. Once we have covered enough basics, you will learn how to create your own MPI datatypes for characterizing more complex types of messages.
 
 ## MPI send / recv program
-As stated in the beginning, the code for this is available on [Github]({{ site.github.repo }}), and this tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
+As stated in the beginning, the code for this is available on [GitHub]({{ site.github.repo }}), and this tutorial's code is under [tutorials/mpi-send-and-receive/code]({{ site.github.code }}/tutorials/mpi-send-and-receive/code).
 
 The first example in the tutorial code is in [send_recv.c]({{ site.github.code }}/tutorials/mpi-send-and-receive/code/send_recv.c). Some of the major parts of the program are shown below.
 
@@ -91,7 +91,7 @@ if (world_rank == 0) {
 `MPI_Comm_rank` and `MPI_Comm_size` are first used to determine the world size along with the rank of the process. Then process zero initializes a number to the value of negative one and sends this value to process one. As you can see in the `else if` statement, process one is calling `MPI_Recv` to receive the number. It also prints off the received value.
 Since we are sending and receiving exactly one integer, each process requests that one `MPI_INT` be sent/received. Each process also uses a tag number of zero to identify the message. The processes could have also used the predefined constant `MPI_ANY_TAG` for the tag number since only one type of message was being transmitted.
 
-You can run the example code by checking it out on [Github]({{ site.github.repo }}) and using the `run.py` script.
+You can run the example code by checking it out on [GitHub]({{ site.github.repo }}) and using the `run.py` script.
 
 ```
 >>> git clone {{ site.github.repo }}
@@ -119,7 +119,7 @@ while (ping_pong_count < PING_PONG_LIMIT) {
                "%d to %d\n", world_rank, ping_pong_count,
                partner_rank);
     } else {
-        MPI_Recv(&ping_pong_count, 1, MPI_INT, partner_rank, 0, 
+        MPI_Recv(&ping_pong_count, 1, MPI_INT, partner_rank, 0,
                  MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("%d received ping_pong_count %d from %d\n",
                world_rank, ping_pong_count, partner_rank);
@@ -153,7 +153,7 @@ This example is meant to be executed with only two processes. The processes firs
 1 received ping_pong_count 10 from 0
 ```
 
-The output of the programs on other machines will likely be different because of process scheduling. However, as you can see, process zero and one are both taking turns sending and receiving the ping pong counter to each other. 
+The output of the programs on other machines will likely be different because of process scheduling. However, as you can see, process zero and one are both taking turns sending and receiving the ping pong counter to each other.
 
 ## Ring Program
 I have included one more example of `MPI_Send` and `MPI_Recv` using more than two processes. In this example, a value is passed around by all processes in a ring-like fashion. Take a look at [ring.c]({{ site.github.code }}/tutorials/mpi-send-and-receive/code/ring.c). The major portion of the code looks like this.

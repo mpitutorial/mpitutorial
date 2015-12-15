@@ -2,7 +2,7 @@
 // Copyright 2014 www.mpitutorial.com
 // This code is provided freely with the tutorials on mpitutorial.com. Feel
 // free to modify it for your own use. Any distribution of the code must
-// either provide a link to www.mpitutorial.com or keep this header in tact.
+// either provide a link to www.mpitutorial.com or keep this header intact.
 //
 // A program that bins random numbers using MPI_Alltoallv.
 //
@@ -58,7 +58,7 @@ int *get_send_amounts_per_proc(float *rand_nums, int numbers_per_proc,
   for (i = 0; i < numbers_per_proc; i++) {
     int owning_rank = which_process_owns_this_number(rand_nums[i], world_size);
     send_amounts_per_proc[owning_rank]++;
-  } 
+  }
 
   return send_amounts_per_proc;
 }
@@ -157,7 +157,7 @@ int main(int argc, char** argv) {
   // when they are binned from this process.
   int *send_amounts_per_proc = get_send_amounts_per_proc(rand_nums,
                                                          numbers_per_proc,
-                                                         world_size); 
+                                                         world_size);
 
   // Determine how many numbers you will receive from each process. This
   // information is needed to set up the binning call.
@@ -178,7 +178,7 @@ int main(int argc, char** argv) {
   // are ordered by bin. For simplicity, we are simply going to sort the random
   // numbers, however, this could be optimized since the numbers don't need to be
   // fully sorted.
-  qsort(rand_nums, numbers_per_proc, sizeof(float), &compare_float); 
+  qsort(rand_nums, numbers_per_proc, sizeof(float), &compare_float);
 
   // Perform the binning step with MPI_Alltoallv. This will send all of the numbers in
   // the rand_nums array to their proper bin. Each process will only contain numbers
