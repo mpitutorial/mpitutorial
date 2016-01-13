@@ -86,16 +86,6 @@ Finally, we free the communicator with `MPI_Comm_free`. This seems like it's not
 
 While `MPI_Comm_split` is the most common communicator creation function, there are many others. `MPI_Comm_dup` is the most basic and creates a duplicate of a communicator. It may seem odd that there would exist a function that only creates a copy, but this is very useful for applications which use libraries to perform specialized functions, such as mathematical libraries. In these kinds of applications, it's important that user codes and library codes do not interfere with each other. To avoid this, the first thing every application should do is to create a duplicate of `MPI_COMM_WORLD`, which will avoid the problem of other libraries also using `MPI_COMM_WORLD`. The libraries themselves should also make duplicates  of `MPI_COMM_WORLD` to avoid the same problem.
 
-Another function is `MPI_Comm_create`. At first glance, this function looks very similar to `MPI_Comm_create_group`. Its signature is almost identical:
-
-```cpp
-MPI_Comm_create(
-	MPI_Comm comm,
-	MPI_Group group,
-    MPI_Comm* newcomm)
-```
-The key difference however (besides the lack of the `tag` argument), is that `MPI_Comm_create_group` is only collective over the group of processes contained in `group`, where `MPI_Comm_create` is collective over every process in `comm`. This is an important distinction as the size of communicators grows very large. If trying to create a subset of `MPI_COMM_WORLD` when running with 1,000,000 processes, it's important to perform the operation with as few processes as possible as the collective becomes very expensive at large sizes.
-
 There are other more advanced features of communicators that we do not cover here, such as the differences between inter-communicators and intra-communicators and other advanced communicator creation functions. These are only used in very specific kinds of applications which may be covered in a future tutorial.
 
 ## Overview of groups
@@ -150,6 +140,16 @@ MPI_Comm_create_group(
 	MPI_Comm* newcomm)
 )
 ```
+
+Another function is `MPI_Comm_create`. At first glance, this function looks very similar to `MPI_Comm_create_group`. Its signature is almost identical:
+
+```cpp
+MPI_Comm_create(
+	MPI_Comm comm,
+	MPI_Group group,
+    MPI_Comm* newcomm)
+```
+The key difference however (besides the lack of the `tag` argument), is that `MPI_Comm_create_group` is only collective over the group of processes contained in `group`, where `MPI_Comm_create` is collective over every process in `comm`. This is an important distinction as the size of communicators grows very large. If trying to create a subset of `MPI_COMM_WORLD` when running with 1,000,000 processes, it's important to perform the operation with as few processes as possible as the collective becomes very expensive at large sizes.
 
 ## Example of using groups
 
