@@ -55,7 +55,7 @@ MPI_Bcast(
 Although the root process and receiver processes do different jobs, they all call the same `MPI_Bcast` function. When the root process (in our example, it was process zero) calls `MPI_Bcast`, the `data` variable will be sent to all other processes. When all of the receiver processes call `MPI_Bcast`, the `data` variable will be filled in with the data from the root process.
 
 ## Broadcasting with MPI_Send and MPI_Recv
-At first, it might seem that `MPI_Bcast` is just a simple wrapper around `MPI_Send` and `MPI_Recv`. In fact, we can make this wrapper function right now. Our function, called `my_bcast` is located in [bcast.c]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code/bcast.c). It takes the same arguments as `MPI_Bcast` and looks like this:
+At first, it might seem that `MPI_Bcast` is just a simple wrapper around `MPI_Send` and `MPI_Recv`. In fact, we can make this wrapper function right now. Our function, called `my_bcast` is located in [bcast.c]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code/my_bcast.c). It takes the same arguments as `MPI_Bcast` and looks like this:
 
 ```cpp
 void my_bcast(void* data, int count, MPI_Datatype datatype, int root,
