@@ -78,5 +78,6 @@ int main(int argc, char** argv) {
     printf("Avg MPI_Bcast time = %lf\n", total_mpi_bcast_time / num_trials);
   }
 
+  free(data);
   MPI_Finalize();
 }
