@@ -245,7 +245,7 @@ $ mpirun -np 10 --hosts master ./cpi
 So can this be. The following will also run perfectly.
 
 ```bash
-$ mpirun - np 10 --hosts master,slave1,slave2 ./cpi
+$ mpirun -np 10 --hosts master,slave1,slave2 ./cpi
 # To run the program on master and slave nodes.
 ```
 
