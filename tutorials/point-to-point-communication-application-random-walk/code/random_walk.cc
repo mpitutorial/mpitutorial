@@ -37,7 +37,7 @@ void decompose_domain(int domain_size, int world_rank,
 }
 
 void initialize_walkers(int num_walkers_per_proc, int max_walk_size,
-                        int subdomain_start, int subdomain_size,
+                        int subdomain_start,
                         vector<Walker>* incoming_walkers) {
   Walker walker;
   for (int i = 0; i < num_walkers_per_proc; i++) {
@@ -126,7 +126,7 @@ int main(int argc, char** argv) {
                    &subdomain_start, &subdomain_size);
   // Initialize walkers in your subdomain
   initialize_walkers(num_walkers_per_proc, max_walk_size, subdomain_start,
-                     subdomain_size, &incoming_walkers);
+                     &incoming_walkers);
 
   cout << "Process " << world_rank << " initiated " << num_walkers_per_proc
        << " walkers in subdomain " << subdomain_start << " - "
