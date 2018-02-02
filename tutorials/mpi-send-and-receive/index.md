@@ -141,16 +141,16 @@ This example is meant to be executed with only two processes. The processes firs
 0 received ping_pong_count 8 from 1
 0 sent and incremented ping_pong_count 9 to 1
 0 received ping_pong_count 10 from 1
-1 sent and incremented ping_pong_count 1 to 0
-1 received ping_pong_count 2 from 0
-1 sent and incremented ping_pong_count 3 to 0
-1 received ping_pong_count 4 from 0
-1 sent and incremented ping_pong_count 5 to 0
-1 received ping_pong_count 6 from 0
-1 sent and incremented ping_pong_count 7 to 0
-1 received ping_pong_count 8 from 0
-1 sent and incremented ping_pong_count 9 to 0
-1 received ping_pong_count 10 from 0
+1 received ping_pong_count 1 from 0
+1 sent and incremented ping_pong_count 2 to 0
+1 received ping_pong_count 3 from 0
+1 sent and incremented ping_pong_count 4 to 0
+1 received ping_pong_count 5 from 0
+1 sent and incremented ping_pong_count 6 to 0
+1 received ping_pong_count 7 from 0
+1 sent and incremented ping_pong_count 8 to 0
+1 received ping_pong_count 9 from 0
+1 sent and incremented ping_pong_count 10 to 0
 ```
 
 The output of the programs on other machines will likely be different because of process scheduling. However, as you can see, process zero and one are both taking turns sending and receiving the ping pong counter to each other.
