@@ -4,10 +4,10 @@ title: MPI Tutorial Introduction
 author: Wes Kendall
 categories: Beginner MPI
 tags:
+translations: zh_cn
+folder: tutorials/mpi-introduction
 redirect_from: '/mpi-introduction/'
 ---
-
-Update: You can also read this article in [普通话]({{ site.baseurl }}/tutorials/mpi-introduction/zh_cn)
 
 Parallel computing is now as much a part of everyone's life as personal computers, smart phones, and other technologies are. You obviously understand this, because you have embarked upon the MPI Tutorial website. Whether you are taking a class about parallel programming, learning for work, or simply learning it because it's fun, you have chosen to learn a skill that will remain incredibly valuable for years to come. In my opinion, you have also taken the right path to expanding your knowledge about parallel programming - by learning the Message Passing Interface (MPI). Although MPI is lower level than most parallel programming libraries (for example, Hadoop), it is a great foundation on which to build your knowledge of parallel programming.
 
