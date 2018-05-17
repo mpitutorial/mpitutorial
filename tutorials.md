@@ -9,7 +9,7 @@ Welcome to the MPI tutorials! In these tutorials, you will learn a wide array of
 The tutorials assume that the reader has a basic knowledge of C, some C++, and Linux.
 
 ## Introduction and MPI installation
-* [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/)
+* [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/) ([中文版]({{ site.baseurl }}/tutorials/mpi-introduction/zh_cn))
 * [Installing MPICH2 on a single machine]({{ site.baseurl }}/tutorials/installing-mpich2/)
 * [Launching an Amazon EC2 MPI cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
 * [Running an MPI cluster within a LAN]({{ site.baseurl }}/tutorials/running-an-mpi-cluster-within-a-lan/)

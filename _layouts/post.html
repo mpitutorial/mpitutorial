@@ -2,9 +2,32 @@
 layout: default
 ---
 
+<script>
+    function translations(list) {
+        var languages, i, output = "";
+
+        languages = list.split(",");
+
+        for (i = 0; i < languages.length; i++) {
+            if (i != 0) {
+                output += ", ";
+            }
+
+            if (languages[i] == "zh_cn") {
+                output += "<a href=\"{{ site.baseurl }}/{{ page.folder }}/zh_cn\">普通话</a>";
+            } else if (languages[i] == "es") {
+                output += "<a href=\"{{ site.baseurl }}/{{ page.folder }}/es\">Español</a>";
+            }
+        }
+
+        return output;
+    }
+</script>
+
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <i>Author: {{ page.author }}</i>
+  <i>Author: {{ page.author }}</i><br>
+  Translations: <script> document.write(translations("{{ page.translations }}")) </script>
   <hr />
 
   {{ content }}
