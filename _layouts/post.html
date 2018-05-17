@@ -4,17 +4,19 @@ layout: default
 
 <script>
     function translations(list) {
-        var languages, i, output = "";
+        // Even list is empty, list.split(",") will produce at least one element..
+        if (list.length === 0) return "";
+        var languages, i, output = "Translations: ";
 
         languages = list.split(",");
 
         for (i = 0; i < languages.length; i++) {
-            if (i != 0) {
+            if (i !== 0) {
                 output += ", ";
             }
 
             if (languages[i] == "zh_cn") {
-                output += "<a href=\"{{ site.baseurl }}/{{ page.folder }}/zh_cn\">普通话</a>";
+                output += "<a href=\"{{ page.url }}/zh_cn\">中文版</a>";
             } else if (languages[i] == "es") {
                 output += "<a href=\"{{ site.baseurl }}/{{ page.folder }}/es\">Español</a>";
             }
@@ -27,7 +29,7 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <i>Author: {{ page.author }}</i><br>
-  Translations: <script> document.write(translations("{{ page.translations }}")) </script>
+  <script> document.write(translations("{{ page.translations }}")) </script>
   <hr />
 
   {{ content }}

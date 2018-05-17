@@ -3,6 +3,7 @@ layout: post
 title: MPI Send and Receive
 author: Wes Kendall
 categories: Beginner MPI
+translations: zh_cn
 tags: MPI_Recv, MPI_Send
 redirect_from: '/mpi-send-and-receive/'
 ---

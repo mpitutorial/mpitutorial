@@ -3,6 +3,7 @@ layout: post
 title: MPI Hello World
 author: Wes Kendall
 categories: Beginner MPI
+translations: zh_cn
 tags: MPI_Comm_rank, MPI_Comm_size, MPI_Finalize, MPI_Get_processor_name, MPI_Init
 redirect_from: '/mpi-hello-world/'
 ---
@@ -36,8 +37,7 @@ int main(int argc, char** argv) {
     MPI_Get_processor_name(processor_name, &name_len);
 
     // Print off a hello world message
-    printf("Hello world from processor %s, rank %d"
-           " out of %d processors\n",
+    printf("Hello world from processor %s, rank %d out of %d processors\n",
            processor_name, world_rank, world_size);
 
     // Finalize the MPI environment.

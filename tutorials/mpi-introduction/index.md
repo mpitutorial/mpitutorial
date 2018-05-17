@@ -5,7 +5,6 @@ author: Wes Kendall
 categories: Beginner MPI
 tags:
 translations: zh_cn
-folder: tutorials/mpi-introduction
 redirect_from: '/mpi-introduction/'
 ---
 
