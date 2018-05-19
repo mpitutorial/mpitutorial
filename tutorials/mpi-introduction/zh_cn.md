@@ -26,7 +26,7 @@ redirect_from: '/mpi-introduction/zh_cn'
 
 
 ![An accurate representation of the first MPI programmers.](../90s_nerd.jpg)
-*An accurate representation of the first MPI programmers.*
+*第一批 MPI 程序员的一个真实写照*
 
 ## MPI 对于消息传递模型的设计
 在开始教程之前，我会先解释一下 MPI 在消息传递模型设计上的一些经典概念。第一个概念是*通讯器*（communicator）。通讯器定义了一组能够互相发消息的进程。在这组进程中，每个进程会被分配一个序号，称作*秩*（rank），进程间显性地通过指定秩来进行通信。
