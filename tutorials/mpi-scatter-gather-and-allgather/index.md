@@ -4,6 +4,7 @@ title: MPI Scatter, Gather, and Allgather
 author: Wes Kendall
 categories: Beginner MPI
 tags: MPI_Gather, MPI_Allgather, MPI_Scatter
+translations: zh_cn
 redirect_from: '/mpi-scatter-gather-and-allgather/'
 ---
 
