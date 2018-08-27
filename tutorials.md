@@ -22,7 +22,7 @@ The tutorials assume that the reader has a basic knowledge of C, some C++, and L
 
 ## Basic collective communication
 * [Collective communication introduction with MPI_Bcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/) ([中文版]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/zh_cn))
-* [Common collectives - MPI_Scatter, MPI_Gather, and MPI_Allgather]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/)
+* [Common collectives - MPI_Scatter, MPI_Gather, and MPI_Allgather]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/) ([中文版]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/zh_cn))
 * [Application example - Performing parallel rank computation with basic collectives]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/)
 
 ## Advanced collective communication

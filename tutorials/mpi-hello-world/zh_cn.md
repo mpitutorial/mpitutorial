@@ -172,6 +172,6 @@ Hello world from processor cetus1, rank 1 out of 4 processors
 ```
 
 ## 接下来
-现在你对 MPI 程序有了基本的了解。接下来可以学习基础的 *点对点* （point-to-point）通信方法了。在下节课里，我讲解了 [MPI 里基础的发送和接收函数]({{ site.baseurl }}/tutorials/mpi-send-and-receive/)。你也可以再去 [MPI tutorials]({{ site.baseurl }}/tutorials/) 首页查看所有其他的教程。
+现在你对 MPI 程序有了基本的了解。接下来可以学习基础的 *点对点* （point-to-point）通信方法了。在下节课里，我讲解了 [MPI 里基础的发送和接收函数]({{ site.baseurl }}/tutorials/mpi-send-and-receive/zh_cn)。你也可以再去 [MPI tutorials]({{ site.baseurl }}/tutorials/) 首页查看所有其他的教程。
 
 有问题或者感到疑惑？欢迎在下面留言，也许我或者其他的读者可以帮到你。
