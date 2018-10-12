@@ -153,5 +153,5 @@ Avg MPI_Bcast time = 0.126835
 试着自己运行一下代码，用更多的进程试试！
 
 ## 结论 / 接下来
-现在对集体通信接口有了更好的理解么？在[接下来的教程]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/zh_cn)里，我会介绍另外的几个常用集体通信接口 - [gathering and scattering]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/zh_cn).
+现在对集体通信接口有了更好的理解么？在[接下来的教程]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/zh_cn)里，我会介绍另外的几个常用集体通信接口 - [gathering and scattering]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/zh_cn).
 需要看所有教程的话，可以去 [MPI 教程]({{ site.baseurl }}/tutorials/) 页面。
