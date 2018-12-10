@@ -155,6 +155,6 @@ As you can see, there is no difference between the two implementations at two pr
 Try running the code yourself and experiment at larger scales!
 
 ## Conclusions / up next
-Feel a little better about collective routines? In the [next MPI tutorial]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/), I go over other essential collective communication routines - [gathering and scattering]({{ site.baseurl }}/mpi-scatter-gather-and-allgather/).
+Feel a little better about collective routines? In the [next MPI tutorial]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/), I go over other essential collective communication routines - [gathering and scattering]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/).
 
 For all lessons, go the the [MPI tutorials]({{ site.baseurl }}/tutorials/) page.
