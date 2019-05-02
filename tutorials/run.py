@@ -19,7 +19,7 @@ programs = {
     'probe': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),
 
     # From the point-to-point-communication-application-random-walk tutorial
-    'random_walk': ('point-to-point-communication-application-random-walk', 2, ['100', '500', '20']),
+    'random_walk': ('point-to-point-communication-application-random-walk', 5, ['100', '500', '20']),
 
     # From the mpi-broadcast-and-collective-communication tutorial
     'my_bcast': ('mpi-broadcast-and-collective-communication', 4),
