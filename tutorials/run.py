@@ -43,7 +43,7 @@ programs = {
 
 program_to_run = sys.argv[1] if len(sys.argv) > 1 else None
 if not program_to_run in programs:
-    print 'Must enter program name to run. Possible programs are: {0}'.format(programs.keys())
+    print('Must enter program name to run. Possible programs are: {0}'.format(programs.keys()))
 else:
     # Try to compile before running
     with open(os.devnull, 'wb') as devnull:
@@ -60,5 +60,5 @@ else:
     if len(programs[program_to_run]) > 2:
         sys_call = '{0} {1}'.format(sys_call, ' '.join(programs[program_to_run][2]))
 
-    print sys_call
+    print(sys_call)
     subprocess.call([sys_call], shell=True)
