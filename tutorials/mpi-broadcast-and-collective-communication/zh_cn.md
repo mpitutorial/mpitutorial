@@ -9,7 +9,7 @@ redirect_from: '/mpi-broadcast-and-collective-communication/zh_cn'
 
 [MPI 教程]({{ site.baseurl }}/tutorials/) 到目前为止，我们讲解了点对点的通信，这种通信只会同时涉及两个不同的进程。这节课是我们 MPI *集体通信*（collective communication）的第一节课。集体通信指的是一个涉及 communicator 里面所有进程的一个方法。这节课我们会解释集体通信以及一个标准的方法 - broadcasting (广播)。
 
-> **注意** - 这个网站的提到的所有代码都在 [GitHub]({{ site.github.repo }}) 上面。这篇教程的代码在 [tutorials/mpi-hello-world/code]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code)。
+> **注意** - 这个网站的提到的所有代码都在 [GitHub]({{ site.github.repo }}) 上面。这篇教程的代码在 [tutorials/mpi-broadcast-and-collective-communication/code]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code)。
 
 ## 集体通信以及同步点
 关于集体通信需要记住的一点是它在进程间引入了同步点的概念。这意味着所有的进程在执行代码的时候必须首先*都*到达一个同步点才能继续执行后面的代码。
