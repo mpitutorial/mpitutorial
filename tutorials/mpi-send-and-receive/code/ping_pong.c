@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
   int world_size;
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-  // We are assuming at least 2 processes for this task
+  // We are assuming 2 processes for this task
   if (world_size != 2) {
     fprintf(stderr, "World size must be two for %s\n", argv[0]);
     MPI_Abort(MPI_COMM_WORLD, 1);
