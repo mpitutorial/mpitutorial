@@ -125,10 +125,10 @@ starcluster start mpicluster
 
 The process to start a cluster can take a bit of time depending on your configuration. After the command is complete, StarCluster will print out the available commands for accessing, stopping, and restarting your cluster.
 
-SSH into the master node of your cluster by typing:
+SSH into the manager node of your cluster by typing:
 
 ```
-starcluster sshmaster mpicluster
+starcluster ssh manager mpicluster
 ```
 
 Once you are logged into the cluster, your current working directory will be `/root`. Change into the `/home/ubuntu` or `/home/sgeadmin` areas to compile code. These directories are mounted on a network file system and are viewable by all nodes in your cluster.
