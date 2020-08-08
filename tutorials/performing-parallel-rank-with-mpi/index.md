@@ -12,7 +12,7 @@ In the [previous lesson]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-all
 > **Note** - All of the code for this site is on [GitHub]({{ site.github.repo }}). This tutorial's code is under [tutorials/performing-parallel-rank-with-mpi/code]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code).
 
 ## Parallel rank - problem overview
-When processes all have a single number stored in their local memory, it can be useful to know what order their number is in respect to the entire set of numbers contained by all processes. For example, a user might be benchmarking the processors in an MPI cluster and want to know the order of how fast each processor relative to the others. This information can be used for scheduling tasks and so on. As you can imagine, it is rather difficult to find out a number's order in the context of all other numbers if they are spread across processes. This problem - the parallel rank problem - is what we are going to solve in this lesson.
+When processes all have a single number stored in their local memory, it can be useful to know what order their number is in respect to the entire set of numbers contained by all processes. For example, a user might be benchmarking the processors in an MPI cluster and want to know the order of how fast each processor is relative to the others. This information can be used for scheduling tasks and so on. As you can imagine, it is rather difficult to find out a number's order in the context of all other numbers if they are spread across processes. This problem - the parallel rank problem - is what we are going to solve in this lesson.
 
 An illustration of the input and output of parallel rank is below:
 
