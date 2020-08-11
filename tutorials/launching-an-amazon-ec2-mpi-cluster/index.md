@@ -136,7 +136,7 @@ Once you are logged into the cluster, your current working directory will be `/r
 While you are in one of the mounted home directories, go ahead and check out the MPI tutorial code from its GitHub repository. The code is used by every lesson on this site:
 
 ```
-git clone git://github.com/wesleykendall/mpitutorial.git
+git clone git://github.com/mpitutorial/mpitutorial.git
 ```
 
 After you feel comfortable with accessing your cluster, log out of it and stop your cluster:
