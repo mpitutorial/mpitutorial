@@ -20,8 +20,8 @@ plugins:
 # Custom vars
 version:          1.0.0
 github:
-  repo:           https://github.com/wesleykendall/mpitutorial
-  code:           https://github.com/wesleykendall/mpitutorial/tree/gh-pages
+  repo:           https://github.com/mpitutorial/mpitutorial
+  code:           https://github.com/mpitutorial/mpitutorial/tree/gh-pages
 pages_list:
   Tutorials:    'tutorials'
   Recommended Books:    'recommended-books'
