@@ -106,7 +106,7 @@ Do you think you can code this? Writing this code is a bit outside of the purpos
 ## Comparison of MPI_Bcast with MPI_Send and MPI_Recv
 The `MPI_Bcast` implementation utilizes a similar tree broadcast algorithm for good network utilization. How does our broadcast function compare to `MPI_Bcast`? We can run `compare_bcast`, an example program included in the lesson code ([compare_bcast.c]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code/compare_bcast.c)). Before looking at the code, let's first go over one of MPI's timing functions - `MPI_Wtime`. `MPI_Wtime` takes no arguments, and it simply returns a floating-point number of seconds since a set time in the past. Similar to C's `time` function, you can call multiple `MPI_Wtime` functions throughout your program and subtract their differences to obtain timing of code segments.
 
-Let's take a look of our code that compares my_bcast to MPI_Bcast.
+Let's take a look at our code that compares my_bcast to MPI_Bcast.
 
 ```cpp
 for (i = 0; i < num_trials; i++) {
