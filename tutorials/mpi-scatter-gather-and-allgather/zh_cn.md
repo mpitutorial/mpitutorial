@@ -31,7 +31,7 @@ MPI_Scatter(
 
 这个函数看起来确实很大很吓人，别怕，我们来详细解释一下。第一个参数，`send_data`，是在根进程上的一个数据数组。第二个和第三个参数，`send_count` 和 `send_datatype` 分别描述了发送给每个进程的数据数量和数据类型。如果 `send_count` 是1，`send_datatype` 是 `MPI_INT`的话，进程0会得到数据里的第一个整数，以此类推。如果`send_count`是2的话，进程0会得到前两个整数，进程1会得到第三个和第四个整数，以此类推。在实践中，一般来说`send_count`会等于数组的长度除以进程的数量。除不尽怎么办？我们会在后面的课程中讲这个问题 :-)。
 
-函数定义里面接收数据的参数跟发送的参数几乎相同。`recv_data` 参数是一个缓存，它里面存了`recv_count`个`recv_datatype`数据类型的元素。最后两个参数，`root` 和 `communicator` 分别指定开始分发数组的了根进程以及对应的communicator。
+函数定义里面接收数据的参数跟发送的参数几乎相同。`recv_data` 参数是一个缓存，它里面存了`recv_count`个`recv_datatype`数据类型的元素。最后两个参数，`root` 和 `communicator` 分别指定开始分发数组的根进程以及对应的communicator。
 
 ## MPI_Gather 的介绍
 `MPI_Gather` 跟 `MPI_Scatter` 是相反的。`MPI_Gather` 从好多进程里面收集数据到一个进程上面而不是从一个进程分发数据到多个进程。这个机制对很多平行算法很有用，比如并行的排序和搜索。下图是这个算法的一个示例。
