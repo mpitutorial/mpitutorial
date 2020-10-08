@@ -81,7 +81,7 @@ void my_bcast(void* data, int count, MPI_Datatype datatype, int root,
 }
 ```
 
-根节点把数据传递给所有其他的节点，其他的节点接收根节点的数据。很简单对吧？如果你从这个 [repo]({{ site.github.code }}) *tutorials* 目录下面运行这个程序的话，输出看起来应该像这样：
+根节点把数据传递给所有其他的节点，其他的节点接收根节点的数据。很简单对吧？如果你从这个 [repo]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code/) *tutorials* 目录下面运行这个程序的话，输出看起来应该像这样：
 
 
 ```

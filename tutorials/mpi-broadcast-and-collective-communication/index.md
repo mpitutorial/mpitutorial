@@ -82,7 +82,7 @@ void my_bcast(void* data, int count, MPI_Datatype datatype, int root,
 }
 ```
 
-The root process sends the data to everyone else while the others receive from the root process. Easy, right? If you run the my_bcast program from the *tutorials* directory of the [repo]({{ site.github.code }}), the output should look similar to this.
+The root process sends the data to everyone else while the others receive from the root process. Easy, right? If you run the my_bcast program from the *tutorials* directory of the [repo]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code/), the output should look similar to this.
 
 
 ```
