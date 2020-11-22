@@ -4,6 +4,7 @@ title: Performing Parallel Rank with MPI
 author: Wes Kendall
 categories: Beginner MPI
 tags: MPI_Type_size
+translations: zh_cn
 redirect_from: '/performing-parallel-rank-with-mpi/'
 ---
 

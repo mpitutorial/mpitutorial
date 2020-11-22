@@ -23,7 +23,7 @@ The tutorials assume that the reader has a basic knowledge of C, some C++, and L
 ## Basic collective communication
 * [Collective communication introduction with MPI_Bcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/) ([中文版]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/zh_cn))
 * [Common collectives - MPI_Scatter, MPI_Gather, and MPI_Allgather]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/) ([中文版]({{ site.baseurl }}/tutorials/mpi-scatter-gather-and-allgather/zh_cn))
-* [Application example - Performing parallel rank computation with basic collectives]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/)
+* [Application example - Performing parallel rank computation with basic collectives]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/) ([中文版]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/zh_cn))
 
 ## Advanced collective communication
 * [Using MPI_Reduce and MPI_Allreduce for parallel number reduction]({{ site.baseurl }}/tutorials/mpi-reduce-and-allreduce/)
