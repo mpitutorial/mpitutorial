@@ -152,6 +152,6 @@ Avg of all elements from proc 2 is 0.479736
 跟你注意到的一样，all_avg.c 和 avg.c 之间的唯一的区别就是 all_avg.c 使用`MPI_Allgather`把平均数在每个进程上都打印出来了。
 
 ## 接下来
-下节课，我会使用`MPI_Gather`和`MPI_Scatter`做一个应用程序来[进行并行等级计算]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/)。
+下节课，我会使用`MPI_Gather`和`MPI_Scatter`做一个应用程序来[计算并行排名]({{ site.baseurl }}/tutorials/performing-parallel-rank-with-mpi/zh_cn)。
 
 你也可以在 [MPI tutorials]({{ site.baseurl }}/tutorials/) 查看所有课程。
