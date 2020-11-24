@@ -4,6 +4,7 @@ title: Installing MPICH2 on a Single Machine
 author: Wes Kendall
 categories: Beginner MPI
 tags:
+translations: zh_cn
 redirect_from: '/installing-mpich2/'
 ---
 
