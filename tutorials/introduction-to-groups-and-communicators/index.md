@@ -57,7 +57,7 @@ printf("WORLD RANK/SIZE: %d/%d \t ROW RANK/SIZE: %d/%d\n",
 MPI_Comm_free(&row_comm);
 ```
 
-The first few lines get the rank and size for the original communicator, `MPI_COMM_WORLD`. The next line does the important operation of determining the "color" of the local process. Remember that color decides to which communicator the process will belong after the split. Next, we see the all important split operation. The new thing here is that we're using the orignal rank (`world_rank`) as the key for the split operation. Since we want all of the processes in the new communicator to be in the same order that they were in the original communicator, using the original rank value makes the most sense here as it will already be ordered correctly. After that, we print out the new rank and size just to make sure it works. Your output should look something like this:
+The first few lines get the rank and size for the original communicator, `MPI_COMM_WORLD`. The next line does the important operation of determining the "color" of the local process. Remember that color decides to which communicator the process will belong after the split. Next, we see the all important split operation. The new thing here is that we're using the original rank (`world_rank`) as the key for the split operation. Since we want all of the processes in the new communicator to be in the same order that they were in the original communicator, using the original rank value makes the most sense here as it will already be ordered correctly. After that, we print out the new rank and size just to make sure it works. Your output should look something like this:
 
 ```
 WORLD RANK/SIZE: 0/16 	 ROW RANK/SIZE: 0/4
