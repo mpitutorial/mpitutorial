@@ -10,14 +10,14 @@ The tutorials assume that the reader has a basic knowledge of C, some C++, and L
 
 ## Introduction and MPI installation
 * [MPI tutorial introduction]({{ site.baseurl }}/tutorials/mpi-introduction/) ([中文版]({{ site.baseurl }}/tutorials/mpi-introduction/zh_cn))
-* [Installing MPICH2 on a single machine]({{ site.baseurl }}/tutorials/installing-mpich2/)
+* [Installing MPICH2 on a single machine]({{ site.baseurl }}/tutorials/installing-mpich2/) ([中文版]({{ site.baseurl }}/tutorials/installing-mpich2/zh_cn))
 * [Launching an Amazon EC2 MPI cluster]({{ site.baseurl }}/tutorials/launching-an-amazon-ec2-mpi-cluster/)
 * [Running an MPI cluster within a LAN]({{ site.baseurl }}/tutorials/running-an-mpi-cluster-within-a-lan/)
 * [Running an MPI hello world application]({{ site.baseurl }}/tutorials/mpi-hello-world/) ([中文版]({{ site.baseurl }}/tutorials/mpi-hello-world/zh_cn))
 
 ## Blocking point-to-point communication
 * [Sending and receiving with MPI_Send and MPI_Recv]({{ site.baseurl }}/tutorials/mpi-send-and-receive/) ([中文版]({{ site.baseurl }}/tutorials/mpi-send-and-receive/zh_cn))
-* [Dynamic receiving with MPI_Probe and MPI_Status]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/)
+* [Dynamic receiving with MPI_Probe and MPI_Status]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/) ([中文版]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/zh_cn))
 * [Point-to-point communication application - Random walking]({{ site.baseurl }}/tutorials/point-to-point-communication-application-random-walk/)
 
 ## Basic collective communication
