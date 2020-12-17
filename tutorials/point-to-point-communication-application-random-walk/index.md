@@ -4,6 +4,7 @@ title: Point-to-Point Communication Application - Random Walk
 author: Wes Kendall
 categories: Beginner MPI
 tags:
+translations: zh_cn
 redirect_from: '/point-to-point-communication-application-random-walk/'
 ---
 

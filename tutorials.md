@@ -18,7 +18,7 @@ The tutorials assume that the reader has a basic knowledge of C, some C++, and L
 ## Blocking point-to-point communication
 * [Sending and receiving with MPI_Send and MPI_Recv]({{ site.baseurl }}/tutorials/mpi-send-and-receive/) ([中文版]({{ site.baseurl }}/tutorials/mpi-send-and-receive/zh_cn))
 * [Dynamic receiving with MPI_Probe and MPI_Status]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/) ([中文版]({{ site.baseurl }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/zh_cn))
-* [Point-to-point communication application - Random walking]({{ site.baseurl }}/tutorials/point-to-point-communication-application-random-walk/)
+* [Point-to-point communication application - Random walking]({{ site.baseurl }}/tutorials/point-to-point-communication-application-random-walk/) ([中文版]({{ site.baseurl }}/tutorials/point-to-point-communication-application-random-walk/zh_cn))
 
 ## Basic collective communication
 * [Collective communication introduction with MPI_Bcast]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/) ([中文版]({{ site.baseurl }}/tutorials/mpi-broadcast-and-collective-communication/zh_cn))
