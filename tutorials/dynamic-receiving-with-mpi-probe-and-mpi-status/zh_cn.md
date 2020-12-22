@@ -37,7 +37,6 @@ MPI_Get_count(
 为什么需要这些信息？
 事实证明，`MPI_Recv` 可以将 `MPI_ANY_SOURCE` 用作发送端的秩，将 `MPI_ANY_TAG` 用作消息的标签。
 在这种情况下，`MPI_Status` 结构体是找出消息的实际发送端和标签的唯一方法。
-Furthermore, `MPI_Recv` is not guaranteed to receive the entire amount of elements passed as the argument to the function call.
 此外，并不能保证 `MPI_Recv` 能够接收函数调用参数的全部元素。
 相反，它只接收已发送给它的元素数量（如果发送的元素多于所需的接收数量，则返回错误。）
 `MPI_Get_count` 函数用于确定实际的接收量。
@@ -80,9 +79,7 @@ if (world_rank == 0) {
 
 如我们所见，进程 0 将最多 `MAX_NUMBERS` 个整数以随机数量发送到进程 1。
 进程 1 然后调用 `MPI_Recv` 以获取总计 `MAX_NUMBERS` 个整数。
-Although process one is passing `MAX_NUMBERS` as the argument to `MPI_Recv`, process one will receive **at most** this amount of numbers.
 尽管进程 1 以 `MAX_NUMBERS` 作为 `MPI_Recv` 函数参数，但进程 1 将最多接收到此数量的数字。
-In the code, process one calls `MPI_Get_count` with `MPI_INT` as the datatype to find out how many integers were actually received.
 在代码中，进程 1 使用 `MPI_INT` 作为数据类型的参数，调用 `MPI_Get_count`，以找出实际接收了多少个整数。
 除了打印出接收到的消息的大小外，进程 1 还通过访问 status 结构体的 `MPI_SOURCE` 和 `MPI_TAG` 元素来打印消息的来源和标签。
 
@@ -120,7 +117,6 @@ MPI_Probe(
 当消息可用时，它将填充 status 结构体。
 然后，用户可以使用 `MPI_Recv` 接收实际的消息。
 
-The [lesson code]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code) has an example of this in [probe.c]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code/probe.c).
 [教程代码]({{ site.github.code }}/tutorials/dynamic-receiving-with-mpi-probe-and-mpi-status/code) 在 probe.c 中有一个示例。
 以下是源代码的主要部分
 
