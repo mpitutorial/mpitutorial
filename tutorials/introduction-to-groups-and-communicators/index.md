@@ -149,7 +149,6 @@ MPI_Comm_create_group(
 	MPI_Group group,
 	int tag,
 	MPI_Comm* newcomm)
-)
 ```
 
 ## Example of using groups
