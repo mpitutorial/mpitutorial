@@ -21,7 +21,7 @@ redirect_from: '/performing-parallel-rank-with-mpi/zh_cn'
 图示中的进程（标记为0到3）开始时有四个数字—— 5、2、7和4。然后，并行排名算法算出进程1在数字集合中的排名为0（即第一个数字），进程3排名为1，进程0排名为2，进程2排在整个数字集合的最后。很简单，对吧？
 
 ## 并行排名API定义
-在深入研究并行排名问题之前，让我们首先确定函数的行为方式。我们的函数需要在每个进程上取一个数字，并返回其相对于所有其他进程中的数字的排名。与此同时，我们将需要其他各种信息，例如正在使用的通信器（communicator）以及被排名的数字的数据类型。 给定这个函数定义后，我们的排名函数原型如下所示：
+在深入研究并行排名问题之前，让我们首先确定函数的行为方式。我们的函数需要在每个进程上取一个数字，并返回其相对于所有其他进程中的数字的排名。与此同时，我们将需要其他各种信息，例如正在使用的通讯器（communicator）以及被排名的数字的数据类型。 给定这个函数定义后，我们的排名函数原型如下所示：
 
  ```cpp
 TMPI_Rank(
@@ -32,7 +32,7 @@ TMPI_Rank(
 ```
 
 `TMPI_Rank` 把 `send_data` 作为缓冲区，其中包含一个类型为 `datatype` 的数字。
-`recv_data` 在每个进程中只接收一个整数，即 `send_data` 的排名。`comm` 变量是进行排名的通信器。
+`recv_data` 在每个进程中只接收一个整数，即 `send_data` 的排名。`comm` 变量是进行排名的通讯器。
 
 > **注意** - MPI标准明确指出，用户不应以 `MPI` 起头命名自己的函数，如 `MPI_<something>`，以避免将用户函数与MPI标准本身的函数混淆。 因此，在这些教程中，我们将在函数前面加上 `T`。
 
@@ -66,7 +66,7 @@ void *gather_numbers_to_root(void *number, MPI_Datatype datatype,
 }
 ```
 
-`gather_numbers_to_root` 函数获取要收集的数字（即 `send_data` 变量）、数字的数据类型 `datatype` 和 `comm` 通信器。根进程必须在此函数中收集 `comm_size` 个数字，因此它会分配 `datatype_size * comm_size` 长度的数组。在本教程中，通过使用新的MPI函数- `MPI_Type_size` 来收集`datatype_size`变量。尽管我们的代码仅支持将 `MPI_INT` 和 `MPI_FLOAT` 作为数据类型，但可将其扩展以支持不同大小的数据类型。 在使用 `MPI_Gather` 在根进程上收集了数字之后，必须在根进程上对数字进行排序，以确定它们排名。
+`gather_numbers_to_root` 函数获取要收集的数字（即 `send_data` 变量）、数字的数据类型 `datatype` 和 `comm` 通讯器。根进程必须在此函数中收集 `comm_size` 个数字，因此它会分配 `datatype_size * comm_size` 长度的数组。在本教程中，通过使用新的MPI函数- `MPI_Type_size` 来收集`datatype_size`变量。尽管我们的代码仅支持将 `MPI_INT` 和 `MPI_FLOAT` 作为数据类型，但可将其扩展以支持不同大小的数据类型。 在使用 `MPI_Gather` 在根进程上收集了数字之后，必须在根进程上对数字进行排序，以确定它们排名。
 
 ## 排序数字并维护所属
 在我们的排名函数中，排序数字不一定是难题。 C标准库为我们提供了流行的排序算法，例如 `qsort`。 在并行排名问题中，排序的困难在于，我们必须维护各个进程将数字发送到根进程的次序。 如果我们要对收集到根进程的数组进行排序而不给数字附加信息，则根进程将不知道如何将数字的排名发送回原来请求的进程！
@@ -74,7 +74,7 @@ void *gather_numbers_to_root(void *number, MPI_Datatype datatype,
 为了便于将所属进程附到对应数字上，我们在代码中创建了一个结构体（struct）来保存此信息。 我们的结构定义如下：
 
 ```cpp
-// 保存进程在通信器中的次序（rank）和对应数字
+// 保存进程在通讯器中的次序（rank）和对应数字
 // 该结构体用于数组排序，
 // 并同时完整保留所属进程信息
 
@@ -87,12 +87,12 @@ typedef struct {
 } CommRankNumber;
 ```
 
-`CommRankNumber` 结构体保存了我们要排序的数字（记住它可以是浮点数或整数，因此我们使用联合体union），并且它拥有该数字所属进程在通信器中的次序（rank）。 代码的下一部分，即 `get_ranks` 函数，负责创建这些结构体并对它们进行排序。
+`CommRankNumber` 结构体保存了我们要排序的数字（记住它可以是浮点数或整数，因此我们使用联合体union），并且它拥有该数字所属进程在通讯器中的次序（rank）。 代码的下一部分，即 `get_ranks` 函数，负责创建这些结构体并对它们进行排序。
 
 
 ```cpp
 // 这个函数在根进程上对收集到的数字排序
-// 返回一个数组，数组按进程在通信器中的次序排序
+// 返回一个数组，数组按进程在通讯器中的次序排序
 // 注意 - 该函数只在根进程上运行
 
 int *get_ranks(void *gathered_numbers, int gathered_number_count,
@@ -136,7 +136,7 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count,
 }
 ```
 
-`get_ranks` 函数首先创建一个CommRankNumber结构体数组，并附上该数字所属进程在通信器中的次序。 如果数据类型为 `MPI_FLOAT` ，则对我们的结构体数组调用 `qsort` 时，会使用特殊的排序函数，（代码见[tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code)。 类似的，如果数据类型为 `MPI_INT` ，我们将使用不同的排序函数。
+`get_ranks` 函数首先创建一个CommRankNumber结构体数组，并附上该数字所属进程在通讯器中的次序。 如果数据类型为 `MPI_FLOAT` ，则对我们的结构体数组调用 `qsort` 时，会使用特殊的排序函数，（代码见[tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code)。 类似的，如果数据类型为 `MPI_INT` ，我们将使用不同的排序函数。
 
 在对数字进行排序之后，我们必须以适当的顺序创建一个排名数组（array of ranks），以便将它们分散（scatter）回到请求的进程中。这是通过创建 `ranks` 数组并为每个已排序的 `CommRankNumber` 结构体填充适当的排名来实现的。
 
