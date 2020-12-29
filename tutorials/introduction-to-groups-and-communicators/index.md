@@ -3,6 +3,7 @@ layout: post
 title: Introduction to Groups and Communicators
 author: Wesley Bland
 categories: Advanced MPI
+translations: zh_cn
 tags: MPI_Group, MPI_Comm
 redirect_from: '/introduction-to-groups-and-communicators/'
 ---
