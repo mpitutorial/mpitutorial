@@ -3,6 +3,7 @@ layout: post
 title: MPI Reduce and Allreduce
 author: Wes Kendall
 categories: Beginner MPI
+translations: zh_cn
 tags: MPI_Allreduce, MPI_Reduce
 redirect_from: '/mpi-reduce-and-allreduce/'
 ---
