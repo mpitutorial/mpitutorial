@@ -44,5 +44,7 @@ int main(int argc, char** argv) {
              world_rank, ping_pong_count, partner_rank);
     }
   }
-  MPI_Finalize();
+  MPI_Finalize(); 
+  // end of the computation,
+  // and it performs various clean-up tasks to terminate theMPI environment.
 }
