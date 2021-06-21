@@ -146,7 +146,7 @@ Hello world from processor cetus3, rank 2 out of 4 processors
 
 As expected, the MPI program was launched across all of the hosts in my host file. Each process was assigned a unique rank, which was printed off along with the process name. As one can see from my example output, the output of the processes is in an arbitrary order since there is no synchronization involved before printing.
 
-Notice how the script called mpirun. This is program that the MPI implementation uses to launch the job. Processes are spawned across all the hosts in the host file and the MPI program executes across each process. My script automatically supplies the *-n* flag to set the number of MPI processes to four. Try changing the run script and launching more processes! Don't accidentally crash your system though. :-)
+Notice how the script called mpirun. This is the program that the MPI implementation uses to launch the job. Processes are spawned across all the hosts in the host file and the MPI program executes across each process. My script automatically supplies the *-n* flag to set the number of MPI processes to four. Try changing the run script and launching more processes! Don't accidentally crash your system though. :-)
 
 Now you might be asking, *"My hosts are actually dual-core machines. How can I get MPI to spawn processes across the individual cores first before individual machines?"* The solution is pretty simple. Just modify your hosts file and place a colon and the number of cores per processor after the host name. For example, I specified that each of my hosts has two cores.
 
