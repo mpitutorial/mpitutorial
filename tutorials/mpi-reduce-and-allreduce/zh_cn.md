@@ -128,7 +128,6 @@ Local sum for process 3 - 47.527420, avg = 0.475274
 Total sum = 200.439941, avg = 0.501100
 ```
 
-Now it is time to move on to the sibling of `MPI_Reduce` - `MPI_Allreduce`.
 现在是时候接触 `MPI_Reduce` 的同级对象 - `MPI_Allreduce` 了。
 
 ## MPI_Allreduce
@@ -151,7 +150,6 @@ MPI_Allreduce(
 下图介绍了 `MPI_Allreduce` 的通信模式：
 ![MPI_Allreduce](mpi_allreduce_1.png)
 
-`MPI_Allreduce` is the equivalent of doing `MPI_Reduce` followed by an `MPI_Bcast`.
 `MPI_Allreduce` 等效于先执行 `MPI_Reduce`，然后执行 `MPI_Bcast`。
 很简单，对吧？
 
