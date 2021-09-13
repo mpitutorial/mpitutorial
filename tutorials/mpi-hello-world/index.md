@@ -158,7 +158,7 @@ cetus3:2
 cetus4:2
 ```
 
-When I execute the run script again, *voila!*, the MPI job spawns two processes on only two of my hosts.
+When I execute the run script again, *voila!*, the MPI job spawns four processes on only two of my hosts.
 
 ```
 >>> ./run.py mpi_hello_world
