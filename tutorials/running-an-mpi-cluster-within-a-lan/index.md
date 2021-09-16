@@ -238,7 +238,7 @@ $ cat /etc/hosts
 To make this more clear, from ```manager``` node, this script can be invoked.
 
 ```bash
-$ mpirun -np 10 --hosts manager./cpi
+$ mpirun -np 10 --hosts manager ./cpi
 # To run the program only on the same manager node
 ```
 
