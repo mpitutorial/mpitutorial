@@ -12,8 +12,8 @@ My personal favorite MPI book. The book gives a good overview of parallel comput
 
 [![Parallel Programming with MPI](http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&Format=_SL110_&ASIN=1558603395&MarketPlace=US&ID=AsinImage&WS=1&ServiceVersion=20070822)](http://www.amazon.com/gp/product/1558603395/ref=as_li_qf_sp_asin_il?ie=UTF8&linkCode=as2&camp=217145&creative=399377&creativeASIN=1558603395)
 
-## Using MPI - 3rd Edition
-This is a more up-to-date book than the previous, but it mostly focuses on the newer and more advanced MPI routines in the third MPI standard. These include parallel I/O, remote memory access, and dynamic process management. The book also discusses using MPI with threads. This is a must have for advanced MPI development. [Click here for more info](https://www.amazon.com/gp/product/0262527391/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0262527391&linkCode=as2&linkId=52cc270bc3a798b37c787740d00c19d1).
+## Using MPI - 3rd Edition and Using Advanced MPI - 1st Edition
+This is a more up-to-date book than the previous. The "regular" book covers the fundamentals of MPI and the "advnaced" book covers additional topics. The table of contents can be found on [this](https://www.mcs.anl.gov/research/projects/mpi/usingmpi/) website. This is a must have for advanced MPI development. [Click here for Using MPI](https://www.amazon.com/gp/product/0262527391/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0262527391&linkCode=as2&linkId=52cc270bc3a798b37c787740d00c19d1). The "Using Advanced MPI" book is currently out of print.
 
 [![Using MPI - 3rd Edition](http://ws.assoc-amazon.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN=0262527391&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_)](https://www.amazon.com/gp/product/0262527391/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0262527391&linkCode=as2&linkId=52cc270bc3a798b37c787740d00c19d1)
 
