@@ -13,11 +13,11 @@ MPI is simply a standard which others follow in their implementation. Because of
 MPICH is a widely-used implementation of MPI that is developed primarily by Argonne National Laboratory in the United States. The main reason for choosing MPICH over other implementations is simply because of my familiarity with the interface and because of my close relationship with Argonne National Laboratory. I also encourage others to check out [OpenMPI](https://www.open-mpi.org/), which is also a widely-used implementation.
 
 ## Installing MPICH
-The latest version of MPICH is available [here](https://www.mpich.org/). The version that I will be using for all of the examples on the site is 3.3-2, which was released 13 November 2019. Go ahead and download the source code, uncompress the folder, and change into the MPICH3 directory.
+The latest version of MPICH is available [here](https://www.mpich.org/). The version that I will be using for all of the examples on the site is 3.3-2, which was released 13 November 2019. Go ahead and download the source code, uncompress the folder, and change into the MPICH directory.
 
 ```
->>> tar -xzf mpich3-3.2.tar.gz
->>> cd mpich3-3.2
+>>> tar -xzf mpich-3-3.2.tar.gz
+>>> cd mpich-3-3.2
 ```
 
 Once doing this, you should be able to configure your installation by performing `./configure`. If you need to install MPICH to a local directory (for example, if you don't have root access to your machine), type `./configure --prefix=/installation/directory/path`. It is possible to avoid building the MPI Fortran library by using `./configure --disable-fortran` if you do not have Fortran compilers. For more information about possible configuration parameters, type `./configure --help`
