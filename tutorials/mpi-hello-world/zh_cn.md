@@ -118,7 +118,7 @@ clean:
 ```
 当你的程序编译好之后，它就可以被执行了。不过执行之前你也许会需要一些额外配置。比如如果你想要在好几个节点的集群上面跑这个 MPI 程序的话，你需要配置一个 host 文件（不是 /etc/hosts）。如果你在笔记本或者单机上运行的话，可以跳过下面这一段。
 
-需要配置的 host 文件会包含你想要运行的所有节点的名称。为了运行方便，你需要确认一下所有这些节点之间能通过 SSH 通信，并且需要根据[设置认证文件这个教程]((http://www.eng.cam.ac.uk/help/jpmg/ssh/authorized_keys_howto.html)配置不需要密码的 SSH 访问。
+需要配置的 host 文件会包含你想要运行的所有节点的名称。为了运行方便，你需要确认一下所有这些节点之间能通过 SSH 通信，并且需要根据[设置认证文件这个教程](http://www.eng.cam.ac.uk/help/jpmg/ssh/authorized_keys_howto.html)配置不需要密码的 SSH 访问。
 我的 host 文件看起来像这样：
 
 ```
