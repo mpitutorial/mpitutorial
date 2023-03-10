@@ -95,7 +95,7 @@ typedef struct {
 ```
 
 我们的初始化函数为 `initialize_walkers`，它采用子域边界，并将 walker 添加到 `incoming_walkers` `vector` 中（顺便说一下，该程序采用 C++）。
-Our initialization function, called `initialize_walkers`, takes the subdomain bounds and adds walkers to an `incoming_walkers` vector (by the way, this application is in C++).
+
 
 ```cpp
 void initialize_walkers(int num_walkers_per_proc, int max_walk_size,
@@ -230,7 +230,6 @@ while (!all_walkers_finished) { // Determine walker completion later
 ![Deadlock](deadlock-1.png)
 
 值得注意的是，上面的代码在大多数情况下实际上不会“死锁”。
-It is worth noting that the above code will actually **not** deadlock most of the time.
 尽管 `MPI_Send` 是一个阻塞调用，但是 [MPI 规范](http://www.amazon.com/gp/product/0262692163/ref=as_li_tf_tl?ie=UTF8&tag=softengiintet-20&linkCode=as2&camp=217145&creative=399377&creativeASIN=0262692163) 表明 `MPI_Send` 会一直阻塞，直到可以**回收发送缓冲区为止**。
 这意味着当网络可以缓冲消息时，`MPI_Send` 将返回。
 如果发送最终无法被网络缓冲，它们将一直阻塞直到发布匹配的接收。
