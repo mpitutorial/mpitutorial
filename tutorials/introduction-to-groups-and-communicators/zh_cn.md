@@ -284,5 +284,4 @@ MPI_Comm_free(&prime_comm);
 在此示例中，我们通过仅选择 `MPI_COMM_WORLD` 中的主要秩来构建通讯器。
 这是通过 `MPI_Group_incl` 完成的，并将结果存储在 `prime_group` 中。
 接下来，我们将该组传递给 `MPI_Comm_create_group` 以创建 `prime_comm`。
-At the end, we have to be careful to not use `prime_comm` on processes which don't have it, therefore we check to ensure that the communicator is not `MPI_COMM_NULL`, which is returned from `MPI_Comm_create_group` on the ranks not included in `ranks`.
 最后，我们必须小心不要在没有 `prime_comm` 的进程上使用 `prime_comm`，因此我们要检查以确保通讯器不是 `MPI_COMM_NULL` 状态 —— 不在 `ranks` 中而从 `MPI_Comm_create_group` 返回的结果。
