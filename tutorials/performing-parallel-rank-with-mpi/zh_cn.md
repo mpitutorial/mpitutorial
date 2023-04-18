@@ -144,8 +144,8 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count,
 现在我们有了两个主要函数，我们可以将它们全部整合到我们的 `TMPI_Rank` 函数中。此函数将数字收集到根进程，并对数字进行排序以确定其排名，然后将排名分散回请求的进程。 代码如下所示：
 
 ```cpp
-// 获取recv_data的排名, 类型为datatype
-// 排名用send_data返回，类型为datatype
+// 获取send_data的排名, 类型为datatype
+// 排名用recv_data返回，类型为datatype
 int TMPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype,
              MPI_Comm comm) {
   // 首先检查基本情况 - 此函数只支持MPI_INT和MPI_FLOAT

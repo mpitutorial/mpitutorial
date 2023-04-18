@@ -104,8 +104,8 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count, MPI_Datatype d
   return ranks;
 }
 
-// Gets the rank of the recv_data, which is of type datatype. The rank is returned
-// in send_data and is of type datatype.
+// Gets the rank of the send_data, which is of type datatype. The rank is returned
+// in recv_data and is of type datatype.
 int TMPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype, MPI_Comm comm) {
   // Check base cases first - Only support MPI_INT and MPI_FLOAT for this function.
   if (datatype != MPI_INT && datatype != MPI_FLOAT) {

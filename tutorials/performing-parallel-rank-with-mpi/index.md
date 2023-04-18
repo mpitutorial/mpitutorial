@@ -145,8 +145,8 @@ After the numbers are sorted, we must create an array of ranks in the proper ord
 Now that we have our two primary functions, we can put them all together into our `TMPI_Rank` function. This function gathers the numbers to the root process, sorts the numbers to determine their ranks, and then scatters the ranks back to the requesting processes. The code is shown below:
 
 ```cpp
-// Gets the rank of the recv_data, which is of type datatype. The rank
-// is returned in send_data and is of type datatype.
+// Gets the rank of the send_data, which is of type datatype. The rank
+// is returned in recv_data and is of type datatype.
 int TMPI_Rank(void *send_data, void *recv_data, MPI_Datatype datatype,
              MPI_Comm comm) {
   // Check base cases first - Only support MPI_INT and MPI_FLOAT for
