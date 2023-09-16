@@ -1,8 +1,9 @@
-subroutine my_bcast(data, count, datatype, root, communicator)
-  integer, intent (inout) :: data
+subroutine my_bcast(data, count, datatype, root, communicator, ierror)
   integer, intent (in) :: count, root, communicator, datatype
+  integer, intent (inout) :: data(count)
+  integer, intent (inout) :: ierror
 
-  integer world_rank, world_size, ierror
+  integer world_rank, world_size
   integer i
 
   call MPI_COMM_SIZE(communicator, world_size, ierror)
@@ -27,7 +28,7 @@ program main
   include 'mpif.h'
 
   integer world_rank, ierror
-  integer data
+  integer data(1)
 
   call MPI_INIT(ierror)
   call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank, ierror)
@@ -35,9 +36,9 @@ program main
   if (world_rank .eq. 0) then
     data = 100
     print '("Process 0 broadcasting data ", I0)', data
-    call my_bcast(data, 1, MPI_INT, 0, MPI_COMM_WORLD)
+    call my_bcast(data, 1, MPI_INT, 0, MPI_COMM_WORLD, ierror)
   else
-    call my_bcast(data, 1, MPI_INT, 0, MPI_COMM_WORLD)
+    call my_bcast(data, 1, MPI_INT, 0, MPI_COMM_WORLD, ierror)
     print '("Process ", I0, " received data ", I0, " from root process")', &
       world_rank, data
   end if
@@ -46,4 +47,3 @@ program main
   call MPI_FINALIZE(ierror)
 
 end program
-

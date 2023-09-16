@@ -1,4 +1,4 @@
-EXECS=mpi_hello_world send_recv ping_pong ring check_status probe my_bcast
+EXECS=mpi_hello_world send_recv ping_pong ring check_status probe my_bcast compare_bcast
 MPIF90?=mpif90
 
 all: $(EXECS)
@@ -23,6 +23,9 @@ probe: probe.f90
 
 my_bcast: my_bcast.f90
 	$(MPIF90) my_bcast.f90 -o my_bcast
+
+compare_bcast: compare_bcast.f90
+	$(MPIF90) compare_bcast.f90 -o compare_bcast
 
 
 clean:
