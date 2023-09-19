@@ -1,10 +1,10 @@
 subroutine my_bcast(data, count, datatype, root, communicator, ierror)
-  integer, intent (in) :: count, root, communicator, datatype
+  integer, intent (in)    :: count, root, communicator, datatype
   integer, intent (inout) :: data(count)
-  integer, intent (inout) :: ierror
+  integer, intent (out)   :: ierror
 
-  integer world_rank, world_size
-  integer i
+  integer :: world_rank, world_size
+  integer :: i
 
   call MPI_COMM_SIZE(communicator, world_size, ierror)
   call MPI_COMM_RANK(communicator, world_rank, ierror)
@@ -20,21 +20,19 @@ subroutine my_bcast(data, count, datatype, root, communicator, ierror)
     ! If we are a receiver process, receive the data from the root
     call MPI_RECV(data, count, datatype, root, 0, communicator, MPI_STATUS_IGNORE, ierror)
   end if
-end subroutine
+end subroutine my_bcast
 
 program main
-
+  use mpi
   use iso_fortran_env, only : error_unit
 
   implicit none
 
-  include 'mpif.h'
-
-  integer :: num_args, num_elements, num_trials
-  character(12) :: args(2)
-  integer world_rank, ierror
-  real total_my_bcast_time, total_mpi_bcast_time
-  integer i
+  integer              :: num_args, num_elements, num_trials
+  character(12)        :: args(2)
+  integer              :: world_rank, ierror
+  real                 :: total_my_bcast_time, total_mpi_bcast_time
+  integer              :: i
   integer, allocatable :: data(:)
 
   num_args = command_argument_count()

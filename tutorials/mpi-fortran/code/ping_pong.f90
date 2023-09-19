@@ -1,12 +1,12 @@
 program ping_pong
+  use mpi
+
   implicit none
 
-  include 'mpif.h'
-
-  integer world_rank, world_size, ierror
-  integer partner_rank
-  integer ping_pong_count, ping_pong_limit
-  integer recv_status(MPI_STATUS_SIZE)
+  integer :: world_rank, world_size, ierror
+  integer :: partner_rank
+  integer :: ping_pong_count, ping_pong_limit
+  integer :: recv_status(MPI_STATUS_SIZE)
 
 
   call MPI_INIT(ierror)
@@ -37,4 +37,3 @@ program ping_pong
   call MPI_FINALIZE(ierror)
 
 end program
-

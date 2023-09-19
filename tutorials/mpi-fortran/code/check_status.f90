@@ -1,16 +1,15 @@
 program check_status
+  use mpi
+
   implicit none
 
-  include 'mpif.h'
+  integer            :: world_rank, world_size, ierror
+  integer, parameter :: MAX_NUMBERS=100
+  integer            :: numbers(MAX_NUMBERS)
+  integer            :: number_amount
+  integer            :: recv_status(MPI_STATUS_SIZE)
 
-  integer world_rank, world_size, ierror
-  integer MAX_NUMBERS
-  parameter (MAX_NUMBERS=100)
-  integer numbers(MAX_NUMBERS)
-  integer number_amount
-  integer recv_status(MPI_STATUS_SIZE)
-
-  real r
+  real :: r
 
   call MPI_INIT(ierror)
   call MPI_COMM_SIZE(MPI_COMM_WORLD, world_size, ierror)
@@ -47,4 +46,3 @@ program check_status
   call MPI_FINALIZE(ierror)
 
 end program
-

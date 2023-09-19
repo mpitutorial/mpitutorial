@@ -1,11 +1,11 @@
 program ring
+  use mpi
+
   implicit none
 
-  include 'mpif.h'
-
-  integer world_rank, world_size, ierror
-  integer token
-  integer recv_status(MPI_STATUS_SIZE)
+  integer :: world_rank, world_size, ierror
+  integer :: token
+  integer :: recv_status(MPI_STATUS_SIZE)
 
 
   call MPI_INIT(ierror)
@@ -37,4 +37,3 @@ program ring
   call MPI_FINALIZE(ierror)
 
 end program
-

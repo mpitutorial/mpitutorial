@@ -1,11 +1,12 @@
 program hello_world_mpi
+  use mpi
+
   implicit none
 
-  include 'mpif.h'
+  integer :: process_rank, size_of_cluster, ierror
+  integer :: resultlen
 
-  integer process_rank, size_of_cluster, ierror
   character (len=MPI_MAX_PROCESSOR_NAME) :: process_name
-  integer resultlen
 
   ! Initialize the MPI environment
   call MPI_INIT(ierror)
@@ -27,4 +28,3 @@ program hello_world_mpi
   call MPI_FINALIZE(ierror)
 
 end program
-
