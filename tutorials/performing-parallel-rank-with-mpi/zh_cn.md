@@ -136,7 +136,7 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count,
 }
 ```
 
-`get_ranks` 函数首先创建一个CommRankNumber结构体数组，并附上该数字所属进程在通讯器中的次序。 如果数据类型为 `MPI_FLOAT` ，则对我们的结构体数组调用 `qsort` 时，会使用特殊的排序函数，（代码见[tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code)。 类似的，如果数据类型为 `MPI_INT` ，我们将使用不同的排序函数。
+`get_ranks` 函数首先创建一个CommRankNumber结构体数组，并附上该数字所属进程在通讯器中的次序。 如果数据类型为 `MPI_FLOAT` ，则对我们的结构体数组调用 `qsort` 时，会使用特殊的排序函数，（代码见[tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code/tmpi_rank.c)。 类似的，如果数据类型为 `MPI_INT` ，我们将使用不同的排序函数。
 
 在对数字进行排序之后，我们必须以适当的顺序创建一个排名数组（array of ranks），以便将它们分散（scatter）回到请求的进程中。这是通过创建 `ranks` 数组并为每个已排序的 `CommRankNumber` 结构体填充适当的排名来实现的。
 

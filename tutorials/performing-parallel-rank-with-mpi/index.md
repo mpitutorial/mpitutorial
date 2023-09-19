@@ -137,7 +137,7 @@ int *get_ranks(void *gathered_numbers, int gathered_number_count,
 }
 ```
 
-The `get_ranks` function first creates an array of `CommRankNumber` structs and attaches the communicator rank of the process that owns the number. If the datatype is `MPI_FLOAT`, `qsort` is called with a special sorting function for our array of structs (see [tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code) for the code). Likewise, we use a different sorting function if the datatype is `MPI_INT`.
+The `get_ranks` function first creates an array of `CommRankNumber` structs and attaches the communicator rank of the process that owns the number. If the datatype is `MPI_FLOAT`, `qsort` is called with a special sorting function for our array of structs (see [tmpi_rank.c]({{ site.github.code }}/tutorials/performing-parallel-rank-with-mpi/code/tmpi_rank.c) for the code). Likewise, we use a different sorting function if the datatype is `MPI_INT`.
 
 After the numbers are sorted, we must create an array of ranks in the proper order so that they can be scattered back to the requesting processes. This is accomplished by making the `ranks` array and filling in the proper rank values for each of the sorted `CommRankNumber` structs.
 

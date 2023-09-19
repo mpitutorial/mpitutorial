@@ -55,7 +55,7 @@ MPI_Bcast(
 尽管根节点和接收节点做不同的事情，它们都是调用同样的这个 `MPI_Bcast` 函数来实现广播。当根节点(在我们的例子是节点0)调用 `MPI_Bcast` 函数的时候，`data` 变量里的值会被发送到其他的节点上。当其他的节点调用 `MPI_Bcast` 的时候，`data` 变量会被赋值成从根节点接受到的数据。
 
 ## 使用 MPI_Send 和 MPI_Recv 来做广播
-粗略看的话，似乎 `MPI_Bcast` 仅仅是在 `MPI_Send` 和 `MPI_Recv` 基础上进行了一层包装。事实上，我们现在就可以自己来做这层封装。我们的函数叫做 `my_bcast`，在这里可以看到: [bcast.c]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code/my_bcast.c)。它跟 `MPI_Bcast` 接受一样的参数，看起来像这样：
+粗略看的话，似乎 `MPI_Bcast` 仅仅是在 `MPI_Send` 和 `MPI_Recv` 基础上进行了一层包装。事实上，我们现在就可以自己来做这层封装。我们的函数叫做 `my_bcast`，在这里可以看到: [my_bcast.c]({{ site.github.code }}/tutorials/mpi-broadcast-and-collective-communication/code/my_bcast.c)。它跟 `MPI_Bcast` 接受一样的参数，看起来像这样：
 
 ```cpp
 void my_bcast(void* data, int count, MPI_Datatype datatype, int root,
