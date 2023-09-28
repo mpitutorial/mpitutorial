@@ -24,7 +24,7 @@ end subroutine my_bcast
 
 program main
   use mpi
-  use iso_fortran_env, only : error_unit
+  use iso_fortran_env, only: error_unit
 
   implicit none
 

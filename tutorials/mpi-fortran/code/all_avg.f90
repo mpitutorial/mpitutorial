@@ -41,7 +41,7 @@ program main
   num_args = command_argument_count()
 
   if (num_args .ne. 1) then
-    write (error_unit, *) 'Usage: avg num_elements_per_proc'
+    write (error_unit, *) 'Usage: all_avg num_elements_per_proc'
     stop
   end if
 
