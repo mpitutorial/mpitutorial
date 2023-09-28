@@ -1,4 +1,5 @@
-EXECS=mpi_hello_world send_recv ping_pong ring check_status probe my_bcast compare_bcast avg all_avg
+EXECS=mpi_hello_world send_recv ping_pong ring check_status probe \
+      my_bcast compare_bcast avg all_avg reduce_avg reduce_std
 MOD_FILES=subs.mod
 MPIF90?=mpif90
 
@@ -34,6 +35,11 @@ avg: avg.f90 subs.mod
 all_avg: all_avg.f90 subs.mod
 	$(MPIF90) all_avg.f90 -o all_avg
 
+reduce_avg: reduce_avg.f90 subs.mod
+	$(MPIF90) reduce_avg.f90 -o reduce_avg
+
+reduce_std: reduce_std.f90 subs.mod
+	$(MPIF90) reduce_std.f90 -o reduce_std
 
 clean:
 	rm -f $(EXECS) $(MOD_FILES)
