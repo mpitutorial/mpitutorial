@@ -31,7 +31,7 @@ program main
   integer              :: num_args, num_elements, num_trials
   character(12)        :: args(2)
   integer              :: world_rank, ierror
-  real                 :: total_my_bcast_time, total_mpi_bcast_time
+  double precision     :: total_my_bcast_time, total_mpi_bcast_time
   integer              :: i
   integer, allocatable :: data(:)
 

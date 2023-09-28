@@ -35,7 +35,7 @@ program main
   character(12) :: arg
   integer :: num_elements_per_proc
   integer :: world_size, world_rank, ierror
-  real :: r, sub_avg, avg, original_data_avg
+  real :: r, sub_avg, avg
   real, allocatable :: rand_nums(:), sub_rand_nums(:), sub_avgs(:)
 
   num_args = command_argument_count()
