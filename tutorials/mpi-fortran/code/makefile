@@ -1,6 +1,6 @@
 EXECS=mpi_hello_world send_recv ping_pong ring check_status probe \
       my_bcast compare_bcast avg all_avg reduce_avg reduce_std \
-      split groups
+      comm_split comm_groups
 MOD_FILES=subs.mod
 MPIF90?=mpif90
 FFLAGS=-Wall
@@ -43,11 +43,11 @@ reduce_avg: reduce_avg.f90
 reduce_std: reduce_std.f90
 	$(MPIF90) $(FFLAGS) reduce_std.f90 -o reduce_std
 
-split: split.f90
-	$(MPIF90) $(FFLAGS) split.f90 -o split
+comm_split: comm_split.f90
+	$(MPIF90) $(FFLAGS) comm_split.f90 -o comm_split
 
-groups: groups.f90
-	$(MPIF90) $(FFLAGS) groups.f90 -o groups
+comm_groups: comm_groups.f90
+	$(MPIF90) $(FFLAGS) comm_groups.f90 -o comm_groups
 
 clean:
 	rm -f $(EXECS) $(MOD_FILES)
