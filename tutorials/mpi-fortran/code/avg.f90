@@ -25,7 +25,7 @@ contains
 end module subs
 
 program main
-  use mpi
+  use mpi_f08
   use iso_fortran_env, only: error_unit
   use subs
 
@@ -34,7 +34,7 @@ program main
   integer :: num_args
   character(12) :: arg
   integer :: num_elements_per_proc
-  integer :: world_size, world_rank, ierror
+  integer :: world_size, world_rank
   real :: r, sub_avg, avg, original_data_avg
   real, allocatable :: rand_nums(:), sub_rand_nums(:), sub_avgs(:)
 
@@ -53,10 +53,10 @@ program main
   ! Throw away first rand value
   r = rand()
 
-  call MPI_INIT(ierror)
+  call MPI_INIT()
 
-  call MPI_COMM_SIZE(MPI_COMM_WORLD, world_size, ierror)
-  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank, ierror)
+  call MPI_COMM_SIZE(MPI_COMM_WORLD, world_size)
+  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank)
 
   ! Create a random array of elements on the root process. Its total
   ! size will be the number of elements per process times the number
@@ -69,7 +69,7 @@ program main
   allocate(sub_rand_nums(num_elements_per_proc))
 
   call MPI_Scatter(rand_nums, num_elements_per_proc, MPI_FLOAT, sub_rand_nums, &
-                   num_elements_per_proc, MPI_FLOAT, 0, MPI_COMM_WORLD, ierror)
+                   num_elements_per_proc, MPI_FLOAT, 0, MPI_COMM_WORLD)
 
   ! Compute the average of your subset
   sub_avg = compute_avg(sub_rand_nums, num_elements_per_proc)
@@ -78,7 +78,7 @@ program main
   if (world_rank .eq. 0) then
     allocate(sub_avgs(world_size))
   end if
-  call MPI_Gather(sub_avg, 1, MPI_FLOAT, sub_avgs, 1, MPI_FLOAT, 0, MPI_COMM_WORLD, ierror)
+  call MPI_Gather(sub_avg, 1, MPI_FLOAT, sub_avgs, 1, MPI_FLOAT, 0, MPI_COMM_WORLD)
 
   ! Now that we have all of the partial averages on the root, compute the
   ! total average of all numbers. Since we are assuming each process computed
@@ -99,7 +99,7 @@ program main
   end if
   deallocate(sub_rand_nums)
 
-  call MPI_Barrier(MPI_COMM_WORLD, ierror)
-  call MPI_FINALIZE(ierror)
+  call MPI_Barrier(MPI_COMM_WORLD)
+  call MPI_FINALIZE()
 
 end program main

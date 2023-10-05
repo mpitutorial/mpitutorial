@@ -1,5 +1,5 @@
 program hello_world_mpi
-  use mpi
+  use mpi_f08
 
   implicit none
 

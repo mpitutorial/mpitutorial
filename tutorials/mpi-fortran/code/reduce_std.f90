@@ -16,7 +16,7 @@ contains
 end module subs
 
 program main
-  use mpi
+  use mpi_f08
   use iso_fortran_env, only: error_unit
   use subs
 
@@ -25,7 +25,7 @@ program main
   integer :: num_args
   character(12) :: arg
   integer :: num_elements_per_proc
-  integer :: world_size, world_rank, ierror
+  integer :: world_size, world_rank
   real :: r, local_sum, global_sum, mean, local_sq_diff, global_sq_diff, stddev
   real, allocatable :: rand_nums(:)
   integer :: i
@@ -40,10 +40,10 @@ program main
   call get_command_argument(1, arg)
   read (arg, *) num_elements_per_proc
 
-  call MPI_INIT(ierror)
+  call MPI_INIT()
 
-  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank, ierror)
-  call MPI_COMM_SIZE(MPI_COMM_WORLD, world_size, ierror)
+  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank)
+  call MPI_COMM_SIZE(MPI_COMM_WORLD, world_size)
 
   ! Create a random array of elements on all processes.
   call srand(time()) ! Seed the random number generator of processes uniquely
@@ -58,7 +58,7 @@ program main
   ! Reduce all of the local sums into the global sum in order to
   ! calculate the mean
   call MPI_Allreduce(local_sum, global_sum, 1, MPI_FLOAT, MPI_SUM, &
-                     MPI_COMM_WORLD, ierror)
+                     MPI_COMM_WORLD)
   mean = global_sum / real(num_elements_per_proc * world_size)
 
   ! Compute the local sum of the squared differences from the mean
@@ -70,7 +70,7 @@ program main
   ! Reduce the global sum of the squared differences to the root process
   ! and print off the answer
   call MPI_Reduce(local_sq_diff, global_sq_diff, 1, MPI_FLOAT, MPI_SUM, 0, &
-                  MPI_COMM_WORLD, ierror)
+                  MPI_COMM_WORLD)
 
   ! The standard deviation is the square root of the mean of the squared
   ! differences
@@ -83,7 +83,7 @@ program main
   ! Clean up
   deallocate(rand_nums)
 
-  call MPI_Barrier(MPI_COMM_WORLD, ierror)
-  call MPI_FINALIZE(ierror)
+  call MPI_Barrier(MPI_COMM_WORLD)
+  call MPI_FINALIZE()
 
 end program main

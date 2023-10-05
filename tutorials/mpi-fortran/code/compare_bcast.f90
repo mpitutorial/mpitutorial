@@ -1,5 +1,10 @@
+module subs
+  use mpi_f08
+contains
 subroutine my_bcast(data, count, datatype, root, communicator, ierror)
-  integer, intent (in)    :: count, root, communicator, datatype
+  integer, intent (in)    :: count, root
+  type(MPI_Comm), intent (in) :: communicator
+  type(MPI_Datatype), intent (in) :: datatype
   integer, intent (inout) :: data(count)
   integer, intent (out)   :: ierror
 
@@ -21,10 +26,12 @@ subroutine my_bcast(data, count, datatype, root, communicator, ierror)
     call MPI_RECV(data, count, datatype, root, 0, communicator, MPI_STATUS_IGNORE, ierror)
   end if
 end subroutine my_bcast
+end module subs
 
 program main
-  use mpi
+  use mpi_f08
   use iso_fortran_env, only: error_unit
+  use subs, only: my_bcast
 
   implicit none
 
@@ -48,9 +55,9 @@ program main
   read (args(1), *) num_elements
   read (args(2), *) num_trials
 
-  call MPI_INIT(ierror)
+  call MPI_INIT()
 
-  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank, ierror)
+  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank)
 
   total_my_bcast_time = 0.0
   total_mpi_bcast_time = 0.0
@@ -60,18 +67,18 @@ program main
   do i = 1, num_trials
     ! Time my_bcast
     ! Synchronize before starting timing
-    call MPI_Barrier(MPI_COMM_WORLD, ierror)
+    call MPI_Barrier(MPI_COMM_WORLD)
     total_my_bcast_time = total_my_bcast_time - MPI_Wtime()
     call my_bcast(data, num_elements, MPI_INT, 0, MPI_COMM_WORLD, ierror)
     ! Synchronize again before obtaining final time
-    call MPI_Barrier(MPI_COMM_WORLD, ierror)
+    call MPI_Barrier(MPI_COMM_WORLD)
     total_my_bcast_time = total_my_bcast_time + MPI_Wtime()
 
     ! Time MPI_Bcast
-    call MPI_Barrier(MPI_COMM_WORLD, ierror)
+    call MPI_Barrier(MPI_COMM_WORLD)
     total_mpi_bcast_time = total_mpi_bcast_time - MPI_Wtime()
     call MPI_Bcast(data, num_elements, MPI_INT, 0, MPI_COMM_WORLD, ierror)
-    call MPI_Barrier(MPI_COMM_WORLD, ierror)
+    call MPI_Barrier(MPI_COMM_WORLD)
     total_mpi_bcast_time = total_mpi_bcast_time + MPI_Wtime()
   end do
 
@@ -84,6 +91,6 @@ program main
 
   ! Finalize the MPI environment
 
-  call MPI_FINALIZE(ierror)
+  call MPI_FINALIZE()
 
 end program

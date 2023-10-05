@@ -1,5 +1,10 @@
+module subs
+  use mpi_f08
+contains
 subroutine my_bcast(data, count, datatype, root, communicator, ierror)
-  integer, intent (in)    :: count, root, communicator, datatype
+  integer, intent (in)    :: count, root
+  type(MPI_Comm), intent (in) :: communicator
+  type(MPI_Datatype), intent (in) :: datatype
   integer, intent (inout) :: data(count)
   integer, intent (out)   :: ierror
 
@@ -21,17 +26,19 @@ subroutine my_bcast(data, count, datatype, root, communicator, ierror)
     call MPI_RECV(data, count, datatype, root, 0, communicator, MPI_STATUS_IGNORE, ierror)
   end if
 end subroutine my_bcast
+end module subs
 
 program main
-  use mpi
+  use mpi_f08
+  use subs, only: my_bcast
 
   implicit none
 
   integer :: world_rank, ierror
   integer :: data(1)
 
-  call MPI_INIT(ierror)
-  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank, ierror)
+  call MPI_INIT()
+  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank)
 
   if (world_rank .eq. 0) then
     data = 100
@@ -44,6 +51,6 @@ program main
   end if
 
   ! Finalize the MPI environment
-  call MPI_FINALIZE(ierror)
+  call MPI_FINALIZE()
 
 end program
