@@ -3,28 +3,28 @@ program hello_world_mpi
 
   implicit none
 
-  integer :: process_rank, size_of_cluster, ierror
-  integer :: resultlen
+  integer :: world_rank, world_size
+  integer :: name_len
 
-  character (len=MPI_MAX_PROCESSOR_NAME) :: process_name
+  character (len=MPI_MAX_PROCESSOR_NAME) :: processor_name
 
   ! Initialize the MPI environment
-  call MPI_INIT(ierror)
+  call MPI_INIT()
 
   ! Get the number of processes
-  call MPI_COMM_SIZE(MPI_COMM_WORLD, size_of_cluster, ierror)
+  call MPI_COMM_SIZE(MPI_COMM_WORLD, world_size)
 
   ! Get the rank of the process
-  call MPI_COMM_RANK(MPI_COMM_WORLD, process_rank, ierror)
+  call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank)
 
   ! Get the name of the processor
-  call MPI_GET_PROCESSOR_NAME(process_name, resultlen, ierror)
+  call MPI_GET_PROCESSOR_NAME(processor_name, name_len)
 
   ! Print off an hello world message
-  write (*,*) 'Hello World from processor ', trim(process_name), ' rank ', &
-    process_rank, 'of ', size_of_cluster, 'processors'
+  print '("Hello world from processor ", A, ", rank ", I0, " out of ", I0, " processors")', &
+    processor_name(:name_len), world_rank, world_size
 
   ! Finalize the MPI environment
-  call MPI_FINALIZE(ierror)
+  call MPI_FINALIZE()
 
 end program
