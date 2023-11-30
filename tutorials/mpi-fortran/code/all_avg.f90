@@ -1,41 +1,22 @@
-module subs
-  implicit none
-contains
-  subroutine create_rand_nums(rand_nums, num_elements)
-    ! Creates an array of random numbers. Each number has a value from 0 - 1
-    integer, intent(in) :: num_elements
-    real, intent(out)   :: rand_nums(num_elements)
-
-    integer :: i
-
-    do i = 1, num_elements
-      rand_nums(i) = rand()
-    end do
-
-  end subroutine create_rand_nums
-
-  function compute_avg(array, num_elements)
-    ! Computes the average of an array of numbers
-    real                :: compute_avg
-    integer, intent(in) :: num_elements
-    real, intent(in)    :: array(num_elements)
-
-    compute_avg = sum(array) / real(num_elements)
-  end function compute_avg
-end module subs
-
 program main
   use mpi_f08
   use iso_fortran_env, only: error_unit
-  use subs
 
   implicit none
+
+  interface
+    function compute_avg(array, num_elements)
+      real                :: compute_avg
+      integer, intent(in) :: num_elements
+      real, intent(in)    :: array(num_elements)
+    end function compute_avg
+  end interface
 
   integer :: num_args
   character(12) :: arg
   integer :: num_elements_per_proc
   integer :: world_size, world_rank
-  real :: r, sub_avg, avg
+  real :: sub_avg, avg
   real, allocatable :: rand_nums(:), sub_rand_nums(:), sub_avgs(:)
 
   num_args = command_argument_count()
@@ -49,9 +30,7 @@ program main
 
   read (arg, *) num_elements_per_proc
   ! Seed the random number generator to get different results each time
-  call srand(time())
-  ! Throw away first rand value
-  r = rand()
+  call random_seed()
 
   call MPI_INIT()
 
@@ -63,7 +42,7 @@ program main
   ! of processes
   if (world_rank .eq. 0) then
     allocate(rand_nums(num_elements_per_proc * world_size))
-    call create_rand_nums(rand_nums, num_elements_per_proc * world_size)
+    call random_number(rand_nums)
   end if
 
   allocate(sub_rand_nums(num_elements_per_proc))
@@ -96,3 +75,14 @@ program main
   call MPI_FINALIZE()
 
 end program main
+
+
+function compute_avg(array, num_elements)
+  ! Computes the average of an array of numbers
+  implicit none
+  real                :: compute_avg
+  integer, intent(in) :: num_elements
+  real, intent(in)    :: array(num_elements)
+
+  compute_avg = sum(array) / real(num_elements)
+end function compute_avg

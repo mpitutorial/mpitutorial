@@ -18,12 +18,10 @@ program probe
 
   if (world_rank .eq. 0) then
     ! Pick a random amount of integers to send to process one
-    call srand(time())
+    call random_seed()
 
-    ! Throw away first value
-    r = rand()
-
-    number_amount = int(rand() * real(MAX_NUMBERS))
+    call random_number(r)
+    number_amount = int(r * real(MAX_NUMBERS))
     allocate(numbers(MAX_NUMBERS))
     ! Send the random amount of integers to process one
     call MPI_SEND(numbers, number_amount, MPI_INT, 1, 0, &

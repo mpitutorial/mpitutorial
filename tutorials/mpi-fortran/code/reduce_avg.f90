@@ -1,20 +1,3 @@
-module subs
-  implicit none
-contains
-  subroutine create_rand_nums(rand_nums, num_elements)
-    ! Creates an array of random numbers. Each number has a value from 0 - 1
-    integer, intent(in) :: num_elements
-    real, intent(out)   :: rand_nums(num_elements)
-
-    integer :: i
-
-    do i = 1, num_elements
-      rand_nums(i) = rand()
-    end do
-
-  end subroutine create_rand_nums
-end module subs
-
 program main
   use mpi_f08
   use iso_fortran_env, only: error_unit
@@ -26,7 +9,7 @@ program main
   character(12) :: arg
   integer :: num_elements_per_proc
   integer :: world_size, world_rank
-  real :: r, local_sum, global_sum
+  real :: local_sum, global_sum
   real, allocatable :: rand_nums(:)
 
   num_args = command_argument_count()
@@ -45,11 +28,9 @@ program main
   call MPI_COMM_RANK(MPI_COMM_WORLD, world_rank)
 
   ! Create a random array of elements on all processes.
-  call srand(time()) ! Seed the random number generator to get different results each time for each processor
-  ! Throw away first rand value
-  r = rand()
+  call random_seed() ! Seed the random number generator to get different results each time for each processor
   allocate(rand_nums(num_elements_per_proc))
-  call create_rand_nums(rand_nums, num_elements_per_proc)
+  call random_number(rand_nums)
 
   ! Sum the numbers locally
   local_sum = sum(rand_nums)
