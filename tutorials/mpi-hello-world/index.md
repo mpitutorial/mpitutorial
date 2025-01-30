@@ -48,9 +48,7 @@ int main(int argc, char** argv) {
 You will notice that the first step to building an MPI program is including the MPI header files with `#include <mpi.h>`. After this, the MPI environment must be initialized with:
 
 ```cpp
-MPI_Init(
-    int* argc,
-    char*** argv)
+MPI_Init(NULL, NULL)
 ```
 
 During `MPI_Init`, all of MPI's global and internal variables are constructed. For example, a communicator is formed around all of the processes that were spawned, and unique ranks are assigned to each process. Currently, `MPI_Init` takes two arguments that are not necessary, and the extra parameters are simply left as extra space in case future implementations might need them.
