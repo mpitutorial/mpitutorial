@@ -30,3 +30,6 @@ The tutorials assume that the reader has a basic knowledge of C, some C++, and L
 
 ## Groups and communicators
 * [Introduction to groups and communicators]({{ site.baseurl }}/tutorials/introduction-to-groups-and-communicators/) ([中文版]({{ site.baseurl }}/tutorials/introduction-to-groups-and-communicators/zh_cn))
+
+## MPI and Fortran
+* [Introduction and differences for MPI Fortran]({{ site.baseurl }}/tutorials/mpi-fortran/)
