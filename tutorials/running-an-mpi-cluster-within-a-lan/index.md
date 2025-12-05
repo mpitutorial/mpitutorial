@@ -54,10 +54,10 @@ $ su - mpiuser
 Since the ```ssh``` server is already installed, you must be able to login to other machines by ```ssh username@hostname```, at which you will be prompted to enter the password of the ```username```. To enable more easier login, we generate keys and copy them to other machines' list of ```authorized_keys```.
 
 ```bash
-$ ssh-keygen -t dsa
+$ ssh-keygen
 ```
 
-You can as well generate RSA keys. But again, it is totally up to you. If you want more security, go with RSA. Else, DSA should do just fine. Now, add the generated key to each of the other computers. In our case, the worker machine.
+This will generate an RSA key. Now, add the generated key to each of the other computers. In our case, the worker machine. **Notice:** DSA key will no longer be supported in OpenSSH 7.0 *(see [here](https://superuser.com/questions/1016989/ssh-dsa-keys-no-longer-work-for-password-less-authentication))*, so don't create the key with ```ssh-keygen -t dsa```
 
 ```bash
 $ ssh-copy-id worker #ip-address may also be used
