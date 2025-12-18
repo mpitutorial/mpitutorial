@@ -10,7 +10,7 @@ redirect_from: '/introduction-to-groups-and-communicators/'
 在以前的教程中，我们使用了通讯器 `MPI_COMM_WORLD`。
 对于简单的程序，这已经足够了，因为我们的进程数量相对较少，并且通常要么一次要与其中之一对话，要么一次要与所有对话。
 当程序规模开始变大时，这变得不那么实用了，我们可能只想一次与几个进程进行对话。
-在本次教程中，我们将展示如何创建新的通讯器，以便一次与原始线程组的子集进行沟通。
+在本次教程中，我们将展示如何创建新的通讯器，以便一次与原始进程组的子集进行沟通。
 
 > **注意**- 本站点的所有代码都在 [GitHub]({{ site.github.repo }}) 上。本教程的代码在 [tutorials/introduction-to-groups-and-communicators/code]({{ site.github.code }}/tutorials/introduction-to-groups-and-communicators/code) 目录下。
 
