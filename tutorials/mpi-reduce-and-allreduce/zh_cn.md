@@ -27,7 +27,7 @@ redirect_from: '/mpi-reduce-and-allreduce/'
 ## MPI_Reduce
 
 与 `MPI_Gather` 类似，`MPI_Reduce` 在每个进程上获取一个输入元素数组，并将输出元素数组返回给根进程。
-输出元素包含减少的结果。
+输出元素包含归约的结果。
 `MPI_Reduce` 的原型如下所示：
 
 ```cpp
