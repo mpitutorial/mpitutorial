@@ -26,7 +26,7 @@ float *create_rand_nums(int num_elements) {
 
 int main(int argc, char** argv) {
   if (argc != 2) {
-    fprintf(stderr, "Usage: avg num_elements_per_proc\n");
+    fprintf(stderr, "Usage: reduce_stddev num_elements_per_proc\n");
     exit(1);
   }
 
