@@ -12,7 +12,7 @@ programs = {
     # From mpi-send-and-receive tutorial
     'send_recv': ('mpi-send-and-receive', 2),
     'ping_pong': ('mpi-send-and-receive', 2),
-    'ring': ('mpi-send-and-receive', 5),
+    'ring': ('mpi-send-and-receive', 4),
 
     # From the dynamic-receiving-with-mpi-probe-and-mpi-status tutorial
     'check_status': ('dynamic-receiving-with-mpi-probe-and-mpi-status', 2),
@@ -23,7 +23,7 @@ programs = {
 
     # From the mpi-broadcast-and-collective-communication tutorial
     'my_bcast': ('mpi-broadcast-and-collective-communication', 4),
-    'compare_bcast': ('mpi-broadcast-and-collective-communication', 16, ['100000', '10']),
+    'compare_bcast': ('mpi-broadcast-and-collective-communication', 4, ['100000', '10']),
 
     # From the mpi-scatter-gather-and-allgather tutorial
     'avg': ('mpi-scatter-gather-and-allgather', 4, ['100']),
